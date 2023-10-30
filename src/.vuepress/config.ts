@@ -8,7 +8,7 @@ const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
   // 基础路径
-  base: "/Learn-Ladder/",
+  base: "/",
   //头部引入
   head: [
     
