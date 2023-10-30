@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://brain.sunguoqi.com/Learn-Ladder/rss.xsl"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://brain.sunguoqi.com/rss.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://brain.sunguoqi.com/Learn-Ladder/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://brain.sunguoqi.com/rss.xml" rel="self" type="application/rss+xml"/>
     <title>Waite Wang</title>
-    <link>https://brain.sunguoqi.com/Learn-Ladder/</link>
+    <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 30 Oct 2023 05:14:20 GMT</pubDate>
-    <lastBuildDate>Mon, 30 Oct 2023 05:14:20 GMT</lastBuildDate>
+    <pubDate>Mon, 30 Oct 2023 07:01:44 GMT</pubDate>
+    <lastBuildDate>Mon, 30 Oct 2023 07:01:44 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
       <title>Vue3 基本指令</title>
-      <link>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/Vue3%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4.html</link>
-      <guid>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/Vue3%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4.html</guid>
-      <source url="https://brain.sunguoqi.com/Learn-Ladder/rss.xml">Vue3 基本指令</source>
+      <link>https://brain.sunguoqi.com/web/vue/learn/essential/Vue3%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/essential/Vue3%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Vue3 基本指令</source>
       <description>VSCode 代码片段 我们在前面练习Vue的过程中，有些代码片段是需要经常写的，我们再VSCode中我们可以生成一个代码片段，方便我们快速生成。 VSCode中的代码片段有固定的格式，所以我们一般会借助于一个在线工具来完成。 具体的步骤如下： 第一步，复制自己需要生成代码片段的代码； 第二步，https://snippet-generator.app/在该网站中生成代码片段； 第三步，在VSCode中配置代码片段； 直接 Tab trigger 即可自动填充</description>
       <pubDate>Thu, 07 Sep 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> VSCode 代码片段</h2>
@@ -590,9 +590,9 @@
     </item>
     <item>
       <title>Vue 的Options API</title>
-      <link>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/Vue3%E7%9A%84Options-API.html</link>
-      <guid>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/Vue3%E7%9A%84Options-API.html</guid>
-      <source url="https://brain.sunguoqi.com/Learn-Ladder/rss.xml">Vue 的Options API</source>
+      <link>https://brain.sunguoqi.com/web/vue/learn/essential/Vue3%E7%9A%84Options-API.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/essential/Vue3%E7%9A%84Options-API.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Vue 的Options API</source>
       <description>Computed 认识计算属性 我们知道，在模板中可以直接通过插值语法显示一些data中的数据。 但是在某些情况，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来进行显示； 比如我们需要对多个data数据进行运算、三元运算符来决定结果、数据进行某种转化后显示； 在模板中使用表达式，可以非常方便的实现，但是设计它们的初衷是用于简单的运算； 在模板中放入太多的逻辑会让模板过重和难以维护； 并且如果多个地方都使用到，那么会有大量重复的代码；</description>
       <pubDate>Thu, 07 Sep 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> Computed</h2>
@@ -762,9 +762,9 @@
     </item>
     <item>
       <title>邂逅Vue3开发</title>
-      <link>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/%E9%82%82%E9%80%85%20Vue%20%E5%BC%80%E5%8F%91.html</link>
-      <guid>https://brain.sunguoqi.com/Learn-Ladder/web/vue/learn/essential/%E9%82%82%E9%80%85%20Vue%20%E5%BC%80%E5%8F%91.html</guid>
-      <source url="https://brain.sunguoqi.com/Learn-Ladder/rss.xml">邂逅Vue3开发</source>
+      <link>https://brain.sunguoqi.com/web/vue/learn/essential/%E9%82%82%E9%80%85%20Vue%20%E5%BC%80%E5%8F%91.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/essential/%E9%82%82%E9%80%85%20Vue%20%E5%BC%80%E5%8F%91.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">邂逅Vue3开发</source>
       <description>认识 Vue 什么是 Vue Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。 全程是Vue.js或者Vuejs； 什么是渐进式框架呢？表示我们可以在项目中一点点来引入和使用Vue，而不一定需要全部使用Vue来开发整个 项目； Vue3带来的变化 源码通过monorepo的形式来管理源代码： Mono：单个 Repo：repository仓库 主要是将许多项目的代码存储在同一个 repository 中； 这样做的目的是多个包本身相互独立，可以有自己的功能逻辑、单元测试等，同时又在同一个仓库下方便管理； 而且模块划分的更加清晰，可维护性、可扩展性更强； 源码使用TypeScript来进行重写： 在Vue2.x的时候，Vue使用 Flow 来进行类型检测； 在Vue3.x的时候，Vue的源码全部使用 TypeScript 来进行重构，并且 Vue 本身对 TypeScript 支持也更好了；</description>
       <pubDate>Thu, 07 Sep 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 认识 Vue</h2>

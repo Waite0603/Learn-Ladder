@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://brain.sunguoqi.com/Learn-Ladder/sitemap.xml
+Sitemap: https://brain.sunguoqi.com/sitemap.xml
