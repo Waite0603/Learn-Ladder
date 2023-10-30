@@ -6,10 +6,101 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 30 Oct 2023 07:01:44 GMT</pubDate>
-    <lastBuildDate>Mon, 30 Oct 2023 07:01:44 GMT</lastBuildDate>
+    <pubDate>Mon, 30 Oct 2023 11:57:58 GMT</pubDate>
+    <lastBuildDate>Mon, 30 Oct 2023 11:57:58 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Js 的浅拷贝与深拷贝</title>
+      <link>https://brain.sunguoqi.com/web/js/Js%20%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D.html</link>
+      <guid>https://brain.sunguoqi.com/web/js/Js%20%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Js 的浅拷贝与深拷贝</source>
+      <description>数据类型 在探讨深浅拷贝之前，我们先梳理一下js中的数据类型，js的数据类型分为两类：基本数据类型和引用数据类型 前者是存储在栈内存中，后者是将其地址存在栈内存中，而真实数据存储在堆内存中。 如下图所示，基本类型如number、string、boolean、Null和 undefined 等存储在栈内存中，而引用数据类型如 Array、Object 和函数等则是分别存储数据1的地址、数据2的地址和数据3的地址。</description>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 数据类型</h2>
+<ol>
+<li>在探讨深浅拷贝之前，我们先梳理一下js中的数据类型，js的数据类型分为两类：基本数据类型和引用数据类型</li>
+<li>前者是存储在栈内存中，后者是将其地址存在栈内存中，而真实数据存储在堆内存中。</li>
+<li>如下图所示，基本类型如number、string、boolean、Null和 undefined 等存储在栈内存中，而引用数据类型如 Array、Object 和函数等则是分别存储数据1的地址、数据2的地址和数据3的地址。</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202310301908367.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 深浅拷贝</h2>
+<blockquote>
+<p>js中的基本数据类型：<code>String Number Boolean Null Undefined</code>，在赋值的过程中都是深拷贝。</p>
+<p>例如，let a = 10 ; b = a , 修改其中一个变量的值，不会影响到另一个变量的值。</p>
+</blockquote>
+<h3> 概念</h3>
+<ol>
+<li>浅拷贝：会在栈中开辟另一块空间，并将被拷贝对象的栈内存数据完全拷贝到该块空间中，即基本数据类型的值会被完全拷贝，而引用类型的值则是拷贝了“指向堆内存的地址”。因此，当修改其中一个变量的值时，会影响到另一个变量的值。</li>
+<li>深拷贝：不仅会在栈中开辟另一块空间，若被拷贝对象中有引用类型，则还会在堆内存中开辟另一块空间存储引用类型的真实数据。因此，当修改其中一个变量的值时，不会影响到另一个变量的值。</li>
+</ol>
+<blockquote>
+<p>两者示意图如下：</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202310301911328.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<blockquote>
+<p>浅拷贝是拷贝一层，属性为对象时，浅拷贝是复制，两个对象指向同一个地址</p>
+<p>深拷贝是递归拷贝深层次，属性为对象时，深拷贝是新开栈，两个对象指向不同的地址</p>
+</blockquote>
+<h2> Js 中的深浅拷贝</h2>
+<h3> 浅拷贝</h3>
+<blockquote>
+<p>浅拷贝，指的是创建新的数据，这个数据有着原始数据属性值的一份精确拷贝</p>
+<p>如果属性是基本类型，拷贝的就是基本类型的值。如果属性是引用类型，拷贝的就是内存地址</p>
+</blockquote>
+<h4> 手写递归</h4>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 展开语法</h4>
+<blockquote>
+<p>展开语法(spread syntax)允许一个表达式在期望多个参数(用于函数调用)或多个元素(用于数组字面量)或多个变量(用于解构赋值)的位置扩展。</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Object.assign()</h4>
+<blockquote>
+<p>Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> slice()</h4>
+<blockquote>
+<p>slice() 方法可从已有的数组中返回选定的元素。</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> concat()</h4>
+<blockquote>
+<p>concat() 方法用于连接两个或多个数组。</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202310301917518.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 深拷贝</h3>
+<blockquote>
+<p>深拷贝开辟一个新的栈，两个对象属性完成相同，但是对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性</p>
+</blockquote>
+<h4> 手写递归</h4>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Object.entries(obj) 遍历对象</h4>
+<blockquote>
+<p>Object.entries() 方法返回一个给定对象自身可枚举属性的键值对数组</p>
+<p>比如：Object.entries({ foo: 'bar', baz: 42 }); // [ ['foo', 'bar'], ['baz', 42] ]</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> JSON.parse(JSON.stringify(待拷贝对象) -&gt; 常用</h4>
+<blockquote>
+<p>JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。</p>
+<p>比如: JSON.stringify({ x: 5, y: 6 }); // "{"x":5,"y":6}" -&gt; string</p>
+<p>JSON.parse() 方法用于将一个 JSON 字符串转换为对象。</p>
+<p>比如: JSON.parse('{"name":"cxk","age":18}'); // {name: "cxk", age: 18} -&gt; object</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 其他方法</h4>
+<ul>
+<li>_.cloneDeep()</li>
+<li>jQuery.extend()</li>
+<li>手写循环递归</li>
+</ul>
+<h2> Vue 中的深拷贝实现</h2>
+<blockquote>
+<p>引入loadsh,提供 cloneDeep 实现深拷贝</p>
+</blockquote>
+<ol>
+<li>安装loadsh    npm i --save lodash</li>
+<li>引入loadsh    import _ from 'lodash'</li>
+<li>直接调用 loadsh 库的方法 <code>const newObj = _.cloneDeep(this.obj)</code></li>
+</ol>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202310301908367.png" type="image/png"/>
+    </item>
     <item>
       <title>Vue3 基本指令</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/essential/Vue3%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4.html</link>
@@ -621,7 +712,7 @@
 <h3> 基本使用</h3>
 <p>计算属性的用法：</p>
 <ul>
-<li>**选项：**computed</li>
+<li><strong>选项：</strong> computed</li>
 <li><strong>类型：</strong><code>{ [key: string]: Function | { get: Function, set: Function } }</code></li>
 </ul>
 <p>我们来看三个案例：</p>
