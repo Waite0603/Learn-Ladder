@@ -3,9 +3,9 @@ import { arraySidebar } from "vuepress-theme-hope";
 
 export const web = arraySidebar([
   {
-    text: "TS",
-    icon: "typescript",
-    prefix: "ts/",
+    text: "JS",
+    icon: "javascript",
+    prefix: "js/",
     children: "structure",
     collapsible: true,
   },

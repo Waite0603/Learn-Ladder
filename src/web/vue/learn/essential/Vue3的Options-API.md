@@ -35,7 +35,7 @@ date: 2023-09-07
 
 计算属性的用法：
 
-- **选项：**computed
+- **选项：** computed
 - **类型：**`{ [key: string]: Function | { get: Function, set: Function } }`
 
 我们来看三个案例：
