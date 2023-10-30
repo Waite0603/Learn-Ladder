@@ -9,6 +9,12 @@
     "clean-dev": "vuepress dev src --clean-cache",
     "dev": "vuepress dev src"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "useEmoji": true
+    }
+  },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.67",
     "vue": "^3.3.4",
