@@ -32,6 +32,13 @@ export const web = arraySidebar([
             prefix: "components/",
             children: "structure",
             collapsible: true,
+          },
+          {
+            text: "脚手架",
+            icon: "files",
+            prefix: "cli/",
+            children: "structure",
+            collapsible: true,
           }
         ],
         collapsible: true,
