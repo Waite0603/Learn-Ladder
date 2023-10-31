@@ -2,7 +2,7 @@
 title: Vue 的Options API
 icon: post
 order: 3
-date: 2023-09-07
+date: 2023-10-31
 ---
 
 ## Computed
@@ -719,4 +719,277 @@ th {
 ## v-model
 
 + `v-model` 可以在组件上使用以实现双向绑定。
-+ 
+
++ 首先让我们回忆一下 `v-model` 在原生元素上的用法：
+
+  template
+
+  ```javascript
+  <input v-model="searchText" />
+  ```
+
++ 在代码背后，模板编译器会对 `v-model` 进行更冗长的等价展开。因此上面的代码其实等价于下面这段：
+
+  ```javascript
+  <input
+    :value="searchText"
+    @input="searchText = $event.target.value"
+  />
+  ```
+
++ 而当使用在一个组件上时，`v-model` 会被展开为如下的形式：
+
+  ```javascript
+  <CustomInput
+    :model-value="searchText"
+    @update:model-value="newValue => searchText = newValue"
+  />
+  ```
+
++ 要让这个例子实际工作起来，`<CustomInput>` 组件内部需要做两件事：
+
+  1. 将内部原生 `<input>` 元素的 `value` attribute 绑定到 `modelValue` prop
+  2. 当原生的 `input` 事件触发时，触发一个携带了新值的 `update:modelValue` 自定义事件 
+
+### 内部实现
+
+![图片](https://qiniu.waite.wang/202310311437450.jpeg)
+
+### 绑定其他表单
+
+> 具体可以看: https://cn.vuejs.org/guide/essentials/forms.html#modifiers
+
+> 在 HTML 中，`<label>` 标签的 `for` 属性被用来关联 `<label>` 标签和表单控件（如 `<input>`、`<textarea>`、`<select>` 等）。`for` 属性的值应该是你想要关联的表单控件的 `id`。 当 `<label>` 被点击时，与其关联的表单控件会获得焦点。
+
+```html
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <!-- 1.绑定textarea -->
+    <label for="intro">
+      自我介绍
+      <textarea name="intro" id="intro" cols="30" rows="10" v-model="intro"></textarea>
+    </label>
+    <h2>intro: {{intro}}</h2>
+
+    <!-- 2.checkbox -->
+    <!-- 2.1.单选框 -->
+    <label for="agree">
+      <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+    </label>
+    <h2>isAgree: {{isAgree}}</h2>
+
+    <!-- 2.2.多选框 -->
+    <span>你的爱好: </span>
+    <label for="basketball">
+      <input id="basketball" type="checkbox" v-model="hobbies" value="basketball"> 篮球
+    </label>
+    <label for="football">
+      <input id="football" type="checkbox" v-model="hobbies" value="football"> 足球
+    </label>
+    <label for="tennis">
+      <input id="tennis" type="checkbox" v-model="hobbies" value="tennis"> 网球
+    </label>
+    <h2>hobbies: {{hobbies}}</h2>
+
+    <!-- 3.radio -->
+    <span>你的爱好: </span>
+    <label for="male">
+      <input id="male" type="radio" v-model="gender" value="male">男
+    </label>
+    <label for="female">
+      <input id="female" type="radio" v-model="gender" value="female">女
+    </label>
+    <h2>gender: {{gender}}</h2>
+
+    <!-- 4.select -->
+    <span>喜欢的水果: </span>
+    <select v-model="fruit" multiple size="2">
+      <option value="apple">苹果</option>
+      <option value="orange">橘子</option>
+      <option value="banana">香蕉</option>
+    </select>
+    <h2>fruit: {{fruit}}</h2>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          intro: "Hello World",
+          isAgree: false,
+          hobbies: ["basketball"],
+          gender: "",
+          fruit: "orange"
+        }
+      },
+      methods: {
+        commitForm() {
+          axios
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+```
+
+![image-20231031200224648](https://qiniu.waite.wang/202310312002330.png)
+
+目前我们在前面的案例中大部分的值都是在template中固定好的：
+
++ 比如gender的两个输入框值male、female；
++ 比如hobbies的三个输入框值basketball、football、tennis；
+
+在真实开发中，我们的数据可能是来自服务器的，那么我们就可以先将值请求下来，绑定到data返回的对象中，再通过v-bind来进行值的绑定，这个过程就是值绑定。
+### 修饰符
+
+#### 内置修饰符
+
+##### `.lazy`
+
+默认情况下，`v-model` 会在每次 `input` 事件后更新数据 ([IME 拼字阶段的状态](https://cn.vuejs.org/guide/essentials/forms.html#vmodel-ime-tip)例外)。你可以添加 `lazy` 修饰符来改为在每次 `change` 事件后更新数据：
+
+```html
+<!-- 在 "change" 事件后同步更新而不是 "input" -->
+<input v-model.lazy="msg" />
+```
+
+##### [`.number`](https://cn.vuejs.org/guide/essentials/forms.html#number)
+
+如果你想让用户输入自动转换为数字，你可以在 `v-model` 后添加 `.number` 修饰符来管理输入：
+
+另外，在我们进行逻辑判断时，如果是一个string类型，在可以转化的情况下会进行隐式转换的：
+
+- 下面的score在进行判断的过程中会进行隐式转化的；
+
+```javascript
+const score = "100";if (score > 90) {  console.log("优秀");}
+```
+
+```html
+<input v-model.number="age" />
+```
+
+如果该值无法被 `parseFloat()` 处理，那么将返回原始值。
+
+`number` 修饰符会在输入框有 `type="number"` 时自动启用。
+
+##### [`.trim`](https://cn.vuejs.org/guide/essentials/forms.html#trim)
+
+如果你想要默认自动去除用户输入内容中两端的空格，你可以在 `v-model` 后添加 `.trim` 修饰符：
+
+```html
+<input v-model.trim="msg" />
+```
+
+#### 自定义的修饰符
+
+在某些场景下，你可能想要一个自定义组件的 `v-model` 支持自定义的修饰符。
+
+我们来创建一个自定义的修饰符 `capitalize`，它会自动将 `v-model` 绑定输入的字符串值第一个字母转为大写：
+
+```html
+<MyComponent v-model.capitalize="myText" />
+```
+
+组件的 `v-model` 上所添加的修饰符，可以通过 `modelModifiers` prop 在组件内访问到。在下面的组件中，我们声明了 `modelModifiers` 这个 prop，它的默认值是一个空对象：
+
+```vue
+<script>
+export default {
+  props: {
+    modelValue: String,
+    modelModifiers: {
+      default: () => ({})
+    }
+  },
+  emits: ['update:modelValue'],
+  created() {
+    console.log(this.modelModifiers) // { capitalize: true }
+  }
+}
+</script>
+
+<template>
+  <input
+    type="text"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
+</template>
+```
+
+注意这里组件的 `modelModifiers` prop 包含了 `capitalize` 且其值为 `true`，因为它在模板中的 `v-model` 绑定 `v-model.capitalize="myText"` 上被使用了。
+
+有了这个 prop，我们就可以检查 `modelModifiers` 对象的键，并编写一个处理函数来改变抛出的值。在下面的代码里，我们就是在每次 `<input />` 元素触发 `input` 事件时将值的首字母大写：
+
+```vue
+<script>
+export default {
+  props: {
+    modelValue: String,
+    modelModifiers: {
+      default: () => ({})
+    }
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    emitValue(e) {
+      let value = e.target.value
+      if (this.modelModifiers.capitalize) {
+        value = value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      this.$emit('update:modelValue', value)
+    }
+  }
+}
+</script>
+
+<template>
+  <input type="text" :value="modelValue" @input="emitValue" />
+</template>
+```
+
+### 多个 `v-model` 绑定
+
+我们可以在单个组件实例上创建多个 `v-model` 双向绑定。
+
+组件上的每一个 `v-model` 都会同步不同的 prop，而无需额外的选项：
+
+```html
+<UserName
+  v-model:first-name="first"
+  v-model:last-name="last"
+/>
+```
+
+```html
+<script>
+export default {
+  props: {
+    firstName: String,
+    lastName: String
+  },
+  emits: ['update:firstName', 'update:lastName']
+}
+</script>
+
+<template>
+  <input
+    type="text"
+    :value="firstName"
+    @input="$emit('update:firstName', $event.target.value)"
+  />
+  <input
+    type="text"
+    :value="lastName"
+    @input="$emit('update:lastName', $event.target.value)"
+  />
+</template>
+```
+

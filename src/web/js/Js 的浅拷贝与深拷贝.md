@@ -226,3 +226,15 @@ console.log(newObj);
 1. 安装loadsh    npm i --save lodash
 2. 引入loadsh    import _ from 'lodash'
 3. 直接调用 loadsh 库的方法 `const newObj = _.cloneDeep(this.obj)`
+
+> _clone 实现浅拷贝
+  
+```javascript
+const obj = _.clone(info);
+
+info.name = "kobe";
+console.log(obj.name);
+
+info.friend.name = "james";
+console.log(obj.friend.name);
+```
