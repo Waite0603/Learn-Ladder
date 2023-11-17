@@ -329,3 +329,32 @@ npm install vue-loader -D
 
 + 重新打包即可支持App.vue的写法
 
+
+## 补充
+
++ 当然此时控制台还有如下报错 `You are running the csm-bundler bu1ld of Vue, It is recommended to contigure your bundler to expl1citly roplace featur flag globals with boolean literals to get proper tree-shaking in the fina bundle, See http://link,yuejs.org/feature-flags for more details.`
+
++ 在官方解释如下: https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags
+
+![image-20231117234618957](https://qiniu.waite.wang/202311172346161.png)
+
++ Bundler Build Feature Flags是构建工具（Bundler）中的一种特性标志，用于控制Vue框架的不同特性的开启和关闭。从Vue 3.0.0-rc.3版本开始，esm-bundler构建工具现在公开了全局特性标志，可以在编译时进行覆盖。其中两个重要的特性标志包括：
+  + VUE_OPTIONS_API：启用/禁用Options API支持，默认为true。
+  + VUE_PROD_DEVTOOLS：启用/禁用生产环境下的devtools支持，默认为false。
++ 在没有配置这些特性标志的情况下，构建工具仍然可以正常工作，但强烈建议正确配置它们以便在最终的打包文件中实现正确的树摇效果。要配置这些特性标志：
+  + https://webpack.js.org/plugins/define-plugin/
+
+```javascript
+module.exports = {
+    plugins: [
+        new DefinePlugin({
+          BASE_URL: "'./'",
+          __VUE_OPTIONS_API__: true,
+          __VUE_PROD_DEVTOOLS__: false
+        })
+   ]
+}
+```
+
+> 开启Bundler Build Feature Flags的好处在于能够更好地控制Vue框架的特性和功能，从而有效地减少最终打包文件的大小。通过正确配置特性标志，可以实现树摇（tree-shaking）效果，即只包含应用程序实际使用的代码，而不包含未使用的代码。这将有助于提高应用程序的性能和加载速度，并减少资源消耗。此外，通过禁用不需要的特性，还可以减少应用程序的复杂性，并提高代码的可维护性。因此，建议开发人员在使用Vue框架时正确配置Bundler Build Feature Flags，以获得更好的开发和部署体验。
+
