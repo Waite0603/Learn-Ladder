@@ -6,10 +6,224 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 17 Nov 2023 14:47:28 GMT</pubDate>
-    <lastBuildDate>Fri, 17 Nov 2023 14:47:28 GMT</lastBuildDate>
+    <pubDate>Fri, 17 Nov 2023 15:14:32 GMT</pubDate>
+    <lastBuildDate>Fri, 17 Nov 2023 15:14:32 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Webpack_Babel</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/cli/babel.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/cli/babel.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Webpack_Babel</source>
+      <description>什么是 Babel? https://babeljs.io/ Babel 是一个 JavaScript 编译器，可以将 ECMAScript 2015+ 代码转换为向后兼容的 JavaScript 版本，以便在当前和旧版浏览器或环境中运行。它还支持将 JSX 转换为普通 JavaScript 代码。Babel 是一个非常流行的工具，许多现代的 JavaScript 应用程序都使用它来构建和部署。 事实上，在开发中我们很少直接去接触babel，但是babel对于前端开发来说，目前是不可缺少的一部分： 开发中，我们想要使用ES6+的语法，想要使用TypeScript，开发React项目，它们都是离不开Babel的；所以，学习Babel对于我们理解代码从编写到线上的转变过程至关重要；</description>
+      <pubDate>Fri, 17 Nov 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 什么是 Babel?</h2>
+<blockquote>
+<p>https://babeljs.io/</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Babel 是一个 JavaScript 编译器，可以将 ECMAScript 2015+ 代码转换为向后兼容的 JavaScript 版本，以便在当前和旧版浏览器或环境中运行。它还支持将 JSX 转换为普通 JavaScript 代码。Babel 是一个非常流行的工具，许多现代的 JavaScript 应用程序都使用它来构建和部署。</li>
+<li>事实上，在开发中我们很少直接去接触babel，但是babel对于前端开发来说，目前是不可缺少的一部分：</li>
+<li>开发中，我们想要使用ES6+的语法，想要使用TypeScript，开发React项目，它们都是离不开Babel的；所以，学习Babel对于我们理解代码从编写到线上的转变过程至关重要；</li>
+</ul>
+</blockquote>
+<ul>
+<li>以下是一个使用 Babel 的示例：</li>
+<li>假设我们有一个使用箭头函数和 const 声明的简单 JavaScript 模块：</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>如果我们想要在旧版浏览器中运行它，我们可以使用 Babel 将其转换为 ES5：</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>这个转换过的代码可以在大多数浏览器中运行，即使它们不支持箭头函数或 const 声明。</li>
+</ul>
+<h2> Babel 命令行使用</h2>
+<ul>
+<li>babel本身可以作为一个独立的工具（和postcss一样），不和webpack等构建工具配置来单独使用。</li>
+<li>如果我们希望在命令行尝试使用babel，需要安装如下库：
+<ul>
+<li>@babel/core：babel的核心代码，必须安装；</li>
+<li>@babel/cli：可以让我们在命令行使用babel；</li>
+</ul>
+</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>使用babel来处理我们的源代码：
+<ul>
+<li>src：是源文件的目录；</li>
+<li>–out-dir：指定要输出的文件夹dist；</li>
+<li>--out-file: 指定要输出的文件dist；</li>
+</ul>
+</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 插件</h2>
+<ul>
+<li>
+<p>Babel 的插件是用于转换 JavaScript 代码的小型程序，可以添加到 Babel 配置中。Babel 插件可以执行各种任务，例如：</p>
+<ul>
+<li>转换语法：将新的 ECMAScript 特性转换为向后兼容的代码。</li>
+<li>转换 API：将使用新 API 的代码转换为旧 API。</li>
+<li>转换 JSX：将 JSX 转换为普通的 JavaScript 代码。</li>
+</ul>
+</li>
+<li>
+<p>以下是一些常见的 Babel 插件：</p>
+<ul>
+<li>@babel/plugin-transform-arrow-functions: 将箭头函数转换为普通函数。</li>
+<li>@babel/plugin-transform-block-scoping: 将 let 和 const 声明转换为 var 声明。</li>
+<li>@babel/plugin-transform-classes: 将类转换为 ES5 构造函数。</li>
+<li>@babel/plugin-transform-destructuring: 将解构赋值转换为普通赋值。</li>
+<li>@babel/plugin-transform-object-assign: 将 Object.assign() 转换为 ES5 兼容的代码。</li>
+<li>@babel/plugin-transform-react-jsx: 将 JSX 转换为普通的 JavaScript 代码。</li>
+<li>@babel/plugin-transform-runtime: 避免在每个文件中重复使用 Babel 运行时代码。</li>
+</ul>
+</li>
+<li>
+<p>如何使用?</p>
+<ul>
+<li>比如我们需要转换箭头函数, const 转成 var，那么我们就可以使用箭头函数转换相关的插件：</li>
+</ul>
+</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 预设 preset</h2>
+<p>Babel 的预设（preset）是一组预先配置的转换规则，用于将特定版本的 JavaScript 代码转换为向后兼容的旧版本。以下是一些常用的 Babel 预设：</p>
+<ol>
+<li>@babel/preset-env: 根据目标环境自动确定需要的转换规则。它根据你在 .babelrc 或 babel.config.js 文件中的配置来确定需要转换的 JavaScript 特性。</li>
+<li>@babel/preset-react: 用于转换 React JSX 语法的预设。它可以将 JSX 转换为普通的 JavaScript 代码。</li>
+<li>@babel/preset-typescript: 用于转换 TypeScript 代码的预设。它可以将 TypeScript 的类型注解和其他特定语法转换为普通的 JavaScript 代码。</li>
+<li>@babel/preset-flow: 用于转换 Flow 类型注解的预设。它可以将 Flow 的类型注解转换为普通的 JavaScript 代码。</li>
+</ol>
+<p>这些预设可以根据你的项目需求进行选择和配置。你可以在 .babelrc 或 babel.config.js 文件中指定所需的预设，例如：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>也可以</p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 原理</h2>
+<h3> 底层原理</h3>
+<ul>
+<li>
+<p>babel是如何做到将我们的一段代码（ES6、TypeScript、React）转成另外一段代码（ES5）的呢？</p>
+<ul>
+<li>从一种源代码（原生语言）转换成另一种源代码（目标语言），这是什么的工作呢？</li>
+<li>就是编译器，事实上我们可以将babel看成就是一个编译器。</li>
+<li>Babel编译器的作用就是将我们的源代码，转换成浏览器可以直接识别的另外一段源代码；</li>
+</ul>
+</li>
+<li>
+<p>Babel也拥有编译器的工作流程：</p>
+<ul>
+<li>解析（Parsing）：Babel首先将输入的JavaScript代码解析成抽象语法树（Abstract Syntax Tree，AST）。AST是一个用于表示代码结构的树状数据结构，它能够准确地描述代码的语法和语义。</li>
+<li>转换（Transformation）：在AST的基础上，Babel会应用一系列的插件和预设来进行代码转换。这些插件和预设可以执行各种转换操作，例如语法转换、代码优化、添加兼容性处理等。每个插件都负责处理AST中的特定节点，并根据需要进行修改或替换。</li>
+<li>生成（Generation）：转换完成后，Babel会将修改后的AST重新生成为JavaScript代码。这些生成的代码可以是与输入代码相同的版本，也可以是经过转换后的新代码。</li>
+</ul>
+</li>
+<li>
+<p>https://github.com/jamiebuilds/the-super-tiny-compiler: 非常简单的编译器实现，旨在教授编译器原理和实践。</p>
+</li>
+</ul>
+<h3> 执行原理</h3>
+<blockquote>
+<p>Babel的执行阶段</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202311162053777.png" alt="image-20231116205304599" tabindex="0" loading="lazy"><figcaption>image-20231116205304599</figcaption></figure>
+<figure><img src="https://qiniu.waite.wang/202311162053832.png" alt="image-20231116205317664" tabindex="0" loading="lazy"><figcaption>image-20231116205317664</figcaption></figure>
+<ol>
+<li>词法分析（Lexing）：将输入的源代码字符串转换为一个令牌（Token）序列。每个令牌代表源代码中的一个语法单元，例如标识符、运算符、括号等。</li>
+<li>语法分析（Parsing）：将令牌序列转换为抽象语法树（AST）。AST是一个用于描述代码结构的树状数据结构，它能够准确地描述源代码的语法和语义。</li>
+<li>转换（Transformation）：在AST的基础上，应用一系列的转换规则，以修改和优化AST。这些规则可以执行各种操作，例如语法转换、代码优化、添加兼容性处理等。</li>
+<li>代码生成（Code Generation）：将修改后的AST转换为目标语言的代码。在"The Super Tiny Compiler"中，目标语言是JavaScript。</li>
+<li>输出：输出生成的目标代码。</li>
+</ol>
+<h2> babel-loader</h2>
+<ul>
+<li>babel-loader是一个用于在Webpack构建过程中将JavaScript代码转换的加载器（loader）。它是与Babel配合使用的常用工具之一。</li>
+<li>通过配置Webpack的规则，使用babel-loader可以将指定的JavaScript文件传递给Babel进行转换。Babel会根据配置的插件和预设，将源代码转换为目标浏览器或环境所支持的语法。</li>
+<li>指定使用的插件</li>
+</ul>
+<figure><img src="https://qiniu.waite.wang/202311162205301.png" alt="image-20231116220536704" tabindex="0" loading="lazy"><figcaption>image-20231116220536704</figcaption></figure>
+<ul>
+<li>
+<p>presets 预设:  如果我们一个个去安装使用插件，那么需要手动来管理大量的babel插件，我们可以直接给webpack提供一个 preset，webpack会根据我们的预设来加载对应的插件列表，并且将其传递给babel。以下使用 <code>@babel/preset-env</code></p>
+<ul>
+<li>env</li>
+<li>react</li>
+<li>TypeScript</li>
+</ul>
+</li>
+<li>
+<p>使用 babel-loader 的一般步骤如下：</p>
+<ol>
+<li>安装 babel-loader 和相关的Babel插件和预设：</li>
+</ol>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="2">
+<li>webpack.config.js，在其中配置 babel-loader：</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h2> 配置文件</h2>
+<ul>
+<li>我们可以将babel的配置信息放到一个独立的文件中，babel给我们提供了两种配置文件的编写：
+<ul>
+<li>babel.config.json（或者.js，.cjs，.mjs）文件；</li>
+<li>babelrc.json（或者.babelrc，.js，.cjs，.mjs）文件；</li>
+</ul>
+</li>
+<li>它们两个有什么区别呢？目前很多的项目都采用了多包管理的方式（babel本身、element-plus、umi等）；
+<ul>
+<li>.babelrc.json：早期使用较多的配置方式，但是对于配置Monorepos项目是比较麻烦的；</li>
+<li>babel.config.json（babel7）：可以直接作用于Monorepos项目的子包，更加推荐；</li>
+<li>补充: <em>Monorepo</em> 是一种项目代码管理方式,指单个仓库中管理多个项目,有助于简化代码共享、版本控制、构建和部署等方面的复杂性,并提供更好的可重用性和协作性, 类似 <code>@babel/preset-env</code> 这种写法大概率就是 Monorepo</li>
+</ul>
+</li>
+<li>以下为 <code>babel.config.js</code></li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>这样在 <code>webpack.config.js</code> 中只需要</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 在 Webpack 中使用 Vue</h2>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>此时重新 <code>build</code> 运行后不显示, 报错如下</p>
+<p><code>runtime-core.esm-bundler.js:38 [Vue warn]: Component provided template option but runtime compilation is not supported in this build of Vue. Configure your bundler to alias "vue" to "vue/dist/vue.esm-bundler.js" at &lt;App&gt;</code> -&gt; <code>runtime-core.esm-bundler.js:38</code></p>
+</blockquote>
+<blockquote>
+<p>这个错误是因为 Vue 3 默认不包含模板编译器，所以当你试图在组件中使用 <code>template</code> 选项时，你会看到这个警告。</p>
+<p>要解决这个问题，你需要在 webpack 配置中添加一个别名，将 "vue" 指向 "vue/dist/vue.esm-bundler.js"。这个版本的 Vue 包含了模板编译器。</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>Vue打包后不同版本解析</p>
+<ul>
+<li>vue(.runtime).global(.prod).js 是用于直接在浏览器中引入的全局版本，可以通过 <code>&lt;script&gt;</code> 标签来使用。
++ 我们之前通过CDN引入和下载的Vue版本就是这个版本；
++ 会暴露一个全局的Vue来使用；</li>
+<li>vue(.runtime).esm-browser(.prod).js 是用于原生 ES 模块导入的版本，在支持 ES 模块的浏览器中可以使用 <code>&lt;script type='module'&gt;</code> 来引入。</li>
+<li>vue(.runtime).esm-bundler.js 是用于构建工具（如webpack、rollup、parcel等）的版本，默认情况下会使用 vue.runtime.esm-bundler.js。如果需要解析模板（template），则需要手动指定 vue.esm-bundler.js。</li>
+<li>vue.cjs(.prod).js 是用于服务器端渲染的版本，在 Node.js 中可以使用 require() 来引入。
+<ul>
+<li><code>require</code> 是 Node.js 中用于导入模块的函数。它是 CommonJS 模块系统的一部分，这是 Node.js 的默认模块系统。以下是一个 <code>require</code> 的基本用法示例：<code>const fs = require('fs');</code>在这个例子中，我们导入了 Node.js 的内置 <code>fs</code>（文件系统）模块。</li>
+<li><code>require</code> 函数也可以用来导入你自己的模块。例如，如果你有一个名为 <code>myModule.js</code> 的文件，你可以这样导入它：<code>const myModule = require('./myModule.js');</code> 注意，当导入自己的模块时，你需要提供模块的相对路径（以 <code>./</code> 开头）。</li>
+<li>然而，<code>require</code> 并不是 ECMAScript（JavaScript 的标准化规范）的一部分，因此它在浏览器环境中通常不可用。在浏览器环境中，你通常会使用 ECMAScript 的 <code>import</code> 和 <code>export</code> 语句来导入和导出模块。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>接下来我们把 main.js 中的 vue 代码抽离为单文件组件(SFC)</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>重新打包, 报错：我们需要合适的Loader来处理文件。</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>配置 <code>webpack.config.js</code></li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>
+<p>重新 build 仍然报错 <code>Error:vue-loader requires @vue/compiler present the dependency tree</code>, 打包依然会报错，这是因为我们必须添加@vue/compiler-sfc来对template进行解析：</p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>重新打包即可支持App.vue的写法</p>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202311162053777.png" type="image/png"/>
+    </item>
     <item>
       <title>Webpack</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/cli/Webpack.html</link>
@@ -1863,6 +2077,57 @@
 <li><strong>仅运行时</strong>：这个版本不包含对template模板的编译代码。它更小巧，文件体积更小。在使用这个版本时，我们需要使用render函数来手动编写渲染逻辑，而不是直接使用template模板。这意味着我们需要更多的代码来实现相同的功能，但也带来了更好的性能和更小的文件大小。</li>
 <li>选择哪个版本取决于项目的需求和优化目标。如果我们需要更完整的功能，并且对文件大小没有太大的担忧，可以选择运行时+编译器版本。如果我们对文件大小敏感，并且愿意手动编写渲染逻辑，可以选择仅运行时版本。</li>
 </ul>
+<h2> VSCode对SFC文件的支持</h2>
+<blockquote>
+<p>Vue 的单文件组件 (即 *.vue 文件，英文 Single-File Component，简称 SFC) 是一种特殊的文件格式，使我们能够将一个 Vue 组件的模板、逻辑与样式封装在单个文件中。下面是一个单文件组件的示例：</p>
+</blockquote>
+<blockquote>
+<p>为什么要使用 SFC​
+使用 SFC 必须使用构建工具，但作为回报带来了以下优点：</p>
+<ul>
+<li>
+<p>使用熟悉的 HTML、CSS 和 JavaScript 语法编写模块化的组件</p>
+</li>
+<li>
+<p>让本来就强相关的关注点自然内聚</p>
+</li>
+<li>
+<p>预编译模板，避免运行时的编译开销</p>
+</li>
+<li>
+<p>组件作用域的 CSS</p>
+</li>
+<li>
+<p>在使用组合式 API 时语法更简单</p>
+</li>
+<li>
+<p>通过交叉分析模板和逻辑代码能进行更多编译时优化</p>
+</li>
+<li>
+<p>更好的 IDE 支持，提供自动补全和对模板中表达式的类型检查</p>
+</li>
+<li>
+<p>开箱即用的模块热更新 (HMR) 支持</p>
+</li>
+<li>
+<p>SFC 是 Vue 框架提供的一个功能，并且在下列场景中都是官方推荐的项目组织方式：</p>
+</li>
+<li>
+<p>单页面应用 (SPA)</p>
+</li>
+<li>
+<p>静态站点生成 (SSG)</p>
+</li>
+<li>
+<p>任何值得引入构建步骤以获得更好的开发体验 (DX) 的项目</p>
+</li>
+</ul>
+<p>https://cn.vuejs.org/guide/scaling-up/sfc.html</p>
+</blockquote>
+<ol>
+<li>插件一：Vetur，从Vue2开发就一直在使用的VSCode支持Vue的插件；</li>
+<li>插件二：Volar，官方推荐的插件（后续会基于Volar开发官方的VSCode插件）；</li>
+</ol>
 <h2> 如何阅读Vue源码</h2>
 <ul>
 <li>需要的环境 npm，yarn</li>
