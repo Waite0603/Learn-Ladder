@@ -1,7 +1,7 @@
 ---
 title: Webpack
 icon: post
-order: 1
+order: 2
 date: 2023-11-15
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Webpack_Babel
 icon: post
-order: 2
+order: 3
 date: 2023-11-17
 ---
 
