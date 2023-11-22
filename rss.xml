@@ -6,10 +6,152 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 20 Nov 2023 14:30:04 GMT</pubDate>
-    <lastBuildDate>Mon, 20 Nov 2023 14:30:04 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 09:07:26 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 09:07:26 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>VueCLI</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/cli/vueCli.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/cli/vueCli.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">VueCLI</source>
+      <description>https://cli.vuejs.org/zh/ 什么是Vue脚手架？ 我们前面学习了如何通过webpack配置Vue的开发环境，但是在真实开发中我们不可能每一个项目从头来完成 所有的webpack配置，这样显示开发的效率会大大的降低； 所以在真实开发中，我们通常会使用脚手架来创建一个项目，Vue的项目我们使用的就是Vue的脚手架； 脚手架其实是建筑工程中的一个概念，在我们软件工程中也会将一些帮助我们搭建项目的工具称之为脚手架； 我们可以通过CLI选择项目的配置和创建出我们的项目； Vue CLI已经内置了webpack相关的配置，我们不需要从零来配置；</description>
+      <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<blockquote>
+<p>https://cli.vuejs.org/zh/</p>
+</blockquote>
+<p>什么是Vue脚手架？</p>
+<ul>
+<li>我们前面学习了如何通过webpack配置Vue的开发环境，但是在真实开发中我们不可能每一个项目从头来完成 所有的webpack配置，这样显示开发的效率会大大的降低；</li>
+<li>所以在真实开发中，我们通常会使用脚手架来创建一个项目，Vue的项目我们使用的就是Vue的脚手架；</li>
+<li>脚手架其实是建筑工程中的一个概念，在我们软件工程中也会将一些帮助我们搭建项目的工具称之为脚手架；</li>
+<li>我们可以通过CLI选择项目的配置和创建出我们的项目；</li>
+<li>Vue CLI已经内置了webpack相关的配置，我们不需要从零来配置；</li>
+</ul>
+<p>Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统，提供：</p>
+<ul>
+<li>通过 <code>@vue/cli</code> 实现的交互式的项目脚手架。</li>
+<li>通过 <code>@vue/cli</code> + <code>@vue/cli-service-global</code> 实现的零配置原型开发。</li>
+<li>一个运行时依赖 (<code>@vue/cli-service</code>)，该依赖：
+<ul>
+<li>可升级；</li>
+<li>基于 webpack 构建，并带有合理的默认配置；</li>
+<li>可以通过项目内的配置文件进行配置；</li>
+<li>可以通过插件进行扩展。</li>
+</ul>
+</li>
+<li>一个丰富的官方插件集合，集成了前端生态中最好的工具。</li>
+<li>一套完全图形化的创建和管理 Vue.js 项目的用户界面。</li>
+</ul>
+<p>Vue CLI 致力于将 Vue 生态中的工具基础标准化。它确保了各种构建工具能够基于智能的默认配置即可平稳衔接，这样你可以专注在撰写应用上，而不必花好几天去纠结配置的问题。与此同时，它也为每个工具提供了调整配置的灵活性，无需 eject。</p>
+<h2> Vue CLI 安装</h2>
+<blockquote>
+<p>Node 版本要求</p>
+<p>Vue CLI 4.x 需要 <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> v8.9 或更高版本 (推荐 v10 以上)。你可以使用 <a href="https://github.com/tj/n" target="_blank" rel="noopener noreferrer">n</a>，<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener noreferrer">nvm</a> 或 <a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener noreferrer">nvm-windows</a> 在同一台电脑中管理多个 Node 版本。</p>
+</blockquote>
+<ul>
+<li>可以使用下列任一命令安装这个新的包：</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>安装之后，你就可以在命令行中访问 <code>vue</code> 命令。你可以通过简单运行 <code>vue</code>，看看是否展示出了一份所有可用命令的帮助信息，来验证它是否安装成功。你还可以用这个命令来检查其版本是否正确：</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>如需升级全局的 Vue CLI 包，请运行：</li>
+</ul>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>上面列出来的命令是用于升级全局的 Vue CLI。如需升级项目中的 Vue CLI 相关模块（以 <code>@vue/cli-plugin-</code> 或 <code>vue-cli-plugin-</code> 开头），请在项目目录下运行 <code>vue upgrade</code>：</li>
+</ul>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 创建一个项目</h2>
+<p>运行以下命令来创建一个新项目：</p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol>
+<li>选择预设
+<ul>
+<li>Default ([Vue 3] babel, eslint): 选择 Vue3 版本, 并且默认选择 babel, eslint</li>
+<li>Default ([Vue 2] babel, eslint): 选择 Vue2 版本, 并且默认选择 babel, eslint</li>
+<li>Manually select features: 手动选择需要获取的特性</li>
+</ul>
+</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202311221033285.png" alt="image-20231122103332793" tabindex="0" loading="lazy"><figcaption>image-20231122103332793</figcaption></figure>
+<ol start="2">
+<li>我们选择 <code>Manually select features</code>
+<ul>
+<li>Babel: Babel是一个JavaScript编译器，用于将新版本的JavaScript代码转换为向后兼容的旧版本，以便在不同浏览器和环境中运行。</li>
+<li>TypeScript: TypeScript是一种静态类型的JavaScript超集，它添加了类型注解和其他特性，以提供更强大的开发工具和更可靠的代码。</li>
+<li>Progressive Web App (PWA) Support: PWA是一种使用现代Web技术构建的应用程序，可以在各种设备和平台上提供类似原生应用的体验。</li>
+<li>Router: Vue Router是Vue.js官方提供的路由管理器，用于实现单页面应用程序（SPA）中的导航和路由功能。</li>
+<li>Vuex: Vuex是Vue.js官方提供的状态管理库，用于在大型应用程序中管理和共享状态。</li>
+<li>CSS Pre-processors: CSS预处理器（如Sass、Less）允许您在编写CSS时使用变量、嵌套规则、函数等高级功能，以提高样式表的可维护性和可重用性。</li>
+<li>Linter / Formatter: 代码检查工具（如ESLint）用于强制执行一致的代码风格和检测潜在的错误。代码格式化工具（如Prettier）可自动格式化代码，使其符合统一的样式规范。</li>
+<li>Unit Testing: 单元测试是一种软件测试方法，用于验证应用程序中各个部分的功能是否按预期工作。</li>
+<li>E2E Testing: 端到端（End-to-End）测试是一种测试方法，用于模拟用户在应用程序中执行的实际操作，以验证整个应用程序的功能和流程。</li>
+</ul>
+</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202311221036769.png" alt="image-20231122103618450" tabindex="0" loading="lazy"><figcaption>image-20231122103618450</figcaption></figure>
+<ol start="3">
+<li>选择 Vue 版本</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202311221036975.png" alt="image-20231122103654515" tabindex="0" loading="lazy"><figcaption>image-20231122103654515</figcaption></figure>
+<ol start="4">
+<li>
+<p>Pick a linter / formatter config: 选择的代码检查和格式化配置</p>
+<ul>
+<li>ESLint with error prevention only：仅使用ESLint进行错误检查，不应用其他格式化规则。</li>
+<li>ESLint + Airbnb config：使用ESLint进行错误检查，并应用Airbnb JavaScript风格指南的格式化规则。</li>
+<li>ESLint + Standard config：使用ESLint进行错误检查，并应用JavaScript Standard风格的格式化规则。</li>
+<li>ESLint + Prettier：使用ESLint进行错误检查，并与Prettier代码格式化工具集成，以实现一致的代码样式</li>
+</ul>
+</li>
+<li>
+<p>Pick additional lint features: 可供选择的附加代码检查功能</p>
+<ul>
+<li>Lint on save：在保存文件时运行代码检查，以及在编辑器中进行实时错误检测和提示。</li>
+<li>Lint and fix on commit：在提交代码时运行代码检查，并自动修复一些常见的问题，以确保提交的代码符合规范。</li>
+</ul>
+</li>
+<li>
+<p>Where do you prefer placing config for Babel, ESLint, etc.? 配置文件位置选择</p>
+<ul>
+<li>In dedicated config files：将Babel、ESLint等配置信息分别保存在它们各自的配置文件中（如.babelrc、.eslintrc等。</li>
+<li>In package.json：将Babel、ESLint等配置信息保存在package.json文件的特定字段中，如babel、eslintConfig等。</li>
+</ul>
+</li>
+<li>
+<p>Save this as a preset for future projects? (y/N) 这是一个保存预设供以后使用的选项，如果您希望将当前配置保存为预设，以便在将来的项目中重用，可以选择“y”，否则选择“N”。</p>
+</li>
+</ol>
+<blockquote>
+<p>您还可以使用图形界面使用以下<code>vue ui</code>命令创建和管理项目：</p>
+</blockquote>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://cli.vuejs.org/ui-new-project.png" alt="界面预览" tabindex="0" loading="lazy"><figcaption>界面预览</figcaption></figure>
+<h2> 项目结构</h2>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>在一个 Vue CLI 项目中，<code>@vue/cli-service</code> 安装了一个名为 <code>vue-cli-service</code> 的命令。你可以在 npm scripts 中以 <code>vue-cli-service</code>、或者从终端中以 <code>./node_modules/.bin/vue-cli-service</code> 访问这个命令。</p>
+</blockquote>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>你可以通过 npm 或 Yarn 调用这些 script：</p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你可以使用 <a href="https://github.com/npm/npx" target="_blank" rel="noopener noreferrer">npx</a> (最新版的 npm 应该已经自带)，也可以直接这样调用命令：</p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> vue-cli-service serve</h2>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>vue-cli-service serve</code> 命令会启动一个开发服务器 (基于 <a href="https://github.com/webpack/webpack-dev-server" target="_blank" rel="noopener noreferrer">webpack-dev-server</a>) 并附带开箱即用的模块热重载 (Hot-Module-Replacement)。</p>
+<p>除了通过命令行参数，你也可以使用 <code>vue.config.js</code> 里的 <a href="https://cli.vuejs.org/zh/config/#devserver" target="_blank" rel="noopener noreferrer">devServer</a> 字段配置开发服务器。</p>
+<p>命令行参数 <code>[entry]</code> 将被指定为唯一入口 (默认值：<code>src/main.js</code>，TypeScript 项目则为 <code>src/main.ts</code>)，而非额外的追加入口。尝试使用 <code>[entry]</code> 覆盖 <code>config.pages</code> 中的 <code>entry</code> 将可能引发错误。</p>
+<h2> <a href="https://cli.vuejs.org/zh/guide/cli-service.html#vue-cli-service-build" target="_blank" rel="noopener noreferrer">vue-cli-service build</a></h2>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>vue-cli-service build</code> 会在 <code>dist/</code> 目录产生一个可用于生产环境的包，带有 JS/CSS/HTML 的压缩，和为更好的缓存而做的自动的 vendor chunk splitting。它的 chunk manifest 会内联在 HTML 里。</p>
+<p>这里还有一些有用的命令参数：</p>
+<ul>
+<li><code>--modern</code> 使用<a href="https://cli.vuejs.org/zh/guide/browser-compatibility.html#%E7%8E%B0%E4%BB%A3%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener noreferrer">现代模式</a>构建应用，为现代浏览器交付原生支持的 ES2015 代码，并生成一个兼容老浏览器的包用来自动回退。</li>
+<li><code>--target</code> 允许你将项目中的任何组件以一个库或 Web Components 组件的方式进行构建。更多细节请查阅<a href="https://cli.vuejs.org/zh/guide/build-targets.html" target="_blank" rel="noopener noreferrer">构建目标</a>。</li>
+<li><code>--report</code> 和 <code>--report-json</code> 会根据构建统计生成报告，它会帮助你分析包中包含的模块们的大小。</li>
+</ul>
+<h2> vue-cli-service inspect</h2>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你想要设置 inspect 命令的选项，可以在命令后面添加对应的参数。例如，如果你想要查看生产环境的 webpack 配置，可以运行以下命令：<code>vue-cli-service inspect --mode production</code></p>
+<p>你也可以通过在 vue.config.js 文件中配置 configureWebpack 选项来修改 webpack 配置。这个选项允许你返回一个对象或函数来修改默认的 webpack 配置。例如：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>你可以使用 <code>vue-cli-service inspect</code> 来审查一个 Vue CLI 项目的 webpack config。更多细节请查阅<a href="https://cli.vuejs.org/zh/guide/webpack.html#%E5%AE%A1%E6%9F%A5%E9%A1%B9%E7%9B%AE%E7%9A%84-webpack-config" target="_blank" rel="noopener noreferrer">审查 webpack config</a>。</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202311221033285.png" type="image/png"/>
+    </item>
     <item>
       <title>Webpack_devServer</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/cli/devServer.html</link>
