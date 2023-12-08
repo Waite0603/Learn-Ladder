@@ -6,10 +6,56 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 07 Dec 2023 17:03:40 GMT</pubDate>
-    <lastBuildDate>Thu, 07 Dec 2023 17:03:40 GMT</lastBuildDate>
+    <pubDate>Fri, 08 Dec 2023 15:04:14 GMT</pubDate>
+    <lastBuildDate>Fri, 08 Dec 2023 15:04:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>生命周期</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/essential/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F..html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/essential/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F..html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">生命周期</source>
+      <description>什么是生命周期? 什么是生命周期呢？ 每个组件都可能会经历从创建、挂载、更新、卸载等一系列的过程； 在这个过程中的某一个阶段，用于可能会想要添加一些属于自己的代码逻辑（比如组件创建完后就请求一些服 务器数据）； 生命周期函数： 生命周期函数是一些钩子函数，在某个时间会被Vue源码内部进行回调； 通过对生命周期函数的回调，我们可以知道目前组件正在经历什么阶段； 那么我们就可以在该生命周期中编写属于自己的逻辑代码了；</description>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 什么是生命周期?</h2>
+<p>什么是生命周期呢？</p>
+<ul>
+<li>每个组件都可能会经历从创建、挂载、更新、卸载等一系列的过程；</li>
+<li>在这个过程中的某一个阶段，用于可能会想要添加一些属于自己的代码逻辑（比如组件创建完后就请求一些服 务器数据）；</li>
+</ul>
+<p>生命周期函数：</p>
+<ul>
+<li>生命周期函数是一些钩子函数，在某个时间会被Vue源码内部进行回调；</li>
+<li>通过对生命周期函数的回调，我们可以知道目前组件正在经历什么阶段；</li>
+<li>那么我们就可以在该生命周期中编写属于自己的逻辑代码了；</li>
+</ul>
+<h3> <a href="https://cn.vuejs.org/guide/essentials/lifecycle.html#registering-lifecycle-hooks" target="_blank" rel="noopener noreferrer">注册周期钩子</a></h3>
+<p>举例来说，<code>mounted</code> 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>还有其他一些钩子，会在实例生命周期的不同阶段被调用，最常用的是 <a href="https://cn.vuejs.org/api/options-lifecycle.html#mounted" target="_blank" rel="noopener noreferrer"><code>mounted</code></a>、<a href="https://cn.vuejs.org/api/options-lifecycle.html#updated" target="_blank" rel="noopener noreferrer"><code>updated</code></a> 和 <a href="https://cn.vuejs.org/api/options-lifecycle.html#unmounted" target="_blank" rel="noopener noreferrer"><code>unmounted</code></a>。</p>
+<p>所有生命周期钩子函数的 <code>this</code> 上下文都会自动指向当前调用它的组件实例。注意：避免用箭头函数来定义生命周期钩子，因为如果这样的话你将无法在函数中通过 <code>this</code> 获取组件实例。</p>
+<h2> 组件的生命周期</h2>
+<blockquote>
+<p>https://cn.vuejs.org/api/options-lifecycle.html#options-lifecycle</p>
+</blockquote>
+<ol>
+<li><code>beforeCreate( )</code>——准备创建</li>
+<li><code>created( )</code>——创建完成</li>
+<li><code>beforeMount( )</code>—挂载之前</li>
+<li><code>mounted( )</code>——挂载完成</li>
+<li><code>beforeUpdate( )</code>——更新之前</li>
+<li><code>updated( )</code>——更新完成</li>
+<li><code>activated( )</code>——当组件在 keep-alive 内被切换的时候它的 monnted( ) 被取代为activated</li>
+<li><code>deactivated( )</code>——当组件在 keep-alive 内被切换的时候它的 unmonnted( ) 被取代为deactivated</li>
+<li><code>beforeUnmount( )</code>—卸载之前</li>
+<li><code>unmounted( )</code>——卸载完成</li>
+<li><code>errorCaptured</code>——返回子孙组件中的错误</li>
+<li><code>renderTracked</code>——虚拟 DOM 重新渲染时调用。接收 <code>debugger event</code> 作为参数。告诉你哪个操作跟踪了组件以及该操作的目标对象和键。</li>
+<li><code>renderTiggered</code>——虚拟 DOM 重新渲染被触发时调用。接收 <code>debugger event</code> 作为参数。告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202312082224668.png" alt="在这里插入图片描述" tabindex="0" loading="lazy"><figcaption>在这里插入图片描述</figcaption></figure>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202312082224668.png" type="image/png"/>
+    </item>
     <item>
       <title>动态组件</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/components/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6.html</link>
@@ -2341,7 +2387,25 @@
 </ul>
 <p>这些属性在处理组件之间的通信或访问全局状态时非常有用。</p>
 <div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面的示例中，父组件中通过使用<code>$parent</code>属性访问了父组件实例，使用​<code>$root</code>属性访问了根组件实例，并将它们打印到控制台。</p>
-]]></content:encoded>
+<h2> 组件的 v-model</h2>
+<blockquote>
+<p>https://cn.vuejs.org/guide/components/v-model.html#component-v-model</p>
+</blockquote>
+<p><code>v-model</code> 可以在组件上使用以实现双向绑定。</p>
+<p>首先让我们回忆一下 <code>v-model</code> 在原生元素上的用法：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在代码背后，模板编译器会对 <code>v-model</code> 进行更冗长的等价展开。因此上面的代码其实等价于下面这段：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>而当使用在一个组件上时，<code>v-model</code> 会被展开为如下的形式：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>要让这个例子实际工作起来，<code>&lt;CustomInput&gt;</code> 组件内部需要做两件事：</p>
+<ol>
+<li>将内部原生 <code>&lt;input&gt;</code> 元素的 <code>value</code> attribute 绑定到 <code>modelValue</code> prop</li>
+<li>当原生的 <code>input</code> 事件触发时，触发一个携带了新值的 <code>update:modelValue</code> 自定义事件</li>
+</ol>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>现在 <code>v-model</code> 可以在这个组件上正常工作了：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>另一种在组件内实现 <code>v-model</code> 的方式是使用一个可写的，同时具有 getter 和 setter 的 <code>computed</code> 属性。<code>get</code> 方法需返回 <code>modelValue</code> prop，而 <code>set</code> 方法需触发相应的事件：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 多个 <code>v-model</code> 绑定</h3>
+<p>利用刚才在 <a href="https://cn.vuejs.org/guide/components/v-model.html#v-model-arguments" target="_blank" rel="noopener noreferrer"><code>v-model</code> 参数</a>小节中学到的指定参数与事件名的技巧，我们可以在单个组件实例上创建多个 <code>v-model</code> 双向绑定。</p>
+<p>组件上的每一个 <code>v-model</code> 都会同步不同的 prop，而无需额外的选项：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/202310312042389.png" type="image/png"/>
     </item>
     <item>
