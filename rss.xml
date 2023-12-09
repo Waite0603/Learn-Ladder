@@ -6,8 +6,8 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 08 Dec 2023 15:04:14 GMT</pubDate>
-    <lastBuildDate>Fri, 08 Dec 2023 15:04:14 GMT</lastBuildDate>
+    <pubDate>Sat, 09 Dec 2023 12:08:50 GMT</pubDate>
+    <lastBuildDate>Sat, 09 Dec 2023 12:08:50 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -61,18 +61,16 @@
       <link>https://brain.sunguoqi.com/web/vue/learn/components/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6.html</link>
       <guid>https://brain.sunguoqi.com/web/vue/learn/components/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6.html</guid>
       <source url="https://brain.sunguoqi.com/rss.xml">动态组件</source>
-      <description>切换组件案例 比如我们现在想要实现了一个功能： 点击一个tab-bar，切换不同的组件显示； 在这里插入图片描述 这个案例我们可以通过两种不同的实现思路来实现： 方式一：通过v-if来判断，显示不同的组件； 方式二：动态组件的方式；</description>
+      <description>切换组件案例 比如我们现在想要实现了一个功能： 点击一个tab-bar，切换不同的组件显示； 这个案例我们可以通过两种不同的实现思路来实现： 方式一：通过v-if来判断，显示不同的组件； 方式二：动态组件的方式；</description>
       <pubDate>Fri, 08 Dec 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 切换组件案例</h2>
 <ul>
 <li>
 <p>比如我们现在想要实现了一个功能：</p>
 <ul>
-<li>
-<p>点击一个tab-bar，切换不同的组件显示；</p>
-<figure><img src="https://img-blog.csdnimg.cn/4f663e24fc09448d89360d917f006f24.png#pic_center" alt="在这里插入图片描述" tabindex="0" loading="lazy"><figcaption>在这里插入图片描述</figcaption></figure>
-</li>
+<li>点击一个tab-bar，切换不同的组件显示；</li>
 </ul>
+<figure><img src="https://qiniu.waite.wang/202312091618269.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 </li>
 <li>
 <p>这个案例我们可以通过两种不同的实现思路来实现：</p>
@@ -105,7 +103,7 @@
 <h3> 最大缓存实例数</h3>
 <p>我们可以通过传入 <code>max</code> prop 来限制可被缓存的最大组件实例数。<code>&lt;KeepAlive&gt;</code> 的行为在指定了 <code>max</code> 后类似一个 <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)" target="_blank" rel="noopener noreferrer">LRU 缓存</a>：如果缓存的实例数量即将超过指定的那个最大数量，则最久没有被访问的缓存实例将被销毁，以便为新的实例腾出空间。</p>
 <div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
-      <enclosure url="https://img-blog.csdnimg.cn/4f663e24fc09448d89360d917f006f24.png#pic_center" type="image/"/>
+      <enclosure url="https://qiniu.waite.wang/202312091618269.png" type="image/png"/>
     </item>
     <item>
       <title>异步组件</title>
