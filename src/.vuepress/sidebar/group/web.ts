@@ -39,7 +39,15 @@ export const web = arraySidebar([
             prefix: "cli/",
             children: "structure",
             collapsible: true,
+          },
+          {
+            text: "动画",
+            icon: "files",
+            prefix: "animation/",
+            children: "structure",
+            collapsible: true,
           }
+
         ],
         collapsible: true,
       }
