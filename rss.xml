@@ -6,10 +6,156 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 14 Dec 2023 17:21:28 GMT</pubDate>
-    <lastBuildDate>Thu, 14 Dec 2023 17:21:28 GMT</lastBuildDate>
+    <pubDate>Sat, 16 Dec 2023 06:20:33 GMT</pubDate>
+    <lastBuildDate>Sat, 16 Dec 2023 06:20:33 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Mixins, extends 以及组合式函数</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/essential/%E9%80%BB%E8%BE%91%E5%A4%8D%E7%94%A8.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/essential/%E9%80%BB%E8%BE%91%E5%A4%8D%E7%94%A8.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Mixins, extends 以及组合式函数</source>
+      <description>认识 Mixin 在 Vue 2 中，mixins 是创建可重用组件逻辑的主要方式。尽管在 Vue 3 中保留了 mixins 支持，但对于组件间的逻辑复用，使用组合式 API 的组合式函数是现在更推荐的方式。 目前我们是使用组件化的方式在开发整个Vue的应用程序，但是组件和组件之间有时候会存在相同的代码逻辑，我们希望对相同的代码逻辑进行抽取。 在Vue2和Vue3中都支持的一种方式就是使用Mixin来完成： Mixin提供了一种非常灵活的方式，来分发Vue组件中的可复用功能； 一个Mixin对象可以包含任何组件选项； 当组件使用Mixin对象时，所有Mixin对象的选项将被 混合 进入该组件本身的选项中；</description>
+      <pubDate>Fri, 15 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 认识 Mixin</h2>
+<blockquote>
+<p>在 Vue 2 中，mixins 是创建可重用组件逻辑的主要方式。尽管在 Vue 3 中保留了 mixins 支持，但对于组件间的逻辑复用，<a href="https://cn.vuejs.org/guide/reusability/composables.html" target="_blank" rel="noopener noreferrer">使用组合式 API 的组合式函数</a>是现在更推荐的方式。</p>
+</blockquote>
+<ul>
+<li>目前我们是使用组件化的方式在开发整个Vue的应用程序，但是组件和组件之间有时候会存在相同的代码逻辑，我们希望对相同的代码逻辑进行抽取。</li>
+<li>在Vue2和Vue3中都支持的一种方式就是使用Mixin来完成：
+<ul>
+<li>Mixin提供了一种非常灵活的方式，来分发Vue组件中的可复用功能；</li>
+<li>一个Mixin对象可以包含任何组件选项；</li>
+<li>当组件使用Mixin对象时，所有Mixin对象的选项将被 混合 进入该组件本身的选项中；</li>
+</ul>
+</li>
+</ul>
+<h3> 基本使用</h3>
+<p><code>mixins</code> 选项接受一个 mixin 对象数组。这些 mixin 对象可以像普通的实例对象一样包含实例选项，它们将使用一定的选项合并逻辑与最终的选项进行合并。举例来说，如果你的 mixin 包含了一个 <code>created</code> 钩子，而组件自身也有一个，那么这两个函数都会被调用。</p>
+<p>Mixin 钩子的调用顺序与提供它们的选项顺序相同，且会在组件自身的钩子前被调用。</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> Mixin的合并规则</h3>
+<ul>
+<li>如果Mixin对象中的选项和组件对象中的选项发生了冲突，那么Vue会如何操作呢？
+<ul>
+<li>这里分成不同的情况来进行处理；</li>
+</ul>
+</li>
+<li>情况一：如果是data函数的返回值对象
+<ul>
+<li>返回值对象默认情况下会进行合并；</li>
+<li>如果data返回值对象的属性发生了冲突，那么会保留组件自身的数据；</li>
+</ul>
+</li>
+<li>情况二：如何生命周期钩子函数
+<ul>
+<li>生命周期的钩子函数会被合并到数组中，都会被调用；</li>
+</ul>
+</li>
+<li>情况三：值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。
+<ul>
+<li>比如都有methods选项，并且都定义了方法，那么它们都会生效；</li>
+<li>但是如果对象的key相同，那么会取组件对象的键值对；</li>
+</ul>
+</li>
+</ul>
+<h3> 全局混入 Mixin</h3>
+<p>如果组件中的某些选项，是所有的组件都需要拥有的，那么这个时候我们可以使用全局的mixin：</p>
+<ul>
+<li>全局的Mixin可以使用 应用app的方法 mixin 来完成注册；</li>
+<li>一旦注册，那么全局混入的选项将会影响每一个组件；</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> externds</h2>
+<ul>
+<li>另外一个类似与Mixin的方式是通过extends属性
+<ul>
+<li>允许声明拓展另外一个组件，类似与Mixins；</li>
+</ul>
+</li>
+</ul>
+<p>使一个组件可以继承另一个组件的组件选项。</p>
+<p>从实现角度来看，<code>extends</code> 几乎和 <code>mixins</code> 相同。通过 <code>extends</code> 指定的组件将会当作第一个 mixin 来处理。</p>
+<p>然而，<code>extends</code> 和 <code>mixins</code> 表达的是不同的目标。<code>mixins</code> 选项基本用于组合功能，而 <code>extends</code> 则一般更关注继承关系。</p>
+<p>同 <code>mixins</code> 一样，所有选项 (<code>setup()</code> 除外) 都将使用相关的策略进行合并。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p><code>extends</code> 是为选项式 API 设计的，不会处理 <code>setup()</code> 钩子的合并。</p>
+<p>在组合式 API 中，逻辑复用的首选模式是“组合”而不是“继承”。如果一个组件中的逻辑需要复用，考虑将相关逻辑提取到<a href="https://cn.vuejs.org/guide/reusability/composables.html#composables" target="_blank" rel="noopener noreferrer">组合式函数</a>中。</p>
+<p>如果你仍然想要通过组合式 API 来“继承”一个组件，可以在继承组件的 <code>setup()</code> 中调用基类组件的 <code>setup()</code>：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></blockquote>
+<h2> 组合式函数</h2>
+<blockquote>
+<p>https://cn.vuejs.org/guide/reusability/composables.html</p>
+</blockquote>
+<h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#what-is-a-composable" target="_blank" rel="noopener noreferrer">什么是“组合式函数”？</a></h3>
+<p>在 Vue 应用的概念中，“组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用<strong>有状态逻辑</strong>的函数。</p>
+<p>当构建前端应用时，我们常常需要复用公共任务的逻辑。例如为了在不同地方格式化时间，我们可能会抽取一个可复用的日期格式化函数。这个函数封装了<strong>无状态的逻辑</strong>：它在接收一些输入后立刻返回所期望的输出。复用无状态逻辑的库有很多，比如你可能已经用过的 <a href="https://lodash.com/" target="_blank" rel="noopener noreferrer">lodash</a> 或是 <a href="https://date-fns.org/" target="_blank" rel="noopener noreferrer">date-fns</a>。</p>
+<p>相比之下，有状态逻辑负责管理会随时间而变化的状态。一个简单的例子是跟踪当前鼠标在页面中的位置。在实际应用中，也可能是像触摸手势或与数据库的连接状态这样的更复杂的逻辑。</p>
+<h3> 鼠标跟踪器示例</h3>
+<p>如果我们要直接在组件中使用组合式 API 实现鼠标跟踪功能，它会是这样的：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>但是，如果我们想在多个组件中复用这个相同的逻辑呢？我们可以把这个逻辑以一个组合式函数的形式提取到外部文件中：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>下面是它在组件中使用的方式：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如你所见，核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样，你也可以在组合式函数中使用所有的<a href="https://cn.vuejs.org/api/#composition-api" target="_blank" rel="noopener noreferrer">组合式 API</a>。现在，<code>useMouse()</code> 的功能可以在任何组件中轻易复用了。</p>
+<p>更酷的是，你还可以嵌套多个组合式函数：一个组合式函数可以调用一个或多个其他的组合式函数。这使得我们可以像使用多个组件组合成整个应用一样，用多个较小且逻辑独立的单元来组合形成复杂的逻辑。实际上，这正是为什么我们决定将实现了这一设计模式的 API 集合命名为组合式 API。</p>
+<p>举例来说，我们可以将添加和清除 DOM 事件监听器的逻辑也封装进一个组合式函数中：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>有了它，之前的 <code>useMouse()</code> 组合式函数可以被简化为：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#async-state-example" target="_blank" rel="noopener noreferrer">异步状态示例</a></h3>
+<p><code>useMouse()</code> 组合式函数没有接收任何参数，因此让我们再来看一个需要接收一个参数的组合式函数示例。在做异步数据请求时，我们常常需要处理不同的状态：加载中、加载成功和加载失败。</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果在每个需要获取数据的组件中都要重复这种模式，那就太繁琐了。让我们把它抽取成一个组合式函数：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>现在我们在组件里只需要：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#accepting-reactive-state" target="_blank" rel="noopener noreferrer">接收响应式状态</a></h3>
+<p><code>useFetch()</code> 接收一个静态 URL 字符串作为输入——因此它只会执行一次 fetch 并且就此结束。如果我们想要在 URL 改变时重新 fetch 呢？为了实现这一点，我们需要将响应式状态传入组合式函数，并让它基于传入的状态来创建执行操作的侦听器。</p>
+<p>举例来说，<code>useFetch()</code> 应该能够接收一个 ref：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>或者接收一个 getter 函数：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>我们可以用 <a href="https://cn.vuejs.org/api/reactivity-core.html#watcheffect" target="_blank" rel="noopener noreferrer"><code>watchEffect()</code></a> 和 <a href="https://cn.vuejs.org/api/reactivity-utilities.html#tovalue" target="_blank" rel="noopener noreferrer"><code>toValue()</code></a> API 来重构我们现有的实现：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>toValue()</code> 是一个在 3.3 版本中新增的 API。它的设计目的是将 ref 或 getter 规范化为值。如果参数是 ref，它会返回 ref 的值；如果参数是函数，它会调用函数并返回其返回值。否则，它会原样返回参数。它的工作方式类似于 <a href="https://cn.vuejs.org/api/reactivity-utilities.html#unref" target="_blank" rel="noopener noreferrer"><code>unref()</code></a>，但对函数有特殊处理。</p>
+<p>注意 <code>toValue(url)</code> 是在 <code>watchEffect</code> 回调函数的<strong>内部</strong>调用的。这确保了在 <code>toValue()</code> 规范化期间访问的任何响应式依赖项都会被侦听器跟踪。</p>
+<p>这个版本的 <code>useFetch()</code> 现在能接收静态 URL 字符串、ref 和 getter，使其更加灵活。watch effect 会立即运行，并且会跟踪 <code>toValue(url)</code> 期间访问的任何依赖项。如果没有跟踪到依赖项（例如 url 已经是字符串），则 effect 只会运行一次；否则，它将在跟踪到的任何依赖项更改时重新运行。</p>
+<h2> <a href="https://cn.vuejs.org/guide/reusability/composables.html#conventions-and-best-practices" target="_blank" rel="noopener noreferrer">约定和最佳实践</a></h2>
+<h3> 命名</h3>
+<p>组合式函数约定用驼峰命名法命名，并以“use”作为开头。</p>
+<h3> 输入参数</h3>
+<p>即便不依赖于 ref 或 getter 的响应性，组合式函数也可以接收它们作为参数。如果你正在编写一个可能被其他开发者使用的组合式函数，最好处理一下输入参数是 ref 或 getter 而非原始值的情况。可以利用 <a href="https://cn.vuejs.org/api/reactivity-utilities.html#tovalue" target="_blank" rel="noopener noreferrer"><code>toValue()</code></a> 工具函数来实现：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你的组合式函数在输入参数是 ref 或 getter 的情况下创建了响应式 effect，为了让它能够被正确追踪，请确保要么使用 <code>watch()</code> 显式地监视 ref 或 getter，要么在 <code>watchEffect()</code> 中调用 <code>toValue()</code>。</p>
+<p><a href="https://cn.vuejs.org/guide/reusability/composables.html#accepting-reactive-state" target="_blank" rel="noopener noreferrer">前面讨论过的 useFetch() 实现</a>提供了一个接受 ref、getter 或普通值作为输入参数的组合式函数的具体示例。</p>
+<h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#return-values" target="_blank" rel="noopener noreferrer">返回值</a></h3>
+<p>你可能已经注意到了，我们一直在组合式函数中使用 <code>ref()</code> 而不是 <code>reactive()</code>。我们推荐的约定是组合式函数始终返回一个包含多个 ref 的普通的非响应式对象，这样该对象在组件中被解构为 ref 之后仍可以保持响应性：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>从组合式函数返回一个响应式对象会导致在对象解构过程中丢失与组合式函数内状态的响应性连接。与之相反，ref 则可以维持这一响应性连接。</p>
+<p>如果你更希望以对象属性的形式来使用组合式函数中返回的状态，你可以将返回的对象用 <code>reactive()</code> 包装一次，这样其中的 ref 会被自动解包，例如：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3> 副作用<a href="https://cn.vuejs.org/guide/reusability/composables.html#side-effects" target="_blank" rel="noopener noreferrer"></a></h3>
+<p>在组合式函数中的确可以执行副作用 (例如：添加 DOM 事件监听器或者请求数据)，但请注意以下规则：</p>
+<ul>
+<li>如果你的应用用到了<a href="https://cn.vuejs.org/guide/scaling-up/ssr.html" target="_blank" rel="noopener noreferrer">服务端渲染</a> (SSR)，请确保在组件挂载后才调用的生命周期钩子中执行 DOM 相关的副作用，例如：<code>onMounted()</code>。这些钩子仅会在浏览器中被调用，因此可以确保能访问到 DOM。</li>
+<li>确保在 <code>onUnmounted()</code> 时清理副作用。举例来说，如果一个组合式函数设置了一个事件监听器，它就应该在 <code>onUnmounted()</code> 中被移除 (就像我们在 <code>useMouse()</code> 示例中看到的一样)。当然也可以像之前的 <code>useEventListener()</code> 示例那样，使用一个组合式函数来自动帮你做这些事。</li>
+</ul>
+<h3> 使用限制<a href="https://cn.vuejs.org/guide/reusability/composables.html#usage-restrictions" target="_blank" rel="noopener noreferrer"></a></h3>
+<p>组合式函数只能在 <code>&lt;script setup&gt;</code> 或 <code>setup()</code> 钩子中被调用。在这些上下文中，它们也只能被<strong>同步</strong>调用。在某些情况下，你也可以在像 <code>onMounted()</code> 这样的生命周期钩子中调用它们。</p>
+<p>这些限制很重要，因为这些是 Vue 用于确定当前活跃的组件实例的上下文。访问活跃的组件实例很有必要，这样才能：</p>
+<ol>
+<li>将生命周期钩子注册到该组件实例上</li>
+<li>将计算属性和监听器注册到该组件实例上，以便在该组件被卸载时停止监听，避免内存泄漏。</li>
+</ol>
+<blockquote>
+<p><code>&lt;script setup&gt;</code>&nbsp;是唯一在调用&nbsp;await&nbsp;之后仍可调用组合式函数的地方。编译器会在异步操作之后自动为你恢复当前的组件实例。</p>
+</blockquote>
+<h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#extracting-composables-for-code-organization" target="_blank" rel="noopener noreferrer">通过抽取组合式函数改善代码结构</a></h3>
+<p>抽取组合式函数不仅是为了复用，也是为了代码组织。随着组件复杂度的增高，你可能会最终发现组件多得难以查询和理解。组合式 API 会给予你足够的灵活性，让你可以基于逻辑问题将组件代码拆分成更小的函数：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在某种程度上，你可以将这些提取出的组合式函数看作是可以相互通信的组件范围内的服务。</p>
+<h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#using-composables-in-options-api" target="_blank" rel="noopener noreferrer">在选项式 API 中使用组合式函数</a></h3>
+<p>如果你正在使用选项式 API，组合式函数必须在 <code>setup()</code> 中调用。且其返回的绑定必须在 <code>setup()</code> 中返回，以便暴露给 <code>this</code> 及其模板：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> <a href="https://cn.vuejs.org/guide/reusability/composables.html#vs-mixins" target="_blank" rel="noopener noreferrer">对比</a></h2>
+<p>Vue 2 的用户可能会对 <a href="https://cn.vuejs.org/api/options-composition.html#mixins" target="_blank" rel="noopener noreferrer">mixins</a> 选项比较熟悉。它也让我们能够把组件逻辑提取到可复用的单元里。然而 mixins 有三个主要的短板：</p>
+<ol>
+<li><strong>不清晰的数据来源</strong>：当使用了多个 mixin 时，实例上的数据属性来自哪个 mixin 变得不清晰，这使追溯实现和理解组件行为变得困难。这也是我们推荐在组合式函数中使用 ref + 解构模式的理由：让属性的来源在消费组件时一目了然。</li>
+<li><strong>命名空间冲突</strong>：多个来自不同作者的 mixin 可能会注册相同的属性名，造成命名冲突。若使用组合式函数，你可以通过在解构变量时对变量进行重命名来避免相同的键名。</li>
+<li><strong>隐式的跨 mixin 交流</strong>：多个 mixin 需要依赖共享的属性名来进行相互作用，这使得它们隐性地耦合在一起。而一个组合式函数的返回值可以作为另一个组合式函数的参数被传入，像普通函数那样。</li>
+</ol>
+<p>基于上述理由，我们不再推荐在 Vue 3 中继续使用 mixin。保留该功能只是为了项目迁移的需求和照顾熟悉它的用户。</p>
+<h3> <a href="https://cn.vuejs.org/guide/reusability/composables.html#vs-renderless-components" target="_blank" rel="noopener noreferrer">和无渲染组件的对比</a></h3>
+<p>在组件插槽一章中，我们讨论过了基于作用域插槽的<a href="https://cn.vuejs.org/guide/components/slots.html#renderless-components" target="_blank" rel="noopener noreferrer">无渲染组件</a>。我们甚至用它实现了一样的鼠标追踪器示例。</p>
+<p>组合式函数相对于无渲染组件的主要优势是：组合式函数不会产生额外的组件实例开销。当在整个应用中使用时，由无渲染组件产生的额外组件实例会带来无法忽视的性能开销。</p>
+<p>我们推荐在纯逻辑复用时使用组合式函数，在需要同时复用逻辑和视图布局时使用无渲染组件。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Vue 过渡与动画初体验</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/animation/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB%E4%BB%8B%E7%BB%8D.html</link>
