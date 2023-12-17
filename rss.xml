@@ -6,8 +6,8 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 16 Dec 2023 15:20:40 GMT</pubDate>
-    <lastBuildDate>Sat, 16 Dec 2023 15:20:40 GMT</lastBuildDate>
+    <pubDate>Sun, 17 Dec 2023 15:46:19 GMT</pubDate>
+    <lastBuildDate>Sun, 17 Dec 2023 15:46:19 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -122,9 +122,264 @@
 <p><strong>因为只是定义了个变量，然后导出了，并没有使它响应式</strong></p>
 </blockquote>
 <h3> 补充: 为什么 setup 不能使用 this</h3>
-<p><code>setup()</code> 自身并不含对组件实例的访问权，即在 <code>setup()</code> 中访问 <code>this</code> 会是 <code>undefined</code>。你可以在选项式 API 中访问组合式 API 暴露的值，但反过来则不行。</p>
-<h2> </h2>
-]]></content:encoded>
+<p>在Vue 3中，<code>setup </code>函数是用来替代以前的 <code>data</code>, <code>computed</code>, <code>methods </code>等选项的。<code>setup()</code> 自身并不含对组件实例的访问权，即在 <code>setup()</code> 中访问 <code>this</code> 会是 <code>undefined</code>。你可以在选项式 API 中访问组合式 API 暴露的值，但反过来则不行。</p>
+<h2> 定义响应式数据的两种方式</h2>
+<h3> Reactive API</h3>
+<blockquote>
+<p>如果想为在setup中定义的数据提供响应式的特性，那么可以使用reactive的函数</p>
+<p>ps : 如果传入一个基本数据类型（String、Number、Boolean）会报一个警告</p>
+<p>应用场景 : reactive API对传入的类型是有限制的，它要求我们必须传入的是一个对象或者数组类型，最好相互有关联的数据时使用</p>
+</blockquote>
+<p>比如说想要上面的例子实现响应式, 我们可以做如下操作</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Reactive判断的API</h4>
+<ul>
+<li>isProxy : 检查对象是否是由 reactive 或 readonly创建的 proxy</li>
+<li>isReactive : 检查对象是否是由 reactive创建的响应式代理，如果该代理是 readonly 建的，但包裹了由 reactive 创建的另一个代理，它也会返回 true</li>
+<li>isReadonly : 检查对象是否是由 readonly 创建的只读代理</li>
+<li>toRaw : 返回 reactive 或 readonly 代理的原始对象（不建议保留对原始对象的持久引用。请谨慎使用）</li>
+<li>shallowReactive : 创建一个响应式代理，它跟踪其自身 property 的响应性，但不执行嵌套对象的深层响应式转换 (深层还是原生对象)，只响应第一层</li>
+<li>shallowReadonly : 创建一个 proxy，使其自身的 property 为只读，但不执行嵌套对象的深度只读转换（深层还是可读、可写的）只检查第一层</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>以下是一些名词解释:</p>
+<ul>
+<li>代理对象：在Vue 3中，代理对象是由 reactive 或 readonly 创建的对象的代理，用于跟踪对象的属性的变化。</li>
+<li>readonly：readonly 是一个函数，用于创建一个只读的代理对象，该代理对象只能读取属性值，不能修改属性值。</li>
+<li>浅层响应式：浅层响应式是指只有对象的第一层属性会被设置为响应式，而嵌套对象的属性不会被设置为响应式。</li>
+<li>浅层只读代理：浅层只读代理是指只有对象的第一层属性会被设置为只读，而嵌套对象的属性不会被设置为只读。</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></blockquote>
+<h3> Ref API</h3>
+<blockquote>
+<p><strong>Ref函数 : 定义简单类型的数据，也可以定义复杂类型的数据</strong></p>
+<p><strong>应用场景 : 定义一些简单的数据，或者从接口中获得的数据</strong></p>
+</blockquote>
+<ul>
+<li>ref 会返回一个可变的响应式对象，该对象作为一个 响应式的引用 维护着它内部的值，这就是ref名称的来源</li>
+<li>它内部的值是在<code>ref</code>的 <code>value</code> 属性中被维护的</li>
+<li>不管传入的是基本类型还是引用类型，都放在<code>.value</code>中</li>
+</ul>
+<blockquote>
+<p>使用的时候是用 .value，但是有两个注意事项:</p>
+<ul>
+<li>在模板中引入ref的值时，Vue会自动帮助我们进行解包操作，所以并不需要在模板中通过 ref.value 的方式，直接使用即可</li>
+<li>在 setup 函数内部，它依然是一个 ref引用， 所以对其进行操作时，依然需要使用 ref.value的方式</li>
+</ul>
+</blockquote>
+<h4> 基本使用</h4>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Ref自动解包</h4>
+<ul>
+<li>模板中的解包是浅层的解包，如果我们的代码是下面的方式：</li>
+<li>如果我们将<code>ref</code>放到一个<code>reactive</code>的属性当中，那么在模板中使用时，它会自动解包：</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>注意当访问到某个响应式数组或 <code>Map</code> 这样的原生集合类型中的 ref 元素时，<strong>不会</strong>执行 ref 的解包：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Ref判断的API</h4>
+<ul>
+<li>isRef : 判断值是否是一个ref对象</li>
+<li>unref : 如果我们想要获取一个ref引用中的value，那么也可以通过unref方法
+<ul>
+<li>如果参数是一个 ref，则返回内部值，否则返回参数本身</li>
+<li>这是 val = isRef(val) ? val.value : val 的语法糖函数</li>
+</ul>
+</li>
+<li>shallowRef：shallowRef 是用来创建一个浅层的 ref 对象的函数。浅层的意思是只有对象的第一层属性会被设置为响应式，而嵌套对象的属性不会被设置为响应式。这意味着对嵌套对象属性的修改不会触发响应。</li>
+<li>triggerRef：triggerRef 用于手动触发与 shallowRef 相关联的副作用。当 shallowRef 关联的数据发生变化时，相关的副作用将被触发执行。</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 自定义Ref =&gt; <strong>customRef</strong></h4>
+<ul>
+<li>创建一个自定义的ref，并对其依赖项跟踪和更新触发进行显示控制：
+<ul>
+<li>它需要一个工厂函数，该函数接受 <code>track </code>和 <code>trigger </code>函数作为参数；</li>
+<li>并且应该返回一个带有 <code>get </code>和 <code>set</code> 的对象；</li>
+</ul>
+</li>
+<li>这里我们使用一个的案例：
+<ul>
+<li>对双向绑定的属性进行debounce(节流)的操作</li>
+</ul>
+</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> readonly</h2>
+<h3> 概念</h3>
+<blockquote>
+<p>在我们传递给其他组件数据时，往往希望其他组件使用我们传递的内容，但是不允许它们修改时，就可以使用 <code>readonly</code>了；</p>
+</blockquote>
+<ul>
+<li>只读代理是深层的：对任何嵌套属性的访问都将是只读的。它的 ref 解包行为与 <code>reactive()</code> 相同，但解包得到的值是只读的。</li>
+<li>要避免深层级的转换行为，请使用 <a href="https://cn.vuejs.org/api/reactivity-advanced.html#shallowreadonly" target="_blank" rel="noopener noreferrer">shallowReadonly()</a> 作替代。</li>
+<li>在开发中常见的readonly方法会传入三个类型的参数：
+<ul>
+<li>类型一：普通对象</li>
+<li>类型二：reactive返回的对象</li>
+<li>类型三：ref的对象</li>
+</ul>
+</li>
+<li>在readonly的使用过程中，有如下规则 :
+<ul>
+<li>readonly返回的对象都是不允许修改的</li>
+<li>但是经过readonly处理的原来的对象是允许被修改的
+<ul>
+<li>比如 const info = readonly(obj)，info对象是不允许被修改的</li>
+<li>当obj被修改时，readonly返回的info对象也会被修改</li>
+<li>但是不能去修改readonly返回的对象info</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> toRefs &amp;&amp; toRef</h2>
+<h3> <strong>toRefs</strong></h3>
+<blockquote>
+<p>如果使用ES6的解构语法，对reactive返回的对象进行解构获取值，那么之后无论是修改结构后的变量，还是修改reactive 返回的state对象，数据都不再是响应式的</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202312171700262.png" alt="image-20231217170024283" tabindex="0" loading="lazy"><figcaption>image-20231217170024283</figcaption></figure>
+<ul>
+<li>如何改成响应式呢，Vue提供了一个toRefs的函数</li>
+<li>可以将reactive返回的对象中的属性都转成ref，这样解构出来的就是响应式的了</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> <strong>toRef</strong></h3>
+<blockquote>
+<p>如果只希望转换reactive对象中的其中某个属性为ref, 那么可以使用toRef的方法</p>
+<p><strong>ps : 这个效率会更高点,  这种做法相当于已经在state.name和ref.value之间建立了 链接，任何一个修改都会引起另外一个变化</strong></p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> computed</h2>
+<ul>
+<li>在前面的Options API中，我们是使用computed选项来完成的；</li>
+<li>在Composition API中，我们可以在 setup 函数中使用 computed 方法来编写一个计算属性；</li>
+</ul>
+<ul>
+<li>如何使用computed呢？
+<ul>
+<li>方式一：接收一个getter函数，并为 getter 函数返回的值，返回一个不变的 ref 对象；</li>
+<li>方式二：接收一个具有 get 和 set 的对象，返回一个可变的（可读写）ref 对象；</li>
+</ul>
+</li>
+</ul>
+<h3> 方式一</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 方式二</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312171732557.gif" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h2> setup中使用ref获取元素或组件</h2>
+<blockquote>
+<p><strong>要定义一个ref对象，绑定到元素或者组件的ref属性上即可</strong></p>
+<p><strong>只有在挂载完成后才能拿到值, 所以需要在生命周期中调用拿值</strong></p>
+</blockquote>
+<h3> 获取元素</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 获取组件</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312172141785.png" alt="image-20231217214139261" tabindex="0" loading="lazy"><figcaption>image-20231217214139261</figcaption></figure>
+<h2> 侦听数据的变化</h2>
+<ul>
+<li>
+<p>在前面的Options API中，我们可以通过watch选项来侦听data或者props的数据变化，当数据变化时执行某一些 操作。</p>
+</li>
+<li>
+<p>在Composition API中，我们可以使用watchEffect和watch来完成响应式数据的侦听；</p>
+<ul>
+<li>watchEffect用于自动收集响应式数据的依赖；</li>
+<li>watch需要手动指定侦听的数据源；</li>
+</ul>
+</li>
+</ul>
+<h3> watchEffect</h3>
+<h4> 基本使用</h4>
+<ul>
+<li>自动收集响应式数据的依赖</li>
+<li>watchEffect传入的函数会被立即执行一次，并且在执行的过程中会收集依赖</li>
+<li>只有收集的依赖发生变化时，watchEffect传入的函数才会再次执行</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312171743816.gif" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h4> 停止监听</h4>
+<ul>
+<li>如果在发生某些情况下，我们希望停止侦听，这个时候我们可以获取watchEffect的返回值函数，调用该函数即可。</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312171747594.gif" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h4> 清除副作用</h4>
+<ul>
+<li>什么是清除副作用呢？
+<ul>
+<li>比如在开发中我们需要在侦听函数中执行网络请求，但是在网络请求还没有达到的时候，我们停止了侦听器， 或者侦听器侦听函数被再次执行了</li>
+<li>那么上一次的网络请求应该被取消掉，这个时候我们就可以清除上一次的副作用；</li>
+</ul>
+</li>
+<li>在我们给watchEffect传入的函数被回调时，其实可以获取到一个参数：onInvalidate
+<ul>
+<li>当副作用即将重新执行 或者 侦听器被停止 时会执行该函数传入的回调函数；</li>
+<li>我们可以在传入的回调函数中，执行一些清除工作；</li>
+</ul>
+</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> watchEffect的执行时机</h4>
+<ul>
+<li>默认情况下，组件的更新会在副作用函数执行之前：
+<ul>
+<li>如果我们希望在副作用函数中获取到元素，是否可行呢？</li>
+</ul>
+</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312172147749.png" alt="image-20231217214736939" tabindex="0" loading="lazy"><figcaption>image-20231217214736939</figcaption></figure>
+<ul>
+<li>我们会发现打印结果打印了两次：
+<ul>
+<li>这是因为setup函数在执行时就会立即执行传入的副作用函数，这个时候DOM并没有挂载，所以打印为null；</li>
+<li>而当DOM挂载时，会给<code>title</code>的<code>ref</code>对象赋值新的值，副作用函数会再次执行，打印出来对应的元素；</li>
+</ul>
+</li>
+<li>这个时候我们需要改变副作用函数的执行时机；
+<ul>
+<li>它的默认值是pre，它会在元素 挂载 或者 更新 之前执行；</li>
+<li>所以我们会先打印出来一个空的，当依赖的title发生改变时，就会再次执行一次，打印出元素；</li>
+</ul>
+</li>
+<li>我们可以设置副作用函数的执行时机：
+<ul>
+<li>pre : 默认值,它会在元素 挂载 或者 更新 之前执行</li>
+<li>post : 元素 挂载 或者 更新 之后执行</li>
+<li>sync : 强制同步一起执行，效率很低，不推荐</li>
+</ul>
+</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> Watch</h3>
+<ul>
+<li>watch的API完全等同于组件watch选项的Property：
+<ul>
+<li>watch需要侦听特定的数据源，并在回调函数中执行副作用；</li>
+<li>默认情况下它是惰性的，只有当被侦听的源发 生变化时才会执行回调；</li>
+</ul>
+</li>
+<li>与watchEffect的比较，watch允许我们：
+<ul>
+<li>懒执行副作用（第一次不会直接执行）；</li>
+<li>更具体的说明当哪些状态发生变化时，触发侦听器的执行；</li>
+<li>访问侦听状态变化前后的值；</li>
+</ul>
+</li>
+</ul>
+<h4> 侦听单个数据源</h4>
+<p>watch侦听函数的数据源有两种类型：</p>
+<ul>
+<li>一个getter函数：但是该getter函数必须引用可响应式的对象（比如reactive或者ref）；</li>
+<li>直接写入一个可响应式的对象，ref（如果是一个 reactive 的对象的侦听, 需要进行某些转换 ）；</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>注意: <code>reactive </code>对象获取到的 <code>newValue </code>以及 <code>oldValue </code>本身都是 <code>reactive</code> 对象</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312172311755.png" alt="image-20231217231108219" tabindex="0" loading="lazy"><figcaption>image-20231217231108219</figcaption></figure>
+<p>如果希望两者都是一个普通对象, 可以使用以下写法(JavaScript中的展开运算符):</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312172313342.png" alt="image-20231217231330425" tabindex="0" loading="lazy"><figcaption>image-20231217231330425</figcaption></figure>
+<p>以下是完整代码:</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></blockquote>
+<h4> 侦听多个数据源</h4>
+<p>当侦听多个来源时，回调函数接受两个数组，分别对应来源数组中的新值和旧值：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> watch的选项</h4>
+<ul>
+<li><strong>deep : 是否深度监听</strong></li>
+<li><strong>immediate ： 是否立即执行</strong></li>
+</ul>
+<blockquote>
+<p><code>watch</code> 侦听 <code>reactive</code>时默认是深度侦听的, 但是在使用 <code>{...info}</code>展开运算符时, 是不会深度监听的, 所以我们要设置 <code>deep: True</code></p>
+<p>immediate: 第一次会执行</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 停止侦听</h4>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 副作用清理</h4>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/202312160000793.png" type="image/png"/>
     </item>
     <item>
