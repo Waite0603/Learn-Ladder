@@ -4,9 +4,6 @@ icon: post
 order: 
 date: 2023-12-16
 ---
-[TOC]
-
-
 
 ## Options API的弊端
 
@@ -835,7 +832,61 @@ export default {
 
 ![img](https://qiniu.waite.wang/202312171732557.gif)
 
+## 生命周期钩子
 
+> https://cn.vuejs.org/api/composition-api-lifecycle.html
+
+> **setup中可以直接使用导入的onX函数注册生命周期，并且同一个生命周期可以使用多次**
+>
+> **所有罗列在本页的 API 都应该在组件的 `setup()` 阶段被同步调用。相关细节请看[指南 - 生命周期钩子](https://cn.vuejs.org/guide/essentials/lifecycle.html)。**
+>
+> + 可以使用直接导入的 onX 函数注册生命周期钩子；
+> + beforeCreate和create在setup中没有相对应的onX的函数
+>   + 如果想要在beforeCreate和create中进行操作
+>   + 可以把代码直接写入到setup中
+>   + setup的执行时序比beforeCreate和create还要早
+
+![image-20231218002757954](https://qiniu.waite.wang/image-20231218002757954.png)
+
+```javascript
+import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
+
+// 注册生命周期钩子
+export default {
+  setup() {
+    onBeforeMount(() => {
+      console.log('Before Mount'); // 组件挂载前
+    });
+
+    onMounted(() => {
+      console.log('Mounted'); // 组件挂载后
+    });
+
+    onBeforeUpdate(() => {
+      console.log('Before Update'); // 组件更新前
+    });
+
+    onUpdated(() => {
+      console.log('Updated'); // 组件更新后
+    });
+
+    onBeforeUnmount(() => {
+      console.log('Before Unmount'); // 组件卸载前
+    });
+
+    onUnmounted(() => {
+      console.log('Unmounted'); // 组件卸载后
+    });
+
+    // 同一个生命周期可以使用多次
+    onMounted(() => {
+      console.log('Another Mounted'); // 另一个组件挂载后
+    });
+
+    return {};
+  }
+};
+```
 
 ## setup中使用ref获取元素或组件
 
@@ -1336,3 +1387,1127 @@ watch(id, async (newId, oldId, onCleanup) => {
   data.value = await response
 })
 ```
+
+## provide && inject
+
+`provide` 和 [`inject`](https://cn.vuejs.org/api/options-composition.html#inject) 通常成对一起使用，使一个祖先组件作为其后代组件的依赖注入方，无论这个组件的层级有多深都可以注入成功，只要他们处于同一条组件链上。
+
+**provide可以传入两个参数 :** 
+
+- **name：提供的属性名称**
+- **value：提供的属性值**
+
+**inject可以传入两个参数 :** 
+
+- **对应provide传过来的name值**
+- **默认值**
+
+```vue
+<template>
+  <h1>APP count: {{ count }}</h1>
+  <button @click="change">APP button</button>
+  <demo />
+</template>
+ 
+<script>
+import { ref, provide, readonly } from 'vue'
+import demo from './components/demo.vue'
+ 
+export default {
+  name: 'App',
+  components: {
+    demo
+  },
+  setup() {
+    let count = ref(100)
+    // 第一个参数key  第二个参数值，不让子组件随便修改，用readonly包裹一下
+    provide('count', readonly(count))
+    const change = () => count.value++
+    return {
+      count,
+      change
+    }
+  }
+}
+</script>
+```
+
+```vue
+<template>
+  <h2>demo count:{{ count }}</h2>
+  <button @click="change">demo change</button>
+</template>
+<script>
+import { ref, inject } from 'vue'
+export default {
+  setup() {
+    // 接收   第二个参数可以给一个默认值
+    let count = inject('count', '')
+    // 因为设置了readOnly 所以更改不了
+    const change = () => count.value++
+    return {
+      count,
+      change
+    }
+  }
+}
+</script>
+```
+
+![img](https://qiniu.waite.wang/202312180036440.gif)
+
+## h函数
+
++ Vue在生成真实的DOM之前，会将节点转换成VNode，而VNode组合在一起形成一颗树结构，就是虚拟DOM ( VDOM )
++ 事实上，编写的 template 中的HTML 最终也是使用渲染函数生成对应的VNode
++ 那么，如果想充分的利用JavaScript的编程能力，可以自己来编写 createVNode 函数，生成对应的VNode
++ **h() 函数是一个用于创建 vnode 的一个函数**
++ **其实更准备的命名是 createVNode() 函数，但是为了简便在Vue将之简化为 h() 函数**
+
+### 参数
+
+```javascript
+// 完整参数签名
+function h(
+  type: string | Component,
+  props?: object | null,
+  children?: Children | Slot | Slots
+): VNode
+
+// 省略 props
+function h(type: string | Component, children?: Children | Slot): VNode
+
+type Children = string | number | boolean | VNode | null | Children[]
+
+type Slot = () => Children
+
+type Slots = { [name: string]: Slot }
+```
+
++ 第一个参数既可以是一个字符串 (用于原生元素) 也可以是一个 Vue 组件定义。第二个参数是要传递的 prop，第三个参数是子节点。
++ 当创建一个组件的 vnode 时，子节点必须以插槽函数进行传递。如果组件只有默认槽，可以使用单个插槽函数进行传递。否则，必须以插槽函数的对象形式来传递。
++ 为了方便阅读，当子节点不是插槽对象时，可以省略 prop 参数。
+
+### 基本使用
+
+h函数可以在两个地方使用：
+
+- render函数选项中；
+- setup函数选项中（setup本身需要是一个函数类型，函数再返回h函数创建的VNode）；
+
+#### 在render函数选项中
+
+```vue
+<script>
+// 1. 引入h函数
+import { h } from 'vue';
+ 
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  // 2. 定义render选项
+  render() {
+    // 3. 返回自定义的h函数
+    return h('div', { class: 'app-view', name: 'abc' }, [
+      // 4. 定义h2
+      h('h2', { className: 'title' }, this.counter),
+      // 5. 定义增加按钮
+      h(
+        'button',
+        {
+          className: 'add-btn',
+          onClick: () => {
+            this.counter++;
+          }
+        },
+        '加一'
+      ),
+      // 6. 定义减少按钮
+      h(
+        'button',
+        {
+          className: 'remove-btn',
+          onClick: () => {
+            this.counter--;
+          }
+        },
+        '减一'
+      )
+    ]);
+  }
+}
+</script>
+```
+
+#### 在setup函数选项中
+
+```vue
+<script>
+import { h, ref } from 'vue';
+ 
+export default {
+  setup() {
+    const counter = ref(0);
+    const increment = () => {
+      counter.value++;
+    };
+    const decrement = () => {
+      counter.value--;
+    };
+ 
+    // 返回render函数
+    return () =>
+      h('div', { class: 'app-view', name: 'abc' }, [
+        h('h2', { className: 'title' }, counter.value),
+        h(
+          'button',
+          {
+            onClick: increment
+          },
+          '+1'
+        ),
+        h(
+          'button',
+          {
+            onClick: decrement
+          },
+          '-1'
+        )
+      ]);
+  }
+};
+</script>
+```
+
+#### 在setup语法糖中
+
+```vue
+<template>
+  <!-- 2. 使用一下 -->
+  <star-render />
+</template>
+ 
+<script setup>
+import { h, ref } from 'vue';
+ 
+const counter = ref(0);
+const increment = () => {
+  counter.value++;
+};
+const decrement = () => {
+  counter.value--;
+};
+ 
+// 1. 拿到render函数
+const starRender = () =>
+  h('div', { class: 'app-view', name: 'abc' }, [
+    h('h2', { className: 'title' }, counter.value),
+    h(
+      'button',
+      {
+        onClick: increment
+      },
+      '+1'
+    ),
+    h(
+      'button',
+      {
+        onClick: decrement
+      },
+      '-1'
+    )
+  ]);
+</script>
+```
+
+#### 其他写法
+
+创建原生元素：
+
+```javascript
+import { h } from 'vue'
+
+// 除了 type 外，其他参数都是可选的
+h('div')
+h('div', { id: 'foo' })
+
+// attribute 和 property 都可以用于 prop
+// Vue 会自动选择正确的方式来分配它
+h('div', { class: 'bar', innerHTML: 'hello' })
+
+// class 与 style 可以像在模板中一样
+// 用数组或对象的形式书写
+h('div', { class: [foo, { bar }], style: { color: 'red' } })
+
+// 事件监听器应以 onXxx 的形式书写
+h('div', { onClick: () => {} })
+
+// children 可以是一个字符串
+h('div', { id: 'foo' }, 'hello')
+
+// 没有 prop 时可以省略不写
+h('div', 'hello')
+h('div', [h('span', 'hello')])
+
+// children 数组可以同时包含 vnode 和字符串
+h('div', ['hello', h('span', 'hello')])
+```
+
+创建组件：
+
+```javascript
+import Foo from './Foo.vue'
+
+// 传递 prop
+h(Foo, {
+  // 等价于 some-prop="hello"
+  someProp: 'hello',
+  // 等价于 @update="() => {}"
+  onUpdate: () => {}
+})
+
+// 传递单个默认插槽
+h(Foo, () => 'default slot')
+
+// 传递具名插槽
+// 注意，需要使用 `null` 来避免
+// 插槽对象被当作是 prop
+h(MyComponent, null, {
+  default: () => 'default slot',
+  foo: () => h('div', 'foo'),
+  bar: () => [h('span', 'one'), h('span', 'two')]
+})
+```
+
+### 函数组件和插槽的使用
+
+```vue
+<script>
+  import { h } from "vue";
+
+  export default {
+    render() {
+      return h("div", null, [
+        h("h2", null, "Hello World"),
+        this.$slots.default ? this.$slots.default({name: "coderwhy"}): h("span", null, "我是HelloWorld的插槽默认值")
+      ])
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+```
+
+```vue
+<template>
+  <starRender />
+</template>
+
+<script setup>
+import { h } from 'vue';
+import HelloWorld from './HelloWorld.vue';
+
+const starRender = () =>
+  h("div", null, [
+    h(HelloWorld, null, {
+      default: props => h("span", null, `app传入到HelloWorld中的内容: ${props.name}`)
+    })
+  ])
+</script>
+```
+
+![image-20231218195545969](https://qiniu.waite.wang/202312181955950.png)
+
+## Jsx
+
+[JSX](https://facebook.github.io/jsx/) 是 JavaScript 的一个类似 XML 的扩展，有了它，我们可以用以下的方式来书写代码：
+
+```jsx
+const vnode = <div>hello</div>
+```
+
+在 JSX 表达式中，使用大括号来嵌入动态值：
+
+```jsx
+const vnode = <div id={dynamicId}>hello, {userName}</div>
+```
+
+### 配置
+
+#### vue-cli环境
+
++ `npm install @vue/babel-plugin-jsx -D`
++ `babel.config.js` 中配置
+
+![img](https://qiniu.waite.wang/202312182036029.png)
+
+#### vite环境
+
++ `npm install @vitejs/plugin-vue-jsx -D`
++ `vite.config.js` 中配置
+
+```javascript
+import { fileURLToPath, URL } from 'node:url';
+ 
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import jsx from '@vitejs/plugin-vue-jsx';
+ 
+export default defineConfig({
+  plugins: [vue(), jsx()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+});
+```
+
+### 基本使用
+
+#### 在render函数中
+
+```vue
+<!-- 1. 这里加上注明语言使用jsx -->
+<script lang="jsx">
+import Home from './pages/home.vue';
+ 
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  render() {
+    // 2. 返回jsx写法
+    return (
+      <div class="app-view">
+        <h2>当前计数:{this.counter}</h2>
+        <button onClick={this.increment}>+1</button>
+        <button onClick={this.decrement}>-1</button>
+      </div>
+    );
+  },
+  methods: {
+    increment() {
+      this.counter++;
+    },
+    decrement() {
+      this.counter--;
+    }
+  }
+};
+</script>
+```
+
+#### 在setup函数中
+
+```vue
+<!-- 1. 这里加上注明语言使用jsx -->
+<script lang="jsx">
+ 
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  render() {
+    // 2. 返回jsx写法
+    return (
+      <div class="app-view">
+        <h2>当前计数:{this.counter}</h2>
+        <button onClick={this.increment}>+1</button>
+        <button onClick={this.decrement}>-1</button>
+      </div>
+    );
+  },
+  methods: {
+    increment() {
+      this.counter++;
+    },
+    decrement() {
+      this.counter--;
+    }
+  }
+};
+</script>
+```
+
+#### 在setup语法糖中
+
+```vue
+<template>
+  <!-- 3. 使用 -->
+  <star-render />
+</template>
+ 
+<!-- 1. 这里加上注明语言使用jsx -->
+<script setup lang="jsx">
+import { ref } from 'vue';
+
+const counter = ref(0); 
+const increment = () => counter.value++;
+const decrement = () => counter.value--;
+ 
+// 2. 拿到render函数
+const starRender = () => (
+  <div class="app-view">
+    <h2>当前计数:{counter.value}</h2>
+    <button onClick={increment}>+1</button>
+    <button onClick={decrement}>-1</button>
+  </div>
+);
+</script>
+```
+
+## script setup语法糖
+
+> `<script setup>`是在单文件组件 (SFC) 中使用组合式 API 的编译时语法糖，当同时使用 SFC 与组合式 API 时则推荐该语法
+
+- **更少的样板内容，更简洁的代码**
+- **能够使用纯 Typescript 声明 prop 和抛出事件**
+- **更好的运行时性能**
+- **更好的 IDE 类型推断性能**
+
+### 顶层的绑定会被暴露给模板
+
+> 当使用` <script setup>` 的时候，任何在`<script setup>` 声明的顶层的绑定 (包括变量，函数声明，以及 import 引入的内容) 能在模板中直接使用, 导入的组件也可以直接使用
+
+```vue
+<template>
+  <div>{{ mes }}</div>
+  <button @click="addClick">按钮</button>
+</template>
+ 
+<!-- 1. 这里加上setup属性 -->
+<script setup>
+import { ref } from 'vue';
+ 
+// 定义数据后，template中可以直接使用，无需返回
+const mes = ref(0);
+// 定义的方法也是，直接可被使用
+const addClick = () => {
+  console.log('hahah');
+};
+</script>
+```
+
+```vue
+<template>
+  <!-- 2. 直接使用，不用通过compoents注册 -->
+  <my-home></my-home>
+</template>
+ 
+<script setup>
+// 1. 这是导入的组件
+import myHome from './myHome.vue';
+</script>
+```
+
+### defineProps()
+
+> defineProps  =>  用来接收从父组件传递过来的数据
+
+```vue
+<template>
+  <my-home name="hello" :age="18"></my-home>
+</template>
+ 
+<script setup>
+import myHome from './myHome.vue';
+</script>
+```
+
+```vue
+<template>
+  <div>{{ name }} - {{ age }}</div>
+</template>
+ 
+<script setup>
+// defineProps是内置组件，可以直接使用，不用导入
+// 可以接收一下返回的props对象，也可以不用
+const props = defineProps({
+  name: {
+    type: String,
+    default: ''
+  },
+  age: {
+    type: Number,
+    default: 0
+  }
+});
+console.log(props); // Proxy {name: 'hello', age: 18}
+</script>
+```
+
+### defineEmits()
+
+> defineProps  =>  用来发射事件给父组件
+
+```vue
+<template>
+  <button @click="btnClick">发送</button>
+</template>
+ 
+<script setup>
+// 1. 注册一下发射的事件
+const emits = defineEmits(['btnClick']);
+// 2. 监听按钮的点击
+const btnClick = () => {
+  // 3. 发射
+  emits('btnClick', '我发射了');
+};
+</script>
+```
+
+```vue
+<template>
+  <!-- 1. 监听子组件发射来的事件 -->
+  <my-home @btnClick="handleClick"></my-home>
+</template>
+ 
+<script setup>
+import myHome from './myHome.vue';
+ 
+// 2. 获取子组件传递过来的值
+const handleClick = (message) => {
+  console.log(message); // 我发射了
+};
+</script>
+```
+
+### defineExpose()
+
+> defineExpose  =>  用来暴露数据
+>
+> ps : 使用 `<script setup> `的组件是默认关闭的
+
+```vue
+<script setup>
+const foo = () => {
+  console.log('foo');
+};
+// 暴露出去，才可以被访问到
+defineExpose({
+  foo
+});
+</script>
+```
+
+```vue
+<template>
+  <!-- 1. 定义ref -->
+  <my-home ref="myHomeRef"></my-home>
+</template>
+ 
+<script setup>
+import { onMounted, ref } from 'vue';
+import myHome from '../../../Vue3/06_阶段六-Vue3全家桶实战/code/04_learn_composition/src/11_script_setup语法/myHome.vue';
+// 2. 定义名称一样
+const myHomeRef = ref();
+onMounted(() => {
+  // 3. 在生命周期中访问
+  console.log(myHomeRef.value);
+});
+</script>
+```
+
+## 自定义组件
+
+###  指令的生命周期
+
++ 一个指令定义的对象，Vue提供了如下的几个钩子函数：
++ created：在绑定元素的 attribute 或事件监听器被应用之前调用；
++ beforeMount：当指令第一次绑定到元素并且在挂载父组件之前调用；
++ mounted：在绑定元素的父组件被挂载后调用；
++ beforeUpdate：在更新包含组件的 VNode 之前调用；
++ updated：在包含组件的 VNode 及其子组件的 VNode 更新后调用；
++ beforeUnmount：在卸载绑定元素的父组件之前调用；
++ unmounted：当指令与元素解除绑定且父组件已卸载时，只调用一次；
+
+### 指令钩子
+
+一个指令的定义对象可以提供几种钩子函数 (都是可选的)：
+
+```javascript
+const myDirective = {
+  // 在绑定元素的 attribute 前
+  // 或事件监听器应用前调用
+  created(el, binding, vnode, prevVnode) {
+    // 下面会介绍各个参数的细节
+  },
+  // 在元素被插入到 DOM 前调用
+  beforeMount(el, binding, vnode, prevVnode) {},
+  // 在绑定元素的父组件
+  // 及他自己的所有子节点都挂载完成后调用
+  mounted(el, binding, vnode, prevVnode) {},
+  // 绑定元素的父组件更新前调用
+  beforeUpdate(el, binding, vnode, prevVnode) {},
+  // 在绑定元素的父组件
+  // 及他自己的所有子节点都更新后调用
+  updated(el, binding, vnode, prevVnode) {},
+  // 绑定元素的父组件卸载前调用
+  beforeUnmount(el, binding, vnode, prevVnode) {},
+  // 绑定元素的父组件卸载后调用
+  unmounted(el, binding, vnode, prevVnode) {}
+}
+```
+
+指令的钩子会传递以下几种参数：
+
+- `el`：指令绑定到的元素。这可以用于直接操作 DOM。
+- `binding`：一个对象，包含以下属性。
+  - `value`：传递给指令的值。例如在 `v-my-directive="1 + 1"` 中，值是 `2`。
+  - `oldValue`：之前的值，仅在 `beforeUpdate` 和 `updated` 中可用。无论值是否更改，它都可用。
+  - `arg`：传递给指令的参数 (如果有的话)。例如在 `v-my-directive:foo` 中，参数是 `"foo"`。
+  - `modifiers`：一个包含修饰符的对象 (如果有的话)。例如在 `v-my-directive.foo.bar` 中，修饰符对象是 `{ foo: true, bar: true }`。
+  - `instance`：使用该指令的组件实例。
+  - `dir`：指令的定义对象。
+- `vnode`：代表绑定元素的底层 VNode。
+- `prevNode`：代表之前的渲染中指令所绑定元素的 VNode。仅在 `beforeUpdate` 和 `updated` 钩子中可用。
+
+举例来说，像下面这样使用指令：
+
+```vue
+<div v-example:foo.bar="baz">
+```
+
+`binding` 参数会是一个这样的对象：
+
+```javascript
+{
+  arg: 'foo',
+  modifiers: { bar: true },
+  value: /* `baz` 的值 */,
+  oldValue: /* 上一次更新时 `baz` 的值 */
+}
+```
+
+和内置指令类似，自定义指令的参数也可以是动态的。举例来说：
+
+```vue
+<div v-example:[arg]="value"></div>
+```
+
+这里指令的参数会基于组件的 `arg` 数据属性响应式地更新。
+
+> 除了 `el` 外，其他参数都是只读的，不要更改它们。若你需要在不同的钩子间共享信息，推荐通过元素的 [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) attribute 实现。
+
+### 简单使用
+
+> **Vue中自带的指令例如v-show、v-for、v-model等等，除了使用这些指令之外，Vue 也允许我们来自定义自己的指令**
+>
+> **ps : 一般需要对dom元素进行底层操作时使用**
+
+- 自定义指令分为两种：
+  - 自定义局部指令：组件中通过 directives 选项，只能在当前组件中使用；
+  - 自定义全局指令：app的 directive 方法，可以在任意组件中被使用；
+
+#### 默认实现方式
+
+一个自定义指令由一个包含类似组件生命周期钩子的对象来定义。钩子函数会接收到指令所绑定元素作为其参数。下面是一个自定义指令的例子，当一个 input 元素被 Vue 插入到 DOM 中后，它会被自动聚焦：
+
+```vue
+<script setup>
+// 在模板中启用 v-focus
+const vFocus = {
+  mounted: (el) => el.focus()
+}
+</script>
+
+<template>
+  <input v-focus />
+</template>
+```
+
+```vue
+<template>
+  <div class="app-view">
+    <input type="text" ref="inputRef" />
+  </div>
+</template>
+ 
+<script setup>
+import { onMounted, ref } from 'vue';
+ 
+const inputRef = ref(null);
+ 
+onMounted(() => {
+  inputRef.value.focus();
+});
+</script>
+```
+
+#### 使用局部指令
+
+在 `<script setup>` 中，任何以 `v` 开头的驼峰式命名的变量都可以被用作一个自定义指令。在上面的例子中，`vFocus` 即可以在模板中以 `v-focus` 的形式使用。
+
+在没有使用 `<script setup>` 的情况下，自定义指令需要通过 `directives` 选项注册：
+
+```vue
+<template>
+  <div>
+    <input type="text" v-focus>
+  </div>
+</template>
+
+<script>
+  export default {
+    // 局部指令
+    directives: {
+      focus: {
+        mounted(el, bindings, vnode, preVnode) {
+          console.log("focus mounted");
+          el.focus();
+        }
+      }
+    }
+  }
+</script>
+```
+
+#### 自定义全局指令
+
++ `main.js`中注册
+
+```javascript
+import { createApp } from 'vue'
+import App from './App.vue'
+ 
+const app = createApp(App)
+ 
+// 指令名称
+app.directive('focus', {
+  // 使用自定义指令的生命周期，挂载后访问
+  mounted(el, bindings, vnode, preVnode) {
+    el?.focus()
+  }
+})
+ 
+app.mount('#app')
+```
+
+##### 进行抽取
+
++ 注册directives文件夹
++ /directives/format-time.js
+
+```javascript
+import dayjs from 'dayjs';
+
+export default function(app) {
+  app.directive("format-time", {
+    created(el, bindings) {
+      bindings.formatString = "YYYY-MM-DD HH:mm:ss";
+      if (bindings.value) {
+        bindings.formatString = bindings.value;
+      }
+    },
+    mounted(el, bindings) {
+      const textContent = el.textContent;
+      let timestamp = parseInt(textContent);
+      if (textContent.length === 10) {
+        timestamp = timestamp * 1000
+      }
+      el.textContent = dayjs(timestamp).format(bindings.formatString);
+    }
+  })
+} 
+```
+
++ /directives/index.js
+
+```javascript
+import registerFormatTime from './format-time';
+
+export default function registerDirectives(app) {
+  registerFormatTime(app);
+}
+```
+
++ mian.js
+
+```javascript
+import registerDirectives from './directives'
+
+registerDirectives(app);
+```
+
+#### setup
+
+##### 函数
+
+```vue
+<template>
+  <h1 v-fomat-time="timeFormatType">{{ timeStamp }}</h1>
+</template>
+<script>
+import { ref } from 'vue'
+import dayJs from 'dayjs'
+export default {
+  directives: {
+    'fomat-time': {
+      mounted(el, bindings) {
+        // 默认显示时间类型
+        let formatType = bindings.value
+        console.log(formatType)
+        // 转换成number类型
+        let time = el.textContent.length === 10 ? el.textContent * 1000 : el.textContent * 1;
+        // 格式化
+        el.textContent = dayJs(time).format(formatType)
+        setInterval(() => {
+          // 定时器
+          time = dayJs(new Date().valueOf()).format(formatType)
+          el.textContent = time
+        }, 1000)
+      }
+    }
+  },
+  setup() {
+    // 设置初始时间戳
+    const timeStamp = ref(new Date().valueOf())
+ 
+    const timeFormatType = ref('YYYY-MM-DD HH:mm:ss')
+ 
+    return {
+      timeStamp,
+      timeFormatType
+    }
+  }
+}
+</script>
+ 
+<style>
+h1 {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, red, blue);
+}
+</style>
+```
+
+##### 语法糖
+
+```vue
+<template>
+  <h1 v-fomat-time="timeFormatType">{{ timeStamp }}</h1>
+</template>
+<script setup>
+import { ref } from 'vue';
+import dayJs from 'dayjs';
+ 
+// 设置初始时间戳
+const timeStamp = ref(new Date().valueOf());
+// 设置初始时间格式
+const timeFormatType = ref('YYYY-MM-DD HH:mm:ss');
+ 
+// 自定义时间格式化指令
+const vFomatTime = {
+  mounted(el, bindings) {
+    // 获取定义的时间格式
+    const { value: timeFormatType } = bindings;
+    // 转换成number类型
+    let time = el.textContent.length === 10 ? el.textContent * 1000 : el.textContent * 1;
+    // 使用dayJs，根据时间格式来格式化时间,并赋值给el
+    el.textContent = dayJs(time).format(timeFormatType);
+    // 定时器，每隔一秒，重新赋值给el
+    setInterval(() => {
+      time = dayJs(new Date().valueOf()).format(timeFormatType);
+      el.textContent = time;
+    }, 1000);
+  }
+};
+</script>
+ 
+<style>
+h1 {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(to right, red, blue);
+}
+</style>
+```
+
+## 内置组件
+
+### Teleport
+
+> `<Teleport>` 是一个内置组件，它可以将一个组件内部的一部分模板“传送”到该组件的 DOM 结构外层的位置去。
+
++ 在某些情况下，希望组件不是挂载在当前组件树上的，可能是移动到Vue app之外的其他位置
+  + 比如移动到body元素上，或者我们有其他的div#app之外的元素上
+  + 可以通过teleport来完成
++ teleport 翻译过来是心灵传输、远距离运输的意思，有两个属性
+  + to : 指定将其中的内容移动到的目标元素，可以使用选择器
+  + disabled : 是否禁用 teleport 的功能
+
+#### 基本使用
+
+```vue
+<template>
+  <div class="app-view">
+    <!-- 把该组件挂载到body元素上 -->
+    <teleport to="body">
+      <h1>Teleport</h1>
+    </teleport>
+  </div>
+</template>
+<script setup></script>
+ 
+<style>
+h1 {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(to right, red, green, pink, yellow, blue);
+}
+</style>
+```
+
+![image-20231219000840061](https://qiniu.waite.wang/202312190008149.png)
+
+####  挂载到#app之外的指定元素上
+
+```vue
+<template>
+  <div class="app">
+    <div id="star"></div>
+    <div class="b">
+        <div class="c"></div>
+    </div>
+
+  </div>
+
+  <!-- 把该组件挂载到#star元素上 -->
+  <teleport to="#star">
+    <h1>Teleport</h1>
+  </teleport>
+
+  <!-- 把该组件挂载到.b元素上 -->
+  <teleport to=".b">
+    <h1>Teleport123</h1>
+  </teleport>
+
+  <!-- 文档上说是挂载到#app之外的元素，可是我发现自己内部的也可以指定，emmmm，优先是从内部一层层往外找的 -->
+  <!-- 把该组件挂载到.c元素上... -->
+  <teleport to=".c">
+    <h1>Teleport123</h1>
+  </teleport>
+</template>
+<script setup></script>
+ 
+<style>
+h1 {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(to right, red, green, pink, yellow, blue);
+}
+</style>
+```
+
+![image-20231219001340177](https://qiniu.waite.wang/202312190013634.png)
+
+#### 多个Teleport
+
+> **会合并，谁先谁在前面**
+
+```vue
+<template>
+  <div id="star"></div>
+
+  <div class="app-view">
+    <!-- 把该组件挂载到#star元素上 -->
+    <teleport to="#star">
+      <h1>Teleport</h1>
+    </teleport>
+  </div>
+  <!-- 把该组件挂载到#star元素上 -->
+  <teleport to="#star">
+    <h1>Teleport123</h1>
+  </teleport>
+</template>
+<script setup></script>
+ 
+<style>
+h1 {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(to right, red, green, pink, yellow, blue);
+}
+</style>
+```
+
+![image-20231219001638121](https://qiniu.waite.wang/202312190016061.png)
+
+### 其他
+
+> [异步组件 defineAsyncComponent/ Suspense : 实验特性 ](https://ladder.waite.wang/web/vue/learn/components/%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6.html)
+>
+> [动态组件 : component](https://ladder.waite.wang/web/vue/learn/components/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6.html)
+
+## Vue插件
+
+> https://cn.vuejs.org/guide/reusability/plugins.html#plugins
+
+- 通常我们向Vue全局添加一些功能时，会采用插件的模式，它有两种编写方式：
+  - 对象类型：一个对象，但是必须包含一个 `install `的函数，该函数会在安装插件时执行；
+  - 函数类型：一个`function`，这个函数会在安装插件时自动执行；
+- 插件可以完成的功能没有限制，比如下面的几种都是可以的：
+  - 添加全局方法或者`property`，通过把它们添加到 `config.globalProperties` 上实现；
+  - 添加全局资源：指令/过滤器/过渡等；
+  - 通过全局 `mixin `来添加一些组件选项；
+  - 一个库，提供自己的 API，同时提供上面提到的一个或多个功能；
+
+### 对象类型
+
+> 对象类型：一个对象，但是必须包含一个 install 的函数，该函数会在安装插件时执行
+
+```javascript
+app.use({
+  install(app) {
+    console.log('对象方式，插件被调用了', app);
+  }
+});
+```
+
+### 函数类型
+
+> 函数类型：一个function，这个函数会在安装插件时自动执行
+
+```javascript
+app.use(function(app){
+  console.log('函数方式，插件被调用了', app);
+})
+```
+
+### 改写自定义指令
+
+```javascript
+import { createApp } from 'vue';
+ 
+import App from './App.vue';
+// 1. 导入指令方法
+import installDirectives from './directives';
+ 
+// 2。 注册所有指令
+// installDirectives(app);
+ 
+// 这样使用use方法注册指令，因为传入的是一个函数，所以会自动执行
+// 并且会把app实例传入，这样就可以在函数内部注册指令了
+createApp(App).use(installDirectives).mount('#app');
+```
+
