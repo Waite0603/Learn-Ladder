@@ -46,6 +46,20 @@ export const web = arraySidebar([
             prefix: "animation/",
             children: "structure",
             collapsible: true,
+          },
+          {
+            text: "路由",
+            icon: "files",
+            prefix: "router/",
+            children: "structure",
+            collapsible: true,
+          },
+          {
+            text: "状态管理",
+            icon: "files",
+            prefix: "store/",
+            children: "structure",
+            collapsible: true,
           }
 
         ],
