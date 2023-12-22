@@ -6,10 +6,293 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 22 Dec 2023 16:00:10 GMT</pubDate>
-    <lastBuildDate>Fri, 22 Dec 2023 16:00:10 GMT</lastBuildDate>
+    <pubDate>Fri, 22 Dec 2023 17:02:28 GMT</pubDate>
+    <lastBuildDate>Fri, 22 Dec 2023 17:02:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>路由使用</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/router/%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/router/%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">路由使用</source>
+      <description>关于路由 认识前端路由 路由其实是网络工程中的一个术语： 在架构一个网络时，非常重要的两个设备就是路由器和交换机。 当然，目前在我们生活中路由器也是越来越被大家所熟知，因为我们生活中都会用到路由器： 路由器的主要功能是维护一个映射表，这个映射表决定了数据的流向。在网络中，路由器通过这个映射表来确定数据包的传输路径，使得数据能够按照设定的规则正确地传输到目的地。 路由的概念在软件工程中出现，最早是在后端路由中实现的，原因是web的发展主要经历了这样一些阶段： 后端路由阶段； 前后端分离阶段； 单页面富应用（SPA）；</description>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 关于路由</h2>
+<h3> 认识前端路由</h3>
+<ul>
+<li>路由其实是网络工程中的一个术语：
+<ul>
+<li>在架构一个网络时，非常重要的两个设备就是路由器和交换机。</li>
+<li>当然，目前在我们生活中路由器也是越来越被大家所熟知，因为我们生活中都会用到路由器：</li>
+<li>路由器的主要功能是维护一个映射表，这个映射表决定了数据的流向。在网络中，路由器通过这个映射表来确定数据包的传输路径，使得数据能够按照设定的规则正确地传输到目的地。</li>
+</ul>
+</li>
+<li>路由的概念在软件工程中出现，最早是在后端路由中实现的，原因是web的发展主要经历了这样一些阶段：
+<ul>
+<li>后端路由阶段；</li>
+<li>前后端分离阶段；</li>
+<li>单页面富应用（SPA）；</li>
+</ul>
+</li>
+</ul>
+<h3> 后端路由阶段</h3>
+<ul>
+<li>早期的网站开发整个HTML页面是由服务器来渲染的.
+<ul>
+<li>服务器直接生产渲染好对应的HTML页面, 返回给客户端进行展示.</li>
+</ul>
+</li>
+<li>一个页面有自己对应的网址, 也就是URL；</li>
+<li>URL会发送到服务器, 服务器会通过正则对该URL进行匹配, 并且最后交给一个Controller(控制器)进行处理；</li>
+<li>Controller进行各种处理, 最终生成HTML或者数据, 返回给前端.</li>
+<li>上面的这种操作, 就是后端路由：
+<ul>
+<li>当我们页面中需要请求不同的路径内容时, 交给服务器来进行处理, 服务器渲染好整个页面, 并且将页面返回给客户端.</li>
+<li>这种情况下渲染好的页面, 不需要单独加载任何的<code>js</code>和<code>css</code>, 可以直接交给浏览器展示, 这样也有利于SEO的优化.</li>
+</ul>
+</li>
+<li>后端路由的缺点:
+<ul>
+<li>一种情况是整个页面的模块由后端人员来编写和维护的；</li>
+<li>另一种情况是前端开发人员如果要开发页面, 需要通过PHP和Java等语言来编写页面代码；</li>
+<li>而且通常情况下HTML代码和数据以及对应的逻辑会混在一起, 编写和维护都是非常糟糕的事情；</li>
+</ul>
+</li>
+</ul>
+<h3> 前后端分离阶段</h3>
+<ul>
+<li>前端渲染的理解：
+<ul>
+<li>每次请求涉及到的静态资源都会从静态资源服务器获取，这些资源包括HTML+CSS+JS，然后在前端对这些请求回来的资源进行渲染；</li>
+<li>需要注意的是，客户端的每一次请求，都会从静态资源服务器请求文件；</li>
+<li>同时可以看到，和之前的后端路由不同，这时后端只是负责提供API了；</li>
+</ul>
+</li>
+<li>前后端分离阶段：
+<ul>
+<li>随着Ajax的出现, 有了前后端分离的开发模式；</li>
+<li>后端只提供API来返回数据，前端通过Ajax获取数据，并且可以通过JavaScript将数据渲染到页面中；</li>
+<li>这样做最大的优点就是前后端责任的清晰，后端专注于数据上，前端专注于交互和可视化上；</li>
+<li>并且当移动端(iOS/Android)出现后，后端不需要进行任何处理，依然使用之前的一套API即可；</li>
+<li>目前比较少的网站采用这种模式开发（jQuery开发模式）；</li>
+</ul>
+</li>
+</ul>
+<h3> 单页面富应用（SPA）</h3>
+<p>随着前端框架（如AngularJS、React、Vue等）的兴起，单页面富应用成为主流。单页面富应用（SPA）是一种Web应用程序的架构模式，它通过动态加载页面内容，实现在单个HTML页面上切换视图和更新内容，而无需每次都从服务器请求新的页面。这种方式提高了用户体验和应用性能，因为页面只在初始化时加载一次，之后的页面切换和内容更新都是通过异步加载数据和更新页面内容来实现的。常见的前端框架如AngularJS、React和Vue等都支持SPA的开发模式。</p>
+<h2> Vue-router 简介</h2>
+<blockquote>
+<p>官网: https://router.vuejs.org/zh/</p>
+</blockquote>
+<p>Vue Router 是 <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue.js</a> 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。功能包括：</p>
+<ul>
+<li>嵌套路由映射</li>
+<li>动态路由选择</li>
+<li>模块化、基于组件的路由配置</li>
+<li>路由参数、查询、通配符</li>
+<li>展示由 Vue.js 的过渡系统提供的过渡效果</li>
+<li>细致的导航控制</li>
+<li>自动激活 CSS 类的链接</li>
+<li>HTML5 history 模式或 hash 模式</li>
+<li>可定制的滚动行为</li>
+<li>URL 的正确编码</li>
+</ul>
+<p><strong>具体使用示例：</strong></p>
+<p>网易云音乐 https://music.163.com/</p>
+<p>单页面应用(SPA): 所有功能在一个 html 页面上实现</p>
+<p>前端路由作用: 实现业务场景切换</p>
+<ul>
+<li>优点：
+<ul>
+<li>简单易用</li>
+<li>支持嵌套路由</li>
+<li>支持路由参数、查询、动态路由等</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>对于大型单页应用可能不够灵活</li>
+<li>在处理复杂路由时可能需要额外的插件或工具</li>
+</ul>
+</li>
+</ul>
+<h2> 路由初体验</h2>
+<p>Vue Router 支持两种路由模式：</p>
+<ul>
+<li>Hash 模式：
+<ul>
+<li>使用 URL 中的 <code># </code>来管理路由，适用于不需要服务端支持的单页应用。<code>createWebHashHistory </code>是 Vue Router 提供的一种路由模式，它基于 URL 中的 hash（#）来管理路由。这种模式在不需要服务器端支持的情况下可以工作</li>
+</ul>
+</li>
+<li>History 模式：
+<ul>
+<li>使用 HTML5 History API 来管理路由，可以去掉 URL 中的 <code>#</code>，需要服务器端支持来处理路由<code>createWebHistory</code> 是 Vue Router 提供的基于 HTML5 History API 的路由模式。这种模式需要服务器端支持来处理路由，但可以去掉 URL 中的 #，看起来更加干净。</li>
+</ul>
+</li>
+</ul>
+<p>用 Vue + Vue Router 创建单页应用非常简单：通过 Vue.js，我们已经用组件组成了我们的应用。当加入 Vue Router 时，我们需要做的就是将我们的组件映射到路由上，让 Vue Router 知道在哪里渲染它们。下面是一个基本的例子：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> router-link</h3>
+<p>请注意，我们没有使用常规的 <code>a</code> 标签，而是使用一个自定义组件 <code>router-link</code> 来创建链接。这使得 Vue Router 可以在不重新加载页面的情况下更改 URL，处理 URL 的生成以及编码。我们将在后面看到如何从这些功能中获益。</p>
+<h3> router-view</h3>
+<p><code>router-view</code> 将显示与 URL 对应的组件。你可以把它放在任何地方，以适应你的布局。</p>
+<h2> 安装以及使用</h2>
+<ul>
+<li>
+<p>安装</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>创建 <code>router/index.js</code> 并在其中编辑基本配置(默认你已经注册了 <code>components</code> 中的两个文件)</p>
+</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>在 <code>src/App.vue</code> 中引入</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>当然, 我们需要一个 <code>router-view</code> 显示与 URL 对应的组件, 一般会在 <code>src/App.vue</code> 中做如下配置, 当然你可以把它放在任何地方，以适应你的布局。</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>我们也可以在其中使用 <code>router-link</code></li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 带参数的动态路由匹配</h2>
+<p>很多时候，我们需要将给定匹配模式的路由映射到同一个组件。例如，我们可能有一个 <code>User</code> 组件，它应该对所有用户进行渲染，但用户 ID 不同。在 Vue Router 中，我们可以在路径中使用一个动态字段来实现，我们称之为 <em>路径参数</em> ：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>现在像 <code>/users/johnny</code> 和 <code>/users/jolyne</code> 这样的 URL 都会映射到同一个路由。</p>
+<p><em>路径参数</em> 用冒号 <code>:</code> 表示。当一个路由被匹配时，它的 <em>params</em> 的值将在每个组件中以 <code>this.$route.params</code> 的形式暴露出来。因此，我们可以通过更新 <code>User</code> 的模板来呈现当前的用户 ID：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>你可以在同一个路由中设置有多个 <em>路径参数</em>，它们会映射到 <code>$route.params</code> 上的相应字段。例如：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">匹配模式</th>
+<th style="text-align:left">匹配路径</th>
+<th style="text-align:left">$route.params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/users/:username</td>
+<td style="text-align:left">/users/eduardo</td>
+<td style="text-align:left"><code>{ username: 'eduardo' }</code></td>
+</tr>
+<tr>
+<td style="text-align:left">/users/:username/posts/:postId</td>
+<td style="text-align:left">/users/eduardo/posts/123</td>
+<td style="text-align:left"><code>{ username: 'eduardo', postId: '123' }</code></td>
+</tr>
+</tbody>
+</table>
+<p>除了 <code>$route.params</code> 之外，<code>$route</code> 对象还公开了其他有用的信息，如 <code>$route.query</code>（如果 URL 中存在参数）、<code>$route.hash</code> 等。你可以在 <a href="https://router.vuejs.org/zh/api/#routelocationnormalized" target="_blank" rel="noopener noreferrer">API 参考</a>中查看完整的细节。</p>
+<blockquote>
+<p>以下是一个小 Demo</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202312230002394.png" alt="image-20231223000208274" tabindex="0" loading="lazy"><figcaption>image-20231223000208274</figcaption></figure>
+<p>##声明式/ 编程式导航</p>
+<h3> 声明式导航</h3>
+<h4> 基础使用/ 命名路由</h4>
+<p>除了 <code>path</code> 之外，你还可以为任何路由提供 <code>name</code>。这有以下优点：</p>
+<ul>
+<li>https://router.vuejs.org/zh/guide/essentials/named-routes.html</li>
+</ul>
+<ul>
+<li>没有硬编码的 URL</li>
+<li><code>params</code> 的自动编码/解码。</li>
+<li>防止你在 <code>url</code>中出现打字错误。</li>
+<li>绕过路径排序（如显示一个）</li>
+<li>这跟代码调用 <code>router.push()</code> 是一回事：</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>跳转方式需要改变 变为对象并且有对应name</p>
+<p>两种跳转方式有区别, a 标签有新的网络请求, 会刷新整个页面</p>
+</blockquote>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 跳转传参</h4>
+<p>目标: 在跳转路由时, 可以给路由对应的组件内传值</p>
+<p>在 <code>router-link</code> 上的 <code>to</code> 属性传值, 语法格式如下</p>
+<ul>
+<li><code>/path?参数名=值</code></li>
+<li><code>/path/值</code> – 需要路由对象提前配置 <code>path: "/path/参数名"</code></li>
+</ul>
+<p>对应页面组件接收传递过来的值</p>
+<ul>
+<li><code>route.query.参数名</code></li>
+<li><code>route.params.参数名</code></li>
+</ul>
+<p>1、新建 <code>views/Part2.vue</code> - 接收路由上传递的参数和值</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、修改路由定义</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>3、修改 <code>App.vue</code> 进行跳转</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>总结:</p>
+<ul>
+<li><code>?key=value</code> 用 <code>$route.query.key</code> 取值</li>
+<li><code>/值</code> 提前在路由规则 <code>/path/:key</code> 用 <code>$route.params.key</code> 取值</li>
+<li><code>query</code> 是查询参数, <code>params</code> 是 <code>path</code> 路径</li>
+<li>有:的路径代表要接收具体的值, 不然会报警告</li>
+</ul>
+<figure><img src="https://qiniu.waite.wang/202312230023125.png" alt="image-20231223002327799" tabindex="0" loading="lazy"><figcaption>image-20231223002327799</figcaption></figure>
+<p>在这个特定的场景中，我们在括号之间使用了<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E5%9C%A8%E5%8F%82%E6%95%B0%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%A3%E5%88%99" target="_blank" rel="noopener noreferrer">自定义正则表达式</a>，并将<code>pathMatch</code> 参数标记为<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0" target="_blank" rel="noopener noreferrer">可选可重复</a>。这样做是为了让我们在需要的时候，可以通过将 <code>path</code> 拆分成一个数组，直接导航到路由</p>
+<h4> 捕获所有路由或 404 Not found 路由</h4>
+<p>常规参数只匹配 url 片段之间的字符，用 <code>/</code> 分隔。如果我们想匹配<strong>任意路径</strong>，我们可以使用自定义的 <em>路径参数</em> 正则表达式，在 <em>路径参数</em> 后面的括号中加入 正则表达式 :</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个特定的场景中，我们在括号之间使用了<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E5%9C%A8%E5%8F%82%E6%95%B0%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AD%A3%E5%88%99" target="_blank" rel="noopener noreferrer">自定义正则表达式</a>，并将<code>pathMatch</code> 参数标记为<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0" target="_blank" rel="noopener noreferrer">可选可重复</a>。这样做是为了让我们在需要的时候，可以通过将 <code>path</code> 拆分成一个数组，直接导航到路由：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>更多内容请参见<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E5%8F%AF%E9%87%8D%E5%A4%8D%E7%9A%84%E5%8F%82%E6%95%B0" target="_blank" rel="noopener noreferrer">重复参数</a>部分。</p>
+<blockquote>
+<p>一般使用如下</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 编程式导航</h3>
+<p>除了使用 <code>&lt;router-link&gt;</code> 创建 <code>a</code> 标签来定义导航链接，我们还可以借助 <code>router</code> 的实例方法，通过编写代码来实现。</p>
+<h4> 导航到不同的位置</h4>
+<p>注意：在 Vue 实例中，你可以通过 <code>$router</code> 访问路由实例。因此你可以调用 <code>$router.push</code>。</p>
+<p>想要导航到不同的 URL，可以使用 <code>router.push</code> 方法。这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，会回到之前的 URL。</p>
+<p>当你点击 <code>&lt;router-link&gt;</code> 时，内部会调用这个方法，所以点击 <code>&lt;router-link :to="..."&gt;</code> 相当于调用 <code>router.push(...)</code> ：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">声明式</th>
+<th style="text-align:left">编程式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;router-link :to="..."&gt;</code></td>
+<td style="text-align:left"><code>router.push(...)</code></td>
+</tr>
+</tbody>
+</table>
+<p>该方法的参数可以是一个字符串路径，或者一个描述地址的对象。例如：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>注意</strong>：如果提供了 <code>path</code>，<code>params</code> 会被忽略，上述例子中的 <code>query</code> 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 <code>name</code> 或手写完整的带有参数的 <code>path</code> ：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>当指定 <code>params</code> 时，可提供 <code>string</code> 或 <code>number</code> 参数（或者对于<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#repeatable-params" target="_blank" rel="noopener noreferrer">可重复的参数</a> 可提供一个数组）。<strong>任何其他类型（如 <code>undefined</code>、<code>false</code> 等）都将被自动字符串化</strong> 。对于<a href="https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#repeatable-params" target="_blank" rel="noopener noreferrer">可选参数</a> ，你可以提供一个空字符串（<code>""</code>）来跳过它。</p>
+<p>由于属性 <code>to</code> 与 <code>router.push</code> 接受的对象种类相同，所以两者的规则完全相同。</p>
+<h4> 基础使用</h4>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol>
+<li><code>src/router/index.js</code> - 路由数组里, 给路由起名字</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>App.vue - 换成 span 配合js的编程式导航跳转</li>
+</ol>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 横跨历史</h2>
+<p>该方法采用一个整数作为参数，表示在历史堆栈中前进或后退多少步，类似于 <code>window.history.go(n)</code>。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 替换当前位置</h2>
+<p>它的作用类似于 <code>router.push</code>，唯一不同的是，它在导航时不会向 history 添加新记录，正如它的名字所暗示的那样——它取代了当前的条目。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">声明式</th>
+<th style="text-align:left">编程式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;router-link :to="..." replace&gt;</code></td>
+<td style="text-align:left"><code>router.replace(...)</code></td>
+</tr>
+</tbody>
+</table>
+<p>也可以直接在传递给 <code>router.push</code> 的 <code>routeLocation</code> 中增加一个属性 <code>replace: true</code> ：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 重定向</h2>
+<p>重定向也是通过 <code>routes</code> 配置来完成，下面例子是从 <code>/home</code> 重定向到 <code>/</code>：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>重定向的目标也可以是一个命名的路由：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>甚至是一个方法，动态返回重定向目标：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>例如: 网页默认打开, 匹配路由 <code>"/"</code>, 强制切换到 <code>"/find"</code> 上</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>总结: 强制重定向后, 还会重新来数组里匹配一次规则</p>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202312230002394.png" type="image/png"/>
+    </item>
     <item>
       <title>Composition API</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/essential/Composition%20API.html</link>
