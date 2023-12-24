@@ -23,7 +23,7 @@ date: 2023-12-24
 
 ### 通信方案
 
-![image-20210323175925844](images/image-20210323175925844.png)
+![](https://qiniu.waite.wang/202312242346950.png)
 
 
 
@@ -36,7 +36,7 @@ date: 2023-12-24
 
 Vuex 是一个专为 Vue.js 应用程序开发的**状态管理模式**。它采用**集中式**存储管理数据，以相应的规则保证状态以一种可预测的方式发生变化
 
-![image-20210323180002533](images/image-20210323180002533.png)
+![](https://qiniu.waite.wang/202312242347862.png)
 
 ### vuex为何学
 
@@ -63,7 +63,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的**状态管理模式**。它采
 
 图示:
 
-![image-20210601212946879](images/image-20210601212946879.png)
+![](https://qiniu.waite.wang/202312242348361.png)
 
 ### vuex中存什么
 
@@ -112,7 +112,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的**状态管理模式**。它采
 
 单一定义store对象, 里面5个配置项, 在任意组件可以使用
 
-![image-20210625120835921](images/image-20210601215035990.png)
+![](https://qiniu.waite.wang/202312242348351.png)
 
 ### 小结
 
@@ -130,7 +130,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的**状态管理模式**。它采
   
   * 需求3: 三个组件共享库存数据(**保持同步**)
   
-    ![vuex例子](images/vuex例子.gif)
+    ![](https://qiniu.waite.wang/202312242348672.png)
 
 
 
@@ -245,7 +245,7 @@ export default {
 
 每个 Vuex 应用的核心 store（仓库）, 包含5个核心概念
 
-![image-20210626135859118](images/image-20210626135859118.png)
+![](https://qiniu.waite.wang/202312242351180.png)
 
 ### vuex目录
 
@@ -253,7 +253,7 @@ export default {
 
 >  当然， 这个步骤并不是必需的
 
-![image-20210323183824648](images/image-20210323183824648.png)
+![](https://qiniu.waite.wang/202312242353021.png)
 
 ### 使用步骤
 
@@ -437,8 +437,7 @@ export default {
 
 整个过程的示意图如下
 
-![image-20210323201917787](images/image-20210323201917787.png)
-
+![](https://qiniu.waite.wang/202312242355459.png)
 ### 注意
 
 state是响应式的, 只要state值变化, 页面上使用的地方会自动更新同步
@@ -642,7 +641,7 @@ export default {
 
 
 
-![](asset/mutation.jpg)
+![](https://qiniu.waite.wang/202312242355165.png)
 
 ## 8.vuex-actions定义-异步修改
 
@@ -793,7 +792,7 @@ export default {
 
 2. 视图组件, state, mutations, actions的关系是?
 
-![](asset/action-state.png)
+![](https://qiniu.waite.wang/202312242356106.png)
 
 ## 10.vuex-重构购物车-准备Store
 
@@ -1015,11 +1014,11 @@ export default {
 
 ### 为何分模块
 
-![image-20210326113544941](images/image-20210326113544941.png)
+![](https://qiniu.waite.wang/202312242359431.png)
 
 ### 代码上的对比
 
-![image-20210626234048113](images/image-20210626234048113.png)
+![](https://qiniu.waite.wang/202312242357170.png)
 
 ### 创建modules模块对象
 
@@ -1323,12 +1322,11 @@ const moduleShopCar = {
 1. state和mutations, 在根store和开启命名空间里的区别?
 
 
-
-![image-20210604084953510](images/image-20210604084953510.png)
+![](https://qiniu.waite.wang/202312250000713.png)
 
 2. 整个vuex的体系是?
 
-   ![image-20210624225100101](images/image-20210624225100101.png)
+![](https://qiniu.waite.wang/202312250000731.png)
 
 ## 扩展: 使用Devtools调试vuex数据
 
@@ -1338,13 +1336,3 @@ const moduleShopCar = {
 
 - 掌握dev-tools调试vuex
 - 理解什么是数据状态是可追踪的
-
-### 如何进行调试
-
-注意只有vue+vuex的项目才可以用
-
-![](asset/mutation1.png)
-
-### 调试信息说明
-
-![](asset/mutation2.png)
