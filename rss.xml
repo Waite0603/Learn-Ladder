@@ -6,10 +6,837 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 23 Dec 2023 07:23:29 GMT</pubDate>
-    <lastBuildDate>Sat, 23 Dec 2023 07:23:29 GMT</lastBuildDate>
+    <pubDate>Sun, 24 Dec 2023 16:03:21 GMT</pubDate>
+    <lastBuildDate>Sun, 24 Dec 2023 16:03:21 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Vue2-Vuex</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/store/vue2_vux.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/store/vue2_vux.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Vue2-Vuex</source>
+      <description>Day01_vuex 今日学习目标(边讲边练) 跨组件通信能力 vuex的基础使用 购物车案例-改装 1.vuex介绍 目标 什么是vuex 为什么学习vuex 通信方案</description>
+      <pubDate>Sun, 24 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> Day01_vuex</h1>
+<h2> 今日学习目标(边讲边练)</h2>
+<ul>
+<li>跨组件通信能力</li>
+<li>vuex的基础使用</li>
+<li>购物车案例-改装</li>
+</ul>
+<h2> 1.vuex介绍</h2>
+<h3> 目标</h3>
+<ul>
+<li>什么是vuex</li>
+<li>为什么学习vuex</li>
+</ul>
+<h3> 通信方案</h3>
+<figure><img src="https://qiniu.waite.wang/202312242346950.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>组件关系</th>
+<th>数据通信</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父子关系</td>
+<td>父传子：props ； 子传父：$emit</td>
+</tr>
+<tr>
+<td>非父子关系</td>
+<td>vuex (一种组件通信方案)</td>
+</tr>
+</tbody>
+</table>
+<h3> vuex是什么</h3>
+<p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用<strong>集中式</strong>存储管理数据，以相应的规则保证状态以一种可预测的方式发生变化</p>
+<figure><img src="https://qiniu.waite.wang/202312242347862.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> vuex为何学</h3>
+<p>程序页面多, 数据变量多</p>
+<ol>
+<li>不同组件数据<strong>保持同步</strong></li>
+<li>数据的修改都是<strong>可追踪</strong></li>
+</ol>
+<p>一个户外商店有两名员工，张三和李四</p>
+<p>一天的早上，他们分别对<strong>帐篷的数量</strong>做了一次盘点，发现一共有三个帐篷</p>
+<p>张三卖出去俩个，他以为库存里还有<strong>一个</strong></p>
+<p>李四卖出去一个，他以为库存里还有<strong>两个</strong></p>
+<p>而事实上是，库存现在已经为<strong>零</strong></p>
+<p>如果他们再接受客户的预订，就会出现库存<strong>不足</strong>的情况</p>
+<blockquote>
+<p>张三和李四因为没有保持库存的数量的同步导致了尴尬，这个就是所谓的<code>数据保持同步 </code></p>
+<p>店长需要知道, 谁卖出了多少个帐篷，这个行为我们称之为<code>数据修改是可追踪的</code></p>
+</blockquote>
+<p>图示:</p>
+<figure><img src="https://qiniu.waite.wang/202312242348361.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> vuex中存什么</h3>
+<p><strong>多个组件共享状态</strong>，才存储在vuex中</p>
+<p>某个组件中的私有数据，依旧存储在data中</p>
+<p>例如：</p>
+<ul>
+<li>
+<p>登陆的用户名需要在<strong>首页</strong>, <strong>个人中心</strong>, <strong>结算</strong>页面使用, 用户名存在vuex中</p>
+</li>
+<li>
+<p>文章详情数据, 只有在文章详情页查看, 在自身data中声明</p>
+</li>
+</ul>
+<h3> 小结</h3>
+<ol>
+<li>什么是vuex
+<ul>
+<li>vuex是Vue官方推荐的集中式状态管理机制</li>
+</ul>
+</li>
+<li>为何学vuex
+<ul>
+<li>数据同步, 集中管理</li>
+</ul>
+</li>
+<li>vuex中存什么
+<ul>
+<li>多个组件共享的值</li>
+</ul>
+</li>
+</ol>
+<h2> 2.vuex学习内容</h2>
+<h3> 目标</h3>
+<ul>
+<li>知道vuex要学习什么</li>
+</ul>
+<h3> 核心概念</h3>
+<ol>
+<li>
+<p>官网地址: https://vuex.vuejs.org/zh/</p>
+</li>
+<li>
+<p>安装(固定)</p>
+</li>
+<li>
+<p>配置项(固定)</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>含义</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>state</strong></td>
+<td>单一状态树</td>
+<td>类似data</td>
+</tr>
+<tr>
+<td><strong>mutations</strong></td>
+<td>数据管家(同步)</td>
+<td>唯一修改state地方</td>
+</tr>
+<tr>
+<td>actions</td>
+<td>异步请求</td>
+<td>要改state需要提交给mutations</td>
+</tr>
+<tr>
+<td>getters</td>
+<td>vuex计算属性</td>
+<td>类似computed</td>
+</tr>
+<tr>
+<td>modules</td>
+<td>模块拆分</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h3> 图示关系</h3>
+<p>单一定义store对象, 里面5个配置项, 在任意组件可以使用</p>
+<figure><img src="https://qiniu.waite.wang/202312242348351.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 小结</h3>
+<ol>
+<li>vuex五个核心概念是?
+<ul>
+<li>state / mutations / actions / getters / modules</li>
+</ul>
+</li>
+</ol>
+<h2> 3.vuex例子准备</h2>
+<h3> 目标</h3>
+<ul>
+<li>创建项目, 为学习准备
+<ul>
+<li>
+<p>需求1: App.vue(作为根组件)</p>
+</li>
+<li>
+<p>需求2: 子组件Add和子组件Sub, 嵌入在App.vue里</p>
+</li>
+<li>
+<p>需求3: 三个组件共享库存数据(<strong>保持同步</strong>)</p>
+<figure><img src="https://qiniu.waite.wang/202312242348672.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3> 工程准备</h3>
+<ol>
+<li>
+<p>初始化新的工程 vuex-demo</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>清空欢迎界面</p>
+</li>
+<li>
+<p>并设置如下三个组件, 目录如下：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+<h3> App.vue</h3>
+<blockquote>
+<p>复制标签和样式, 引入AddItem和SubItem2个子组件显示</p>
+</blockquote>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> AddItem.vue</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> SubItem.vue</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>App下套用了AddItem和SubItem, 要在3个组件共享一个数据</li>
+</ol>
+<h2> 4.vuex-store准备</h2>
+<h3> 目标</h3>
+<ul>
+<li>创建store仓库</li>
+<li>注入到Vue项目中</li>
+</ul>
+<h3> store概念</h3>
+<p>每个 Vuex 应用的核心 store（仓库）, 包含5个核心概念</p>
+<figure><img src="https://qiniu.waite.wang/202312242351180.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> vuex目录</h3>
+<p>和路由模块router/index.js - 类似, 维护项目目录的整洁，新建src/store/index.js文件</p>
+<blockquote>
+<p>当然， 这个步骤并不是必需的</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202312242353021.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 使用步骤</h3>
+<ol>
+<li>
+<p>工程中 - 下载vuex</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>store/index.js - 创建定义导出store对象</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>main.js - 导入注入到Vue中</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+<p>请再次回忆一下vue-router的用法，是不是很像？</p>
+<h3> 小结</h3>
+<ol>
+<li>
+<p>vuex的核心是什么?</p>
+<ul>
+<li>store对象(包含5个核心属性)</li>
+</ul>
+</li>
+<li>
+<p>如何创建store对象?</p>
+<ul>
+<li>工程下载vuex模块</li>
+<li>store/index.js
+<ul>
+<li>引入注册</li>
+<li>生成store对象导出</li>
+<li>main.js - 导入注入</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2> 5.vuex-state数据源</h2>
+<h3> 目标</h3>
+<ul>
+<li>定义state</li>
+<li>直接使用state</li>
+<li>辅助函数mapState</li>
+</ul>
+<blockquote>
+<p>state是唯一的公共数据源，统一存储</p>
+</blockquote>
+<h3> 定义state</h3>
+<p>在store/index.js定义state</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体代码:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用state2种方式</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用 (推荐)</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> AddItem直接用</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> App.vue直接用</h3>
+<p>计算属性count, 和输入框的v-model双向绑定</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> SubItem映射用</h3>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>整个过程的示意图如下</p>
+<figure><img src="https://qiniu.waite.wang/202312242355459.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 注意</h3>
+<p>state是响应式的, 只要state值变化, 页面上使用的地方会自动更新同步</p>
+<h3> 小结</h3>
+<ol>
+<li>
+<p>state作用?</p>
+<p>定义全局状态数据源</p>
+</li>
+<li 变量名:="" 初始值="">
+<p>state如何定义?</p>
+<p>在store内, state:</p>
+</li>
+<li>
+<p>state的值如何用到具体vue组件内?</p>
+<ul>
+<li>直接使用 this.$store.state.变量名</li>
+<li>映射使用 ...mapState(['state的变量名'])</li>
+</ul>
+</li>
+</ol>
+<h2> 6.vuex-mutations定义-同步修改</h2>
+<h3> 目标</h3>
+<ul>
+<li>定义mutations</li>
+</ul>
+<h3> 定义mutations</h3>
+<blockquote>
+<p>mutations类似数据管家, 操作state里的数据</p>
+</blockquote>
+<p>在store/index.js定义mutations</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体代码</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 注意</h3>
+<blockquote>
+<ol>
+<li>mutations是<strong>唯一</strong>能修改state的地方, 确保<strong>调试工具</strong>可以追踪变化</li>
+<li>mutations函数内, 只能写同步代码, 调试工具可追踪变化过程
+<ul>
+<li>因为调试工具要<strong>立刻</strong>产生一次记录, 所以必须是同步的</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3> 小结</h3>
+<ol>
+<li>
+<p>mutations里函数作用?</p>
+<ul>
+<li>负责修改state里的数据</li>
+</ul>
+</li>
+<li>
+<p>mutations只能写什么样的代码?</p>
+<ul>
+<li>同步流程的代码</li>
+</ul>
+</li>
+</ol>
+<h2> 7.vuex-mutations使用</h2>
+<h3> 目标</h3>
+<ul>
+<li>使用mutations2种方式</li>
+<li>mutations注意事项</li>
+</ul>
+<h3> 使用mutations的2种方式</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> AddItem直接用</h3>
+<ul>
+<li>点击事件绑定</li>
+<li>提交mutations传入值</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> App.vue直接用</h3>
+<ul>
+<li>触发计算属性的set方法</li>
+<li>提交mutations传入值</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> SubItem映射用</h3>
+<ul>
+<li>点击事件</li>
+<li>映射mutations的方法</li>
+<li>调用mutations方法传值</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 注意</h3>
+<blockquote>
+<p>mutations函数上, 只能接收<strong>一个参数值</strong>, 如果传对个, 请传一个对象</p>
+</blockquote>
+<h3> 小结</h3>
+<ol>
+<li>
+<p>mutations有哪2种使用方式?</p>
+<p>直接使用 this.$store.commit()</p>
+<p>映射使用 mapMutations把方法映射到组件内直接调用</p>
+</li>
+<li>
+<p>state, mutations, 视图组件, 3个关系是什么?</p>
+</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202312242355165.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 8.vuex-actions定义-异步修改</h2>
+<h3> 目标</h3>
+<ul>
+<li>定义actions</li>
+</ul>
+<h3> 定义actions</h3>
+<p>在store/index.js定义actions</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体代码:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>actions和mutations区别?</p>
+<p>mutations里同步修改state</p>
+<p>actions里放入异步操作</p>
+</li>
+<li>
+<p>actions是否能操作state?</p>
+<p>不建议, 要commit给mutations(为调试工具可追踪)</p>
+</li>
+<li>
+<p>actions和mutations里函数, 第一个形参分别是什么?</p>
+<p>mutations的是state</p>
+<p>actions的是store</p>
+</li>
+</ol>
+<h2> 9.vuex-actions使用</h2>
+<h3> 目标</h3>
+<ul>
+<li>使用actions</li>
+</ul>
+<h3> 使用actions的2种方式</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> AddItem直接用</h3>
+<ul>
+<li>点击事件</li>
+<li>dispatch触发action</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> SubItem映射用</h3>
+<ul>
+<li>点击事件</li>
+<li>映射actions的方法</li>
+<li>调用actions的方法传值</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>actions使用方式?</p>
+<p>方式1: this.$store.dispatch('actions方法名字', 值)</p>
+<p>方式2: ...mapActions(['actions里的方法名']) 映射到原地使用</p>
+</li>
+<li>
+<p>视图组件, state, mutations, actions的关系是?</p>
+</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202312242356106.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 10.vuex-重构购物车-准备Store</h2>
+<h3> 目标</h3>
+<ul>
+<li>在现有项目如何集成vuex</li>
+</ul>
+<h3> store准备</h3>
+<ol>
+<li>复制预习资料&lt;shopcar-模板&gt;到自己今天文件夹下</li>
+<li>下载vuex</li>
+<li>store/index.js创建导出store对象</li>
+<li>main.js把store引入, 然后注入到Vue实例</li>
+</ol>
+<h3> 小结</h3>
+<ol>
+<li>
+<p>现有项目如何集成vuex</p>
+<p>下载vuex</p>
+<p>创建store对象并注入到Vue实例中</p>
+</li>
+</ol>
+<h2> 11.vuex-重构购物车-配置项(上午结束)</h2>
+<h3> 目标</h3>
+<ul>
+<li>准备state和mutations还有actions</li>
+</ul>
+<h3> 配置项准备</h3>
+<ol>
+<li>定义state - 保存商品列表数组</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>定义mutations - 给state里变量赋值</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
+<li>定义actions - 异步请求数据提交给mutations</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> App.vue使用vuex</h3>
+<ul>
+<li>把vuex商品数组映射回来使用</li>
+<li>网络请求调用actions方法</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>mapState可以改变映射到原地的计算属性名吗?</p>
+<p>可以的, 格式...mapState({''计算属性名', 'state里要映射的变量名'})</p>
+</li>
+</ol>
+<h2> 12.vuex-getters定义-计算属性</h2>
+<h3> 目标</h3>
+<ul>
+<li>getters概念</li>
+<li>定义getters</li>
+</ul>
+<h3> getters概念</h3>
+<p>vuex身上的全局状态-计算属性, 类似于computed</p>
+<p>getters 依赖于 state中原始数据的变化，并返回计算后的新数据</p>
+<h3> 定义getters</h3>
+<p>在store/index.js定义getters</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体代码</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>getters有什么用?</p>
+<p>vuex里的计算属性, 属于全局计算属性, 类似computed</p>
+</li>
+</ol>
+<h2> 13.vuex-getters使用</h2>
+<h3> 目标</h3>
+<ul>
+<li>组件内使用getters</li>
+</ul>
+<h3> 使用getters的2种方式</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> MyFooter.vue里使用</h3>
+<ul>
+<li>使用2种方式给计算属性值</li>
+</ul>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>getters如何使用?</p>
+<p>方式1: this.$store.getters.计算属性名</p>
+<p>方式2: ...mapGetters(['getters里计算属性名'])</p>
+</li>
+</ol>
+<h2> 14.vuex-modules定义-分模块</h2>
+<h3> 目标</h3>
+<ul>
+<li>为何要分模块</li>
+<li>modules定义</li>
+</ul>
+<h3> 为何分模块</h3>
+<figure><img src="https://qiniu.waite.wang/202312242359431.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 代码上的对比</h3>
+<figure><img src="https://qiniu.waite.wang/202312242357170.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 创建modules模块对象</h3>
+<ul>
+<li>新建store/modules/user.js</li>
+<li>新建store/modules/cart.js</li>
+</ul>
+<p>语法: 对象里包含5个核心概念, 只有state变成函数形式</p>
+<p>user.js - 用户模块对象</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>cart.js - 购物车模块对象</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 定义modules</h3>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>把2个模块对象, 引回到store里注册</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>为什么分模块?</p>
+<p>集中式管理项目过大, 变量过多, 会导致state臃肿, 难以维护</p>
+</li>
+<li>
+<p>如何分模块?</p>
+<p>定义<strong>模块对象</strong>, state变成函数返回对象形式, 每个模块都有state/mutations/actions/getters/modules</p>
+</li>
+<li>
+<p>根store如何注册?</p>
+<p>modules里 { 模块名: <strong>模块对象</strong> }</p>
+</li>
+</ol>
+<h2> 15.分模块-影响state取值方式</h2>
+<h3> 目的</h3>
+<ul>
+<li>只要分模块, state取值方式改变, 其他暂时不变</li>
+</ul>
+<h3> state使用方式修改</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>分模块后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>分模块后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> App.vue-修改</h3>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 小结</h3>
+<ol>
+<li>
+<p>分模块对什么有影响?</p>
+<p>对state的取值方式有影响, 对其他暂无影响</p>
+</li>
+<li>
+<p>state如何取值?</p>
+<p>在组件使用的时候, 要state.模块名.变量名</p>
+</li>
+</ol>
+<h2> 16.分模块-命名空间</h2>
+<h3> 目标</h3>
+<ul>
+<li>防止多个模块之间, mutations/actions/getters的名字冲突</li>
+</ul>
+<h3> 开启命名空间</h3>
+<p>在模块对象内设置<code>namespaced: true</code></p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> state使用方式修改</h3>
+<ul>
+<li>
+<p>直接使用无变化: this.$store.state.模块名.变量名</p>
+</li>
+<li>
+<p>辅助函数需要遵守格式</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+<h3> mutations使用方式修改</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+</ul>
+<h3> actions使用方式修改</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+</ul>
+<h3> getters使用方式修改</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<ul>
+<li>
+<p>原语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>开命名空间后语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+</ul>
+</li>
+</ul>
+<h3> 小结</h3>
+<ol>
+<li>state和mutations, 在根store和开启命名空间里的区别?</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202312250000713.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<ol start="2">
+<li>整个vuex的体系是?</li>
+</ol>
+<figure><img src="https://qiniu.waite.wang/202312250000731.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 扩展: 使用Devtools调试vuex数据</h2>
+<blockquote>
+<p>优秀的调试工具可以使我们写程序事半功倍，最后我们再学习一下如果使用dev-tools来调试vuex中的数据，这也是数据可预测特性里不可缺少的一环</p>
+</blockquote>
+<h3> 目标</h3>
+<ul>
+<li>掌握dev-tools调试vuex</li>
+<li>理解什么是数据状态是可追踪的</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202312242346950.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Vue3-Vuex</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/store/vue3_vuex.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/store/vue3_vuex.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Vue3-Vuex</source>
+      <description>Vue3 中推荐使用 pinia, 更具体可以看 https://gitee.com/lidongxuwork/bilibili-matching-code/blob/master/Web%E5%89%8D%E7%AB%AF/5-%E6%A1%86%E6%9E%B6/V2.x/%E6%A6%82%E5%BF%B5/1-vuex%E4%BD%BF%E7%94%A8/0_%E7%AC%94%E8%AE%B0/vuex%E4%BD%BF%E7%94%A8.md#day01_vuex Vuex介绍 Vuex是什么</description>
+      <pubDate>Sun, 24 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<blockquote>
+<p>Vue3 中推荐使用 pinia, 更具体可以看 https://gitee.com/lidongxuwork/bilibili-matching-code/blob/master/Web%E5%89%8D%E7%AB%AF/5-%E6%A1%86%E6%9E%B6/V2.x/%E6%A6%82%E5%BF%B5/1-vuex%E4%BD%BF%E7%94%A8/0_%E7%AC%94%E8%AE%B0/vuex%E4%BD%BF%E7%94%A8.md#day01_vuex</p>
+</blockquote>
+<h2> Vuex介绍</h2>
+<h3> Vuex是什么</h3>
+<p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用<strong>集中式</strong>存储管理数据，以相应的规则保证状态以一种可预测的方式发生变化
+<img src="https://qiniu.waite.wang/202312232248202.png" alt="在这里插入图片描述" loading="lazy"></p>
+<p>优点：</p>
+<ol>
+<li>能够在Vuex中集中管理共享的数居，易于开发和后期维护</li>
+<li>能够高效地实现组件之间的数据共享，提高开发效率</li>
+<li>存储在vuex中的数据都是响应式的，能够实时保持数据与页面的同步</li>
+</ol>
+<h3> vuex为何学</h3>
+<p>程序页面多, 数据变量多</p>
+<ol>
+<li>不同组件数据<strong>保持同步</strong></li>
+<li>数据的修改都是<strong>可追踪</strong></li>
+</ol>
+<p>一个户外商店有两名员工，张三和李四</p>
+<p>一天的早上，他们分别对<strong>帐篷的数量</strong>做了一次盘点，发现一共有三个帐篷</p>
+<p>张三卖出去俩个，他以为库存里还有<strong>一个</strong></p>
+<p>李四卖出去一个，他以为库存里还有<strong>两个</strong></p>
+<p>而事实上是，库存现在已经为<strong>零</strong></p>
+<p>如果他们再接受客户的预订，就会出现库存<strong>不足</strong>的情况</p>
+<blockquote>
+<p>张三和李四因为没有保持库存的数量的同步导致了尴尬，这个就是所谓的<code>数据保持同步</code></p>
+<p>店长需要知道, 谁卖出了多少个帐篷，这个行为我们称之为<code>数据修改是可追踪的</code></p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202312241613856.png" alt="image-20210601212946879" tabindex="0" loading="lazy"><figcaption>image-20210601212946879</figcaption></figure>
+<h3> vuex中存什么</h3>
+<p><strong>多个组件共享状态</strong>，才存储在vuex中</p>
+<p>某个组件中的私有数据，依旧存储在data中</p>
+<p>例如：</p>
+<ul>
+<li>登陆的用户名需要在<strong>首页</strong>, <strong>个人中心</strong>, <strong>结算</strong>页面使用, 用户名存在vuex中</li>
+<li>文章详情数据, 只有在文章详情页查看, 在自身data中声明</li>
+</ul>
+<h2> 基本使用</h2>
+<ol>
+<li>安装 vuex 依赖包</li>
+</ol>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="2">
+<li>导入</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
+<li>创建 store 对象</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="4">
+<li>将 store 对象挂载到 vue 实例中</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> state</h2>
+<blockquote>
+<p>state是唯一的公共数据源，统一存储</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用</h3>
+<ul>
+<li>方式1: 组件内 - <strong>直接</strong>使用</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>方式2: 组件内 - <strong>映射</strong>使用 (推荐)</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>state是响应式的, 只要state值变化, 页面上使用的地方会自动更新同步</p>
+</blockquote>
+<h2> mutations</h2>
+<blockquote>
+<p>Vuex Mutations 则是用于修改状态的函数。在 Vuex 中，状态是通过 store 对象进行管理的，而 Mutations 则是通过提交（commit）来执行的。每个 Mutation 都是一个纯函数，它接收 state 对象作为第一个参数，并且可以接收额外的参数作为载荷（payload）。Mutation 函数用于同步地改变状态，它们在开发过程中可以帮助我们跟踪状态的变化。</p>
+</blockquote>
+<p>在 Vue 3 中，Mutations 并不是唯一能修改 state 的地方。实际上，在 Vue 3 中，可以通过使用 Mutations、Actions 或直接操作 state 来修改状态。这是与 Vue 2 中的 Vuex 不同的地方。</p>
+<p>在 Vue 3 中，可以使用 Mutations 来同步地改变状态，Actions 用于处理异步操作并提交 Mutations，而直接操作 state 则是为了简单的状态变化。这种方式使得状态管理更加灵活，并且能够更好地处理异步操作。</p>
+<p>因此，在 Vue 3 中，Mutations 并不是唯一能修改 state 的地方，而是状态管理中的一部分，开发者可以根据具体情况选择合适的方式来修改状态。</p>
+<blockquote>
+<p>以下是一个 mutations 与 store 结合的例子</p>
+</blockquote>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> actions</h2>
+<p>在 Vue 3 中，使用 Vuex 的 Actions 是一种处理异步操作并提交 Mutations 的方式。Actions 允许您在应用程序中执行异步操作，例如从服务器获取数据，然后再提交 Mutations 来修改状态。以下是在 Vue 3 中使用 Vuex Actions 的基本方法：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> getters</h2>
+<p>Vuex Getters 是用于从 store 中获取状态的函数。Getters 允许您在 store 中计算状态或过滤数据，并且可以在组件中像计算属性一样使用。以下是在 Vue 3 中定义和使用 Vuex Getters 的基本方法：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 用getters的2种方式</h3>
+<ul>
+<li>
+<p>方式1: 组件内 - <strong>直接</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>方式2: 组件内 - <strong>映射</strong>使用</p>
+<p>语法:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3> MyFooter.vue里使用</h3>
+<ul>
+<li>使用2种方式给计算属性值</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202312232248202.png" type="image/png"/>
+    </item>
     <item>
       <title>路由使用</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/router/%E8%B7%AF%E7%94%B1%E8%BF%9B%E9%98%B6.html</link>
