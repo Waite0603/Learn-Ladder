@@ -6,10 +6,105 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 24 Dec 2023 16:03:21 GMT</pubDate>
-    <lastBuildDate>Sun, 24 Dec 2023 16:03:21 GMT</lastBuildDate>
+    <pubDate>Tue, 26 Dec 2023 16:13:46 GMT</pubDate>
+    <lastBuildDate>Tue, 26 Dec 2023 16:13:46 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Pinia</title>
+      <link>https://brain.sunguoqi.com/web/vue/learn/store/pinia.html</link>
+      <guid>https://brain.sunguoqi.com/web/vue/learn/store/pinia.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Pinia</source>
+      <description>为什么使用 Pinia? https://pinia.vuejs.org/zh/ Pinia 是 Vue 的专属状态管理库，它允许你跨组件或页面共享状态。如果你熟悉组合式 API 的话，你可能会认为可以通过一行简单的 export const state = reactive({}) 来共享一个全局状态。对于单页应用来说确实可以，但如果应用在服务器端渲染，这可能会使你的应用暴露出一些安全漏洞。 而如果使用 Pinia，即使在小型单页应用中，你也可以获得如下功能： Devtools 支持 追踪 actions、mutations 的时间线 在组件中展示它们所用到的 Store 让调试更容易的 Time travel 热更新 不必重载页面即可修改 Store 开发时可保持当前的 State 插件：可通过插件扩展 Pinia 功能 为 JS 开发者提供适当的 TypeScript 支持以及自动补全功能。 支持服务端渲染</description>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 为什么使用 Pinia?</h2>
+<blockquote>
+<p>https://pinia.vuejs.org/zh/</p>
+</blockquote>
+<p>Pinia 是 Vue 的专属状态管理库，它允许你跨组件或页面共享状态。如果你熟悉组合式 API 的话，你可能会认为可以通过一行简单的 <code>export const state = reactive({})</code> 来共享一个全局状态。对于单页应用来说确实可以，但如果应用在服务器端渲染，这可能会使你的应用暴露出一些安全漏洞。 而如果使用 Pinia，即使在小型单页应用中，你也可以获得如下功能：</p>
+<ul>
+<li>Devtools 支持
+<ul>
+<li>追踪 actions、mutations 的时间线</li>
+<li>在组件中展示它们所用到的 Store</li>
+<li>让调试更容易的 Time travel</li>
+</ul>
+</li>
+<li>热更新
+<ul>
+<li>不必重载页面即可修改 Store</li>
+<li>开发时可保持当前的 State</li>
+</ul>
+</li>
+<li>插件：可通过插件扩展 Pinia 功能</li>
+<li>为 JS 开发者提供适当的 TypeScript 支持以及<strong>自动补全</strong>功能。</li>
+<li>支持服务端渲染</li>
+</ul>
+<h2> 简单使用</h2>
+<ol>
+<li>安装</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>在mian.js中，创建根存储</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>创建store</li>
+</ol>
+<p><code>store</code>实例相当于一个容器，里面存放的有类似于<code>data</code>，计算属性，方法之类的东西。通过<code>defineStore()</code>方法定义</p>
+<p>在<code>src</code>下面创建一个<code>store</code>文件夹，再创建与之对应的<code>js</code>文件，比如``counter.js`</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
+<li>使用store</li>
+</ol>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> State</h2>
+<ol>
+<li>读取state</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>修改state</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="3">
+<li>重置 state</li>
+</ol>
+<p>使用<a href="https://pinia.vuejs.org/zh/core-concepts/#option-stores" target="_blank" rel="noopener noreferrer">选项式 API</a> 时，你可以通过调用 store 的 <code>$reset()</code> 方法将 state 重置为初始值。</p>
+<p>在 <code>$reset()</code> 内部，会调用 <code>state()</code> 函数来创建一个新的状态对象，并用它替换当前状态。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ol start="4">
+<li>变更 state</li>
+</ol>
+<p>除了用 <code>store.count++</code> 直接改变 store，你还可以调用 <code>$patch</code> 方法。它允许你用一个 <code>state</code> 的补丁对象在同一时间更改多个属性：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>不过，用这种语法的话，有些变更真的很难实现或者很耗时：任何集合的修改（例如，向数组中添加、移除一个元素或是做 <code>splice</code> 操作）都需要你创建一个新的集合。因此，<code>$patch</code> 方法也接受一个函数来组合这种难以用补丁对象实现的变更。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>两种变更 store 方法的主要区别是，<code>$patch()</code> 允许你将多个变更归入 <code>devtools</code> 的同一个条目中</p>
+<blockquote>
+<p>你可以在 <code>pinia</code> 实例上使用 <code>watch()</code> 函数侦听整个 state。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></blockquote>
+<h2> getters</h2>
+<ol>
+<li>基础使用</li>
+</ol>
+<p>类似计算属性。推荐里面传递一个形参的写法，不容易出错。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>调用本模块其他 getters</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
+<li>getters传参</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="4">
+<li>调用其他store里面的getter</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> actions</h2>
+<p>Action 相当于组件中的 <a href="https://v3.vuejs.org/guide/data-methods.html#methods" target="_blank" rel="noopener noreferrer">method</a>。它们可以通过 <code>defineStore()</code> 中的 <code>actions</code> 属性来定义，<strong>并且它们也是定义业务逻辑的完美选择。</strong></p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>类似 <a href="https://pinia.vuejs.org/zh/core-concepts/getters.html" target="_blank" rel="noopener noreferrer">getter</a>，action 也可通过 <code>this</code> 访问<strong>整个 store 实例</strong>，并支持<strong>完整的类型标注(以及自动补全✨)</strong>。<strong>不同的是，<code>action</code> 可以是异步的</strong>，你可以在它们里面 <code>await</code> 调用任何 API，以及其他 action！下面是一个使用 <a href="https://github.com/posva/mande" target="_blank" rel="noopener noreferrer">Mande</a> 的例子。请注意，你使用什么库并不重要，只要你得到的是一个<code>Promise</code>，你甚至可以 (在浏览器中) 使用原生 <code>fetch</code> 函数：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>你也完全可以自由地设置任何你想要的参数以及返回任何结果。当调用 action 时，一切类型也都是可以被自动推断出来的。</p>
+<p>Action 可以像函数或者通常意义上的方法一样被调用：</p>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>想要使用另一个 store 的话，那你直接在 <em>action</em> 中调用就好了：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 模块化</h2>
+<p>在实际开发中，不可能把多个模块的数据都定义到一个store中，而是一个模块对应一个store，最后通过一个根store进行整合</p>
+<p>1.随便建立两个store，并导出</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>新建store/index.js</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
+<li>组件中使用</li>
+</ol>
+<div class="language-vue line-numbers-mode" data-ext="vue"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
     <item>
       <title>Vue2-Vuex</title>
       <link>https://brain.sunguoqi.com/web/vue/learn/store/vue2_vux.html</link>
