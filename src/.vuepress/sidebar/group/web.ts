@@ -67,5 +67,12 @@ export const web = arraySidebar([
       }
     ],
     collapsible: true,
-  }
+  },  
+  {
+    text: "微信小程序",
+    icon: "wechat",
+    prefix: "weChat/",
+    children: "structure",
+    collapsible: true,
+  },
 ]);
