@@ -6,15 +6,15 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 19 Jan 2024 13:59:10 GMT</pubDate>
-    <lastBuildDate>Fri, 19 Jan 2024 13:59:10 GMT</lastBuildDate>
+    <pubDate>Sat, 20 Jan 2024 15:30:57 GMT</pubDate>
+    <lastBuildDate>Sat, 20 Jan 2024 15:30:57 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
-      <title>微信小程序基础-</title>
-      <link>https://brain.sunguoqi.com/web/weChat/basic.html</link>
-      <guid>https://brain.sunguoqi.com/web/weChat/basic.html</guid>
-      <source url="https://brain.sunguoqi.com/rss.xml">微信小程序基础-</source>
+      <title>微信小程序介绍</title>
+      <link>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%8B%E7%BB%8D.html</link>
+      <guid>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%8B%E7%BB%8D.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">微信小程序介绍</source>
       <description>微信小程序介绍 微信小程序介绍 ​	微信小程序，简称小程序，是一种不需要下载安装即可使用的应用，它实现了应用”触手可及”的梦想，用户扫一扫或搜一下即可打开应用。 ​	说明： 小程序是需要下载的，小程序的占用大小很小，感觉不到下载 目前大小限制2M （最终开发的小程序打包压缩后的大小），如果超过2M,就得做分包上传.之后再合并 进入小程序后继续网络请求数据 小程序特点 微信小程序的特点： 免安装 接近原生（IOS，Android ）的app操作基于微信开发。使用wx提供的api开发 必须在微信里面使用</description>
       <pubDate>Fri, 19 Jan 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 微信小程序介绍</h2>
@@ -99,6 +99,885 @@
 <p>搜索功能文件，指定哪些页面可以被搜索，可被配置。是在搜索小程序的时候，指定哪些页面允许被搜索到。</p>
 ]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/202401192149328.png" type="image/png"/>
+    </item>
+    <item>
+      <title>微信小程序配置项</title>
+      <link>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%85%8D%E7%BD%AE.html</link>
+      <guid>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%85%8D%E7%BD%AE.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">微信小程序配置项</source>
+      <description>全局配置 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#entryPagePath 小程序根目录下的 app.json 文件用来对微信小程序进行全局配置。文件内容为一个 JSON 对象，有以下属性： 属性 类型 必填 描述 最低版本 entryPagePath string 否 小程序默认启动首页 pages string[] 是 页面路径列表 window Object 否 全局的默认窗口表现 tabBar Object 否 底部 tab 栏的表现 networkTimeout Object 否 网络超时时间 debug boolean 否 是否开启 debug 模式，默认关闭 functionalPages boolean 否 是否启用插件功能页，默认关闭 2.1.0 subpackages Object[] 否 分包结构配置 1.7.3 workers string 否 Worker 代码放置的目录 1.9.90 requiredBackgroundModes string[] 否 需要在后台使用的能力，如「音乐播放」 requiredPrivateInfos string[] 否 调用的地理位置相关隐私接口 plugins Object 否 使用到的插件 1.9.6 preloadRule Object 否 分包预下载规则 2.3.0 resizable boolean 否 PC 小程序是否支持用户任意改变窗口大小（包括最大化窗口）；iPad 小程序是否支持屏幕旋转。默认关闭 2.3.0 usingComponents Object 否 全局自定义组件配置 开发者工具 1.02.1810190 permission Object 否 小程序接口权限相关设置 微信客户端 7.0.0 sitemapLocation string 是 指明 sitemap.json 的位置 style string 否 指定使用升级后的weui样式 2.8.0 useExtendedLib Object 否 指定需要引用的扩展库 2.2.1 entranceDeclare Object 否 微信消息用小程序打开 微信客户端 7.0.9 darkmode boolean 否 小程序支持 DarkMode 2.11.0 themeLocation string 否 指明 theme.json 的位置，darkmode为true为必填 开发者工具 1.03.2004271 lazyCodeLoading string 否 配置自定义组件代码按需注入 2.11.1 singlePage Object 否 单页模式相关配置 2.12.0 supportedMaterials Object 否 聊天素材小程序打开相关配置 2.14.3 serviceProviderTicket string 否 定制化型服务商票据 embeddedAppIdList string[] 否 半屏小程序 appId 2.20.1 halfPage Object 否 视频号直播半屏场景设置 2.18.0 debugOptions Object 否 调试相关配置 2.22.1 enablePassiveEvent Object或boolean 否 touch 事件监听是否为 passive 2.24.1 resolveAlias Object 否 自定义模块映射规则 renderer string 否 全局默认的渲染后端 2.30.4 rendererOptions Object 否 渲染后端选项 2.31.1 componentFramework string 否 组件框架，详见相关文档 2.30.4 miniApp Object 否 多端模式场景接入身份管理服务时开启小程序授权页相关配置，详见相关文档 static Object 否 正常情况下默认所有资源文件都被打包发布到所有平台，可以通过 static 字段配置特定每个目录/文件只能发布到特定的平台(多端场景) 相关文档 convertRpxToVw boolean 否 配置是否将 rpx 单位转换为 vw 单位，开启后能修复某些 rpx 下的精度问题 3.3.0</description>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 全局配置</h2>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#entryPagePath</p>
+</blockquote>
+<p>小程序根目录下的 <code>app.json</code> 文件用来对微信小程序进行全局配置。文件内容为一个 JSON 对象，有以下属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#entryPagePath" target="_blank" rel="noopener noreferrer">entryPagePath</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">小程序默认启动首页</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#pages" target="_blank" rel="noopener noreferrer">pages</a></td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">页面路径列表</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#window" target="_blank" rel="noopener noreferrer">window</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">全局的默认窗口表现</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#tabBar" target="_blank" rel="noopener noreferrer">tabBar</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">底部 <code>tab</code> 栏的表现</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout" target="_blank" rel="noopener noreferrer">networkTimeout</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">网络超时时间</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#debug" target="_blank" rel="noopener noreferrer">debug</a></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是否开启 debug 模式，默认关闭</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#functionalPages" target="_blank" rel="noopener noreferrer">functionalPages</a></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是否启用插件功能页，默认关闭</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.1.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#subpackages" target="_blank" rel="noopener noreferrer">subpackages</a></td>
+<td style="text-align:left">Object[]</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">分包结构配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.7.3</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#workers" target="_blank" rel="noopener noreferrer">workers</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>Worker</code> 代码放置的目录</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.9.90</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#requiredBackgroundModes" target="_blank" rel="noopener noreferrer">requiredBackgroundModes</a></td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">需要在后台使用的能力，如「音乐播放」</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#requiredPrivateInfos" target="_blank" rel="noopener noreferrer">requiredPrivateInfos</a></td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">调用的地理位置相关隐私接口</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#plugins" target="_blank" rel="noopener noreferrer">plugins</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">使用到的插件</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.9.6</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#preloadRule" target="_blank" rel="noopener noreferrer">preloadRule</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">分包预下载规则</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.3.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#resizable" target="_blank" rel="noopener noreferrer">resizable</a></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">PC 小程序是否支持用户任意改变窗口大小（包括最大化窗口）；iPad 小程序是否支持屏幕旋转。默认关闭</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.3.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#usingComponents" target="_blank" rel="noopener noreferrer">usingComponents</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">全局<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/" target="_blank" rel="noopener noreferrer">自定义组件</a>配置</td>
+<td style="text-align:left">开发者工具 1.02.1810190</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission" target="_blank" rel="noopener noreferrer">permission</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">小程序接口权限相关设置</td>
+<td style="text-align:left">微信客户端 7.0.0</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#sitemapLocation" target="_blank" rel="noopener noreferrer">sitemapLocation</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">指明 sitemap.json 的位置</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style" target="_blank" rel="noopener noreferrer">style</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定使用升级后的weui样式</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.8.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#useextendedlib" target="_blank" rel="noopener noreferrer">useExtendedLib</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定需要引用的扩展库</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.2.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#entranceDeclare" target="_blank" rel="noopener noreferrer">entranceDeclare</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">微信消息用小程序打开</td>
+<td style="text-align:left">微信客户端 7.0.9</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#darkmode" target="_blank" rel="noopener noreferrer">darkmode</a></td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">小程序支持 DarkMode</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.11.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#themeLocation" target="_blank" rel="noopener noreferrer">themeLocation</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指明 theme.json 的位置，darkmode为true为必填</td>
+<td style="text-align:left">开发者工具 1.03.2004271</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#lazyCodeLoading" target="_blank" rel="noopener noreferrer">lazyCodeLoading</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">配置自定义组件代码按需注入</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.11.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#singlePage" target="_blank" rel="noopener noreferrer">singlePage</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">单页模式相关配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.12.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">supportedMaterials</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/material/support_material.html" target="_blank" rel="noopener noreferrer">聊天素材小程序打开</a>相关配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.14.3</a></td>
+</tr>
+<tr>
+<td style="text-align:left">serviceProviderTicket</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/operation/thirdparty/customized_service_platform_guidelines.html" target="_blank" rel="noopener noreferrer">定制化型服务商</a>票据</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#embeddedAppIdList" target="_blank" rel="noopener noreferrer">embeddedAppIdList</a></td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">半屏小程序 appId</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.20.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#halfPage" target="_blank" rel="noopener noreferrer">halfPage</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">视频号直播半屏场景设置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.18.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#debugOptions" target="_blank" rel="noopener noreferrer">debugOptions</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">调试相关配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.22.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#enablePassiveEvent" target="_blank" rel="noopener noreferrer">enablePassiveEvent</a></td>
+<td style="text-align:left">Object或boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">touch 事件监听是否为 passive</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.24.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#resolveAlias" target="_blank" rel="noopener noreferrer">resolveAlias</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">自定义模块映射规则</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#renderer" target="_blank" rel="noopener noreferrer">renderer</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">全局默认的渲染后端</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.30.4</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#rendererOptions" target="_blank" rel="noopener noreferrer">rendererOptions</a></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">渲染后端选项</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.31.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">componentFramework</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">组件框架，详见<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/glass-easel/migration.html" target="_blank" rel="noopener noreferrer">相关文档</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.30.4</a></td>
+</tr>
+<tr>
+<td style="text-align:left">miniApp</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">多端模式场景接入身份管理服务时开启小程序授权页相关配置，详见<a href="https://dev.weixin.qq.com/docs/framework/getting_started/auth.html#_4%E3%80%81%E5%BC%80%E5%90%AF%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8E%88%E6%9D%83%E9%A1%B5" target="_blank" rel="noopener noreferrer">相关文档</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">static</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">正常情况下默认所有资源文件都被打包发布到所有平台，可以通过 static 字段配置特定每个目录/文件只能发布到特定的平台(多端场景) <a href="https://dev.weixin.qq.com/docs/framework/guideline/devtools/condition-compile.html#%E8%B5%84%E6%BA%90" target="_blank" rel="noopener noreferrer">相关文档</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">convertRpxToVw</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">配置是否将 rpx 单位转换为 vw 单位，开启后能修复某些 rpx 下的精度问题</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">3.3.0</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以下简单列举了一部分, 其他未列举可以在官方文档中查看</p>
+</blockquote>
+<h3> entryPagePath</h3>
+<p>指定小程序的默认启动路径（首页），常见情景是从微信聊天列表页下拉启动、小程序列表启动等。如果不填，将默认为 <code>pages</code> 列表的第一项。不支持带页面路径参数。</p>
+<h3> pages</h3>
+<p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。文件名不需要写文件后缀，框架会自动去寻找对应位置的 <code>.json</code>, <code>.js</code>, <code>.wxml</code>, <code>.wxss</code> 四个文件进行处理。</p>
+<p>未指定 <code>entryPagePath</code> 时，数组的第一项代表小程序的初始页面（首页）。</p>
+<p><strong>小程序中新增/减少页面，都需要对 pages 数组进行修改。</strong></p>
+<p>则需要在 app.json 中写</p>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> window</h3>
+<p>用于设置小程序的状态栏、导航条、标题、窗口背景色。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">navigationBarBackgroundColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">#000000</td>
+<td style="text-align:left">导航栏背景颜色，如 <code>#000000</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationBarTextStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">white</td>
+<td style="text-align:left">导航栏标题、状态栏颜色，仅支持 <code>black</code> / <code>white</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationBarTitleText</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">导航栏标题文字内容</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">default</td>
+<td style="text-align:left">导航栏样式，仅支持以下值： <code>default</code> 默认样式 <code>custom</code> 自定义导航栏，只保留右上角胶囊按钮。参见注 2。</td>
+<td style="text-align:left">iOS/Android 微信客户端 6.6.0，Windows 微信客户端不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">homeButton</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">default</td>
+<td style="text-align:left">在非首页、非页面栈最底层页面或非tabbar内页面中的导航栏展示home键</td>
+<td style="text-align:left">微信客户端 8.0.24</td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">窗口的背景色</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundTextStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">dark</td>
+<td style="text-align:left">下拉 loading 的样式，仅支持 <code>dark</code> / <code>light</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColorTop</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">顶部窗口的背景色，仅 iOS 支持</td>
+<td style="text-align:left">微信客户端 6.5.16</td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColorBottom</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">底部窗口的背景色，仅 iOS 支持</td>
+<td style="text-align:left">微信客户端 6.5.16</td>
+</tr>
+<tr>
+<td style="text-align:left">enablePullDownRefresh</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">是否开启全局的下拉刷新。 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onpulldownrefresh" target="_blank" rel="noopener noreferrer">Page.onPullDownRefresh</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onReachBottomDistance</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">页面上拉触底事件触发时距页面底部距离，单位为 px。 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onreachbottom" target="_blank" rel="noopener noreferrer">Page.onReachBottom</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">pageOrientation</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">portrait</td>
+<td style="text-align:left">屏幕旋转设置，支持 <code>auto</code> / <code>portrait</code> / <code>landscape</code> 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/resizable.html" target="_blank" rel="noopener noreferrer">响应显示区域变化</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.0</a> (auto) / <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.5.0</a> (landscape)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#restartStrategy" target="_blank" rel="noopener noreferrer">restartStrategy</a></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">homePage</td>
+<td style="text-align:left">重新启动策略配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.8.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">initialRenderingCache</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">页面<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/initial-rendering-cache.html" target="_blank" rel="noopener noreferrer">初始渲染缓存</a>配置，支持 <code>static</code> / <code>dynamic</code></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.11.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">visualEffectInBackground</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">none</td>
+<td style="text-align:left">切入系统后台时，隐藏页面内容，保护用户隐私。支持 <code>hidden</code> / <code>none</code></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.15.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">handleWebviewPreload</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">static</td>
+<td style="text-align:left">控制<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips/runtime_nav.html#_2-4-%E6%8E%A7%E5%88%B6%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%8B%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%97%B6%E6%9C%BA" target="_blank" rel="noopener noreferrer">预加载下个页面的时机</a>。支持 <code>static</code> / <code>manual</code> / <code>auto</code></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.15.0</a></td>
+</tr>
+</tbody>
+</table>
+<p>如：</p>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202401201548556.jpeg" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h3> tabBar</h3>
+<p>如果小程序是一个多 tab 应用（客户端窗口的底部或顶部有 tab 栏可以切换页面），可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页面。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">tab 上的文字默认颜色，仅支持十六进制颜色</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">selectedColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">tab 上的文字选中时的颜色，仅支持十六进制颜色</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">tab 的背景色，仅支持十六进制颜色</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">borderStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">black</td>
+<td style="text-align:left">tabbar 上边框的颜色， 仅支持 <code>black</code> / <code>white</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">list</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">tab 的列表，详见 <code>list</code> 属性说明，最少 2 个、最多 5 个 tab</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">position</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">bottom</td>
+<td style="text-align:left">tabBar 的位置，仅支持 <code>bottom</code> / <code>top</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">custom</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">自定义 tabBar，见<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/custom-tabbar.html" target="_blank" rel="noopener noreferrer">详情</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.5.0</a></td>
+</tr>
+</tbody>
+</table>
+<p>其中 list 接受一个数组，<strong>只能配置最少 2 个、最多 5 个 tab</strong>。tab 按数组的顺序排序，每个项都是一个对象，其属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pagePath</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">页面路径，必须在 pages 中先定义</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">tab 上按钮文字</td>
+</tr>
+<tr>
+<td style="text-align:left">iconPath</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片。 <strong>当 <code>position</code> 为 <code>top</code> 时，不显示 icon。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">selectedIconPath</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">选中时的图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片。 <strong>当 <code>position</code> 为 <code>top</code> 时，不显示 icon。</strong></td>
+</tr>
+</tbody>
+</table>
+<figure><img src="https://qiniu.waite.wang/202401201556765.png" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<blockquote>
+<p>以下是一个简单示例</p>
+</blockquote>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202401201601641.png" alt="image-20240120160151572" tabindex="0" loading="lazy"><figcaption>image-20240120160151572</figcaption></figure>
+<h3> networkTimeout</h3>
+<p>各类网络请求的超时时间，单位均为毫秒。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">request</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">60000</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html" target="_blank" rel="noopener noreferrer">wx.request</a> 的超时时间，单位：毫秒。</td>
+</tr>
+<tr>
+<td style="text-align:left">connectSocket</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">60000</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.connectSocket.html" target="_blank" rel="noopener noreferrer">wx.connectSocket</a> 的超时时间，单位：毫秒。</td>
+</tr>
+<tr>
+<td style="text-align:left">uploadFile</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">60000</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html" target="_blank" rel="noopener noreferrer">wx.uploadFile</a> 的超时时间，单位：毫秒。</td>
+</tr>
+<tr>
+<td style="text-align:left">downloadFile</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">60000</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/api/network/download/wx.downloadFile.html" target="_blank" rel="noopener noreferrer">wx.downloadFile</a> 的超时时间，单位：毫秒</td>
+</tr>
+</tbody>
+</table>
+<h3> debug</h3>
+<p>可以在开发者工具中开启 <code>debug</code> 模式，在开发者工具的控制台面板，调试信息以 <code>info</code> 的形式给出，其信息有 Page 的注册，页面路由，数据更新，事件触发等。可以帮助开发者快速定位一些常见的问题。</p>
+<h2> 页面配置</h2>
+<p>app.json 中的部分配置，也支持对单个页面进行配置，可以在页面对应的 <code>.json</code> 文件来对本页面的表现进行配置。</p>
+<p>页面中配置项在当前页面会覆盖 <code>app.json</code> 中相同的配置项（样式相关的配置项属于 <code>app.json</code> 中的 <code>window</code> 属性，但这里不需要额外指定 <code>window</code> 字段），具体的取值和含义可参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html" target="_blank" rel="noopener noreferrer">全局配置文档</a>中说明。</p>
+<p>文件内容为一个 JSON 对象，有以下属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">navigationBarBackgroundColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">#000000</td>
+<td style="text-align:left">导航栏背景颜色，如 <code>#000000</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationBarTextStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">white</td>
+<td style="text-align:left">导航栏标题、状态栏颜色，仅支持 <code>black</code> / <code>white</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationBarTitleText</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">导航栏标题文字内容</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">navigationStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">default</td>
+<td style="text-align:left">导航栏样式，仅支持以下值： <code>default</code> 默认样式 <code>custom</code> 自定义导航栏，只保留右上角胶囊按钮。</td>
+<td style="text-align:left">iOS/Android 微信客户端 7.0.0，Windows 微信客户端不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">homeButton</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">在非首页、非页面栈最底层页面或非tabbar内页面中的导航栏展示home键</td>
+<td style="text-align:left">微信客户端 8.0.24</td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColor</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">窗口的背景色</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColorContent</td>
+<td style="text-align:left">HexColor</td>
+<td style="text-align:left">#RRGGBBAA</td>
+<td style="text-align:left">页面容器背景色，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/skyline/custom-route.html#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E9%80%8F%E6%98%8E" target="_blank" rel="noopener noreferrer">点击查看设置背景色详情</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundTextStyle</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">dark</td>
+<td style="text-align:left">下拉 loading 的样式，仅支持 <code>dark</code> / <code>light</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColorTop</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">顶部窗口的背景色，仅 iOS 支持</td>
+<td style="text-align:left">微信客户端 6.5.16</td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColorBottom</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#ffffff</td>
+<td style="text-align:left">底部窗口的背景色，仅 iOS 支持</td>
+<td style="text-align:left">微信客户端 6.5.16</td>
+</tr>
+<tr>
+<td style="text-align:left">enablePullDownRefresh</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">是否开启当前页面下拉刷新。 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onpulldownrefresh" target="_blank" rel="noopener noreferrer">Page.onPullDownRefresh</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onReachBottomDistance</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">页面上拉触底事件触发时距页面底部距离，单位为px。 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onreachbottom" target="_blank" rel="noopener noreferrer">Page.onReachBottom</a></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">pageOrientation</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">portrait</td>
+<td style="text-align:left">屏幕旋转设置，支持 <code>auto</code> / <code>portrait</code> / <code>landscape</code> 详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/resizable.html" target="_blank" rel="noopener noreferrer">响应显示区域变化</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.0</a> (auto) / <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.5.0</a> (landscape)</td>
+</tr>
+<tr>
+<td style="text-align:left">disableScroll</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">设置为 <code>true</code> 则页面整体不能上下滚动。 只在页面配置中有效，无法在 <code>app.json</code> 中设置</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">usingComponents</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">页面<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/" target="_blank" rel="noopener noreferrer">自定义组件</a>配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.6.3</a></td>
+</tr>
+<tr>
+<td style="text-align:left">initialRenderingCache</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">页面<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/initial-rendering-cache.html" target="_blank" rel="noopener noreferrer">初始渲染缓存</a>配置，支持 <code>static</code> / <code>dynamic</code></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.11.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">style</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">default</td>
+<td style="text-align:left">启用新版的组件样式</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.10.2</a></td>
+</tr>
+<tr>
+<td style="text-align:left">singlePage</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">单页模式相关配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.12.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">restartStrategy</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">homePage</td>
+<td style="text-align:left">重新启动策略配置</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.8.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">handleWebviewPreload</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">static</td>
+<td style="text-align:left">控制<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips/runtime_nav.html#_2-4-%E6%8E%A7%E5%88%B6%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%8B%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%97%B6%E6%9C%BA" target="_blank" rel="noopener noreferrer">预加载下个页面的时机</a>。支持 <code>static</code> / <code>manual</code> / <code>auto</code></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.15.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">visualEffectInBackground</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">切入系统后台时，隐藏页面内容，保护用户隐私。支持 <code>hidden</code> / <code>none</code>，若对页面单独设置则会覆盖全局的配置，详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html" target="_blank" rel="noopener noreferrer">全局配置</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.15.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">enablePassiveEvent</td>
+<td style="text-align:left">Object或boolean</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">事件监听是否为 passive，若对页面单独设置则会覆盖全局的配置，详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html" target="_blank" rel="noopener noreferrer">全局配置</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.24.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">renderer</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">渲染后端</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.30.4</a></td>
+</tr>
+<tr>
+<td style="text-align:left">rendererOptions</td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">渲染后端选项，详情<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html" target="_blank" rel="noopener noreferrer">相关文档</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">3.1.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">componentFramework</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">组件框架，详情<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/glass-easel/migration.html" target="_blank" rel="noopener noreferrer">相关文档</a></td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.30.4</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>注：并不是所有 <code>app.json</code> 中的配置都可以在页面覆盖或单独指定，仅限于本文档包含的选项。</li>
+<li>注：iOS/Android 客户端 7.0.0 以下版本，<code>navigationStyle</code> 只在 <code>app.json</code> 中生效。</li>
+</ul>
+<figure><img src="https://qiniu.waite.wang/202401201608866.png" alt="image-20240120160819935" tabindex="0" loading="lazy"><figcaption>image-20240120160819935</figcaption></figure>
+<h2> WXSS</h2>
+<p>WXSS (WeiXin Style Sheets)是一套样式语言，用于描述 WXML 的组件样式。</p>
+<p>WXSS 用来决定 WXML 的组件应该怎么显示。</p>
+<p>为了适应广大的前端开发者，WXSS 具有 CSS 大部分特性。同时为了更适合开发微信小程序，WXSS 对 CSS 进行了扩充以及修改。</p>
+<p>与 CSS 相比，WXSS 扩展的特性有：</p>
+<ul>
+<li>尺寸单位</li>
+<li>样式导入</li>
+</ul>
+<h3> 尺寸单位</h3>
+<ul>
+<li>rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">设备</th>
+<th style="text-align:left">rpx换算px (屏幕宽度/750)</th>
+<th style="text-align:left">px换算rpx (750/屏幕宽度)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">iPhone5</td>
+<td style="text-align:left">1rpx = 0.42px</td>
+<td style="text-align:left">1px = 2.34rpx</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone6</td>
+<td style="text-align:left">1rpx = 0.5px</td>
+<td style="text-align:left">1px = 2rpx</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone6 Plus</td>
+<td style="text-align:left">1rpx = 0.552px</td>
+<td style="text-align:left">1px = 1.81rpx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>建议：</strong> 开发微信小程序时设计师可以用 iPhone6 作为视觉稿的标准。</p>
+<p><strong>注意：</strong> 在较小的屏幕上不可避免的会有一些毛刺，请在开发时尽量避免这种情况。</p>
+<h3> 样式导入</h3>
+<p>使用<code>@import</code>语句可以导入外联样式表，<code>@import</code>后跟需要导入的外联样式表的相对路径，用<code>;</code>表示语句结束。</p>
+<p><strong>示例代码：</strong></p>
+<div class="language-less line-numbers-mode" data-ext="less"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 内联样式</h3>
+<p>框架组件上支持使用 style、class 属性来控制组件的样式。</p>
+<ul>
+<li>style：静态的样式统一写到 class 中。style 接收动态的样式，在运行时会进行解析，请尽量避免将静态的样式写进 style 中，以免影响渲染速度。</li>
+</ul>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>class：用于指定样式规则，其属性值是样式规则中类选择器名(样式类名)的集合，样式类名不需要带上<code>.</code>，样式类名之间用空格分隔。</li>
+</ul>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3> 选择器</h3>
+<p>目前支持的选择器有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">样例</th>
+<th style="text-align:left">样例描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">.class</td>
+<td style="text-align:left"><code>.intro</code></td>
+<td style="text-align:left">选择所有拥有 class="intro" 的组件</td>
+</tr>
+<tr>
+<td style="text-align:left">#id</td>
+<td style="text-align:left"><code>#firstname</code></td>
+<td style="text-align:left">选择拥有 id="firstname" 的组件</td>
+</tr>
+<tr>
+<td style="text-align:left">element</td>
+<td style="text-align:left"><code>view</code></td>
+<td style="text-align:left">选择所有 view 组件</td>
+</tr>
+<tr>
+<td style="text-align:left">element, element</td>
+<td style="text-align:left"><code>view, checkbox</code></td>
+<td style="text-align:left">选择所有文档的 view 组件和所有的 checkbox 组件</td>
+</tr>
+<tr>
+<td style="text-align:left">::after</td>
+<td style="text-align:left"><code>view::after</code></td>
+<td style="text-align:left">在 view 组件后边插入内容</td>
+</tr>
+<tr>
+<td style="text-align:left">::before</td>
+<td style="text-align:left"><code>view::before</code></td>
+<td style="text-align:left">在 view 组件前边插入内容</td>
+</tr>
+</tbody>
+</table>
+<h3> 全局样式与局部样式</h3>
+<p>定义在 app.wxss 中的样式为全局样式，作用于每一个页面。在 page 的 wxss 文件中定义的样式为局部样式，只作用在对应的页面，并会覆盖 app.wxss 中相同的选择器。</p>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202401201548556.jpeg" type="image/jpeg"/>
     </item>
     <item>
       <title>Pinia</title>
