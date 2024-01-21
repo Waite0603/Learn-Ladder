@@ -6,10 +6,530 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 20 Jan 2024 15:30:57 GMT</pubDate>
-    <lastBuildDate>Sat, 20 Jan 2024 15:30:57 GMT</lastBuildDate>
+    <pubDate>Sun, 21 Jan 2024 14:09:19 GMT</pubDate>
+    <lastBuildDate>Sun, 21 Jan 2024 14:09:19 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>微信小程序组件</title>
+      <link>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6.html</link>
+      <guid>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">微信小程序组件</source>
+      <description>https://developers.weixin.qq.com/miniprogram/dev/component/ html 中有 div、span、ul、li 、img, 而小程序上面所有的标签都没有，只有组件, 微信小程序中的组件就相当于之前HTML中的标签。但是小程序中的组件除了包裹功能，还具有样式和 js 功能。 image-20240120161419501</description>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/</p>
+</blockquote>
+<p>html 中有 <code>div、span、ul、li 、img</code>,  而小程序上面所有的标签都没有，只有组件,  微信小程序中的组件就相当于之前HTML中的标签。但是小程序中的组件除了包裹功能，还具有样式和 js 功能。</p>
+<figure><img src="https://qiniu.waite.wang/202401201614793.png" alt="image-20240120161419501" tabindex="0" loading="lazy"><figcaption>image-20240120161419501</figcaption></figure>
+<blockquote>
+<p>以下会介绍一些常用的标签, 剩下的可以在官方文档中查看</p>
+</blockquote>
+<h2> 视图/基础组件</h2>
+<h3> View</h3>
+<p>​	视图容器，view组件就相当于之前HTML中的div标签。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hover-class</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">none</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定按下去的样式类。当 <code>hover-class="none"</code> 时，没有点击态效果</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">hover-stop-propagation</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定是否阻止本节点的祖先节点出现点击态</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.5.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">hover-start-time</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">按住后多久出现点击态，单位毫秒</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">hover-stay-time</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">400</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">手指松开后点击态保留时间，单位毫秒</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+</tbody>
+</table>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>以下是一个 Flex 布局的例子</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202401201623482.png" alt="image-20240120162353536" tabindex="0" loading="lazy"><figcaption>image-20240120162353536</figcaption></figure>
+<h3> text</h3>
+<p>​	文本组件，相当于HTML中的span标签。</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3> swiper</h3>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F%E6%95%88%E6%9E%9C%E6%BC%94%E7%A4%BA</p>
+</blockquote>
+<p>滑块视图容器。其中只可放置<code>swiper-item</code>组件，否则会导致未定义的行为。也就是说swiper内部只能放swiper-item组件，而swiper-item组件中就可以随便放其它组件及内容了。</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>可以看到swiper组件有轮播图的效果。而且它有默认的高度(150px)。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+<th>最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">indicator-dots</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是否显示面板指示点</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">indicator-color</td>
+<td style="text-align:left">color</td>
+<td style="text-align:left">rgba(0, 0, 0, .3)</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指示点颜色</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.1.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">indicator-active-color</td>
+<td style="text-align:left">color</td>
+<td style="text-align:left">#000000</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">当前选中的指示点颜色</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.1.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">autoplay</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是否自动切换</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">current</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">当前所在滑块的 index</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">interval</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">自动切换时间间隔</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">duration</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">500</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">滑动动画时长</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">circular</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是否采用衔接滑动</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">vertical</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">滑动方向是否为纵向</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">display-multiple-items</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">同时显示的滑块数量</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.9.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">previous-margin</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">"0px"</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.9.0</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以下是一个简单的轮播图效果</p>
+</blockquote>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>当然, 在 Skyline 渲染模式下, 他也会有不同的表现, 具体可以看</p>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html#%E6%8C%87%E7%A4%BA%E5%99%A8%E6%95%88%E6%9E%9C%E6%BC%94%E7%A4%BA</p>
+</blockquote>
+<h3> scroll-view</h3>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html</p>
+</blockquote>
+<p>可滚动视图区域。使用竖向滚动时，需要给<a href="https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html" target="_blank" rel="noopener noreferrer">scroll-view</a>一个固定高度，通过 WXSS 设置 height。组件属性的长度单位默认为px，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.0</a>起支持传入单位(rpx/px)。</p>
+<ol>
+<li>横向滚动需打开 enable-flex 以兼容 WebView，如 </li>
+<li>滚动条的长度是预估的，若直接子节点的高度差别较大，则滚动条长度可能会不准确</li>
+<li>使用 <code>worklet</code> 函数需要开启开发者工具 "将 JS 编译成 ES5" 或 "编译 worklet 函数" 选项。</li>
+</ol>
+<blockquote>
+<p>以下我会给出 纵向滚动 以及 横向滚动 两个效果, 具体属性可以在官方文档中查看</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html#scroll-view-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E7%A4%BA%E4%BE%8B</p>
+</blockquote>
+<blockquote>
+<p>以下是横向滚动案例</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> icon</h3>
+<p>​	icon组件就是在页面可以显示一个图标。</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">number/string</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">icon的大小，单位默认为px，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.0</a>起支持传入单位(rpx/px)，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.21.3</a>起支持传入其余单位(rem 等)。</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">icon的颜色，同css的color</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+</tbody>
+</table>
+<h3> progress 进度条</h3>
+<p>进度条。组件属性的长度单位默认为px，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.0</a>起支持传入单位(rpx/px)。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">percent</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">百分比0~100</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">show-info</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">在进度条右侧显示百分比</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">border-radius</td>
+<td style="text-align:left">number/string</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">圆角大小</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.3.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">font-size</td>
+<td style="text-align:left">number/string</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">右侧百分比字体大小</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.3.1</a></td>
+</tr>
+<tr>
+<td style="text-align:left">stroke-width</td>
+<td style="text-align:left">number/string</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">进度条线的宽度</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#09BB07</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">进度条颜色（请使用activeColor）</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">activeColor</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#09BB07</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">已选择的进度条的颜色</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">backgroundColor</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">#EBEBEB</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">未选择的进度条的颜色</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">active</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">进度条从左往右的动画</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">active-mode</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">backwards</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">backwards: 动画从头播；forwards：动画从上次结束点接着播</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.7.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left">duration</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">进度增加1%所需毫秒数</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.8.2</a></td>
+</tr>
+<tr>
+<td style="text-align:left">bindactiveend</td>
+<td style="text-align:left">eventhandle</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">动画完成事件</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.4.1</a></td>
+</tr>
+</tbody>
+</table>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202401210046684.png" alt="image-20240121004604493" tabindex="0" loading="lazy"><figcaption>image-20240121004604493</figcaption></figure>
+<h2> 表单组件</h2>
+<blockquote>
+<p>具体可以在官方文档查看</p>
+</blockquote>
+<h3> Button</h3>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/button.html</p>
+<p>具体属性看官方文档, 可以通过 <code>open-type</code> 配置分享, 打开交流窗口等等功能</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202401212153960.png" alt="image-20240121215332766" tabindex="0" loading="lazy"><figcaption>image-20240121215332766</figcaption></figure>
+<h2> 导航组件</h2>
+<h3> navigator</h3>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html</p>
+<p>navigator组件相当于HTML的超链接标签。</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 媒体组件</h2>
+<h3> image</h3>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/image.html</p>
+</blockquote>
+<p>为了保证大小, 可以使用裁剪或者缩放调整大小</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">必填</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">show-menu-by-longpress</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单。</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.7.0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">mode</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">scaleToFill</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">图片裁剪、缩放的模式</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">1.0.0</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">合法值</td>
+<td style="text-align:left">说明</td>
+<td style="text-align:left">最低版本</td>
+</tr>
+<tr>
+<td style="text-align:left">scaleToFill</td>
+<td style="text-align:left">缩放模式，不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">aspectFit</td>
+<td style="text-align:left">缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">aspectFill</td>
+<td style="text-align:left">缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">widthFix</td>
+<td style="text-align:left">缩放模式，宽度不变，高度自动变化，保持原图宽高比不变</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">heightFix</td>
+<td style="text-align:left">缩放模式，高度不变，宽度自动变化，保持原图宽高比不变</td>
+<td style="text-align:left"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener noreferrer">2.10.3</a></td>
+</tr>
+<tr>
+<td style="text-align:left">top</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的顶部区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bottom</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的底部区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">center</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的中间区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的左边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的右边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">top left</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的左上边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">top right</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的右上边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bottom left</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的左下边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bottom right</td>
+<td style="text-align:left">裁剪模式，不缩放图片，只显示图片的右下边区域。仅 Webview 支持。</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>可以在 https://developers.weixin.qq.com/miniprogram/dev/component/image.html#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81 查看示例代码</p>
+</blockquote>
+<h2> 地图组件</h2>
+<blockquote>
+<p>https://developers.weixin.qq.com/miniprogram/dev/component/map.html</p>
+</blockquote>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202401201614793.png" type="image/png"/>
+    </item>
     <item>
       <title>微信小程序介绍</title>
       <link>https://brain.sunguoqi.com/web/weChat/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BB%8B%E7%BB%8D.html</link>
