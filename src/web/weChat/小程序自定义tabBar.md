@@ -1,7 +1,7 @@
 ---
 title: 微信小程序组件
 icon: post
-order: 3
+order: 8
 date: 2024-03-26
 ---
 

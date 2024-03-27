@@ -75,4 +75,11 @@ export const web = arraySidebar([
     children: "structure",
     collapsible: true,
   },
+  {
+    text: "Uni-app",
+    icon: "package",
+    prefix: "uni-app/",
+    children: "structure",
+    collapsible: true,
+  }
 ]);
