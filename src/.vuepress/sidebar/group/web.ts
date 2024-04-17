@@ -81,5 +81,12 @@ export const web = arraySidebar([
     prefix: "uni-app/",
     children: "structure",
     collapsible: true,
+  },
+  {
+    text: "鸿蒙",
+    icon: "package",
+    prefix: "harmony/",
+    children: "structure",
+    collapsible: true,
   }
 ]);
