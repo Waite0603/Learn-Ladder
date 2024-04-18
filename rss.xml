@@ -6,10 +6,97 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 17 Apr 2024 16:22:08 GMT</pubDate>
-    <lastBuildDate>Wed, 17 Apr 2024 16:22:08 GMT</lastBuildDate>
+    <pubDate>Thu, 18 Apr 2024 15:19:09 GMT</pubDate>
+    <lastBuildDate>Thu, 18 Apr 2024 15:19:09 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>初识ArkTS语言</title>
+      <link>https://brain.sunguoqi.com/web/harmony/ArkTs.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/ArkTs.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">初识ArkTS语言</source>
+      <description>ArkTS语言 ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。 当前，ArkTS在TS的基础上主要扩展了如下能力： 基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。 状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。 渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</description>
+      <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> ArkTS语言</h2>
+<p>ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。</p>
+<p>当前，ArkTS在TS的基础上主要扩展了如下能力：</p>
+<ul>
+<li>基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。</li>
+<li>状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。</li>
+<li>渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</li>
+</ul>
+<p>未来，ArkTS会结合应用开发/运行的需求持续演进，逐步提供并行和并发能力增强、系统类型增强、分布式开发范式等更多特性。</p>
+<h2> 基本语法</h2>
+<h3> ArkTS 基本组成</h3>
+<figure><img src="https://qiniu.waite.wang/202404181345776.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://qiniu.waite.wang/202404181347607.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<blockquote>
+<p>自定义变量不能与基础通用属性/事件名重复。</p>
+</blockquote>
+<ul>
+<li>装饰器： 用于装饰类、结构、方法以及变量，并赋予其特殊的含义。如上述示例中@Entry、@Component和@State都是装饰器，@Component表示自定义组件，@Entry表示该自定义组件为入口组件，@State表示组件中的状态变量，状态变量变化会触发UI刷新。</li>
+<li>UI描述：以声明式的方式来描述UI的结构，例如build()方法中的代码块。</li>
+<li>自定义组件：可复用的UI单元，可组合其他组件，如上述被@Component装饰的struct Hello。</li>
+<li>系统组件：ArkUI框架中默认内置的基础和容器组件，可直接被开发者调用，比如示例中的Column、Text、Divider、Button。</li>
+<li>属性方法：组件可以通过链式调用配置多项属性，如fontSize()、width()、height()、backgroundColor()等。</li>
+<li>事件方法：组件可以通过链式调用设置多个事件的响应逻辑，如跟随在Button后面的onClick()。</li>
+<li>系统组件、属性方法、事件方法具体使用可参考基于ArkTS的声明式开发范式。</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202404181345776.png" type="image/png"/>
+    </item>
+    <item>
+      <title>ArkUI 组件</title>
+      <link>https://brain.sunguoqi.com/web/harmony/ArkUI%E7%BB%84%E4%BB%B6.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/ArkUI%E7%BB%84%E4%BB%B6.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">ArkUI 组件</source>
+      <description>基础组件 Text Text($r(&amp;quot;app.string.module_desc&amp;quot;))</description>
+      <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 基础组件</h2>
+<h3> Text</h3>
+<figure><img src="https://qiniu.waite.wang/202404181859349.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><blockquote>
+<p>文本会先在对应国家的资源文件中查找，如果没有找到，会在 base 全局资源文件中查找。</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202404181902495.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://qiniu.waite.wang/202404181903070.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> TextInput</h3>
+<figure><img src="https://qiniu.waite.wang/202404182154723.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> Button</h3>
+<figure><img src="https://qiniu.waite.wang/202404182156605.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>方法1： Button(options?: {type?: ButtonType, stateEffect?: boolean})</p>
+<p>方法2： Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean })</p>
+<p>使用文本内容创建相应的按钮组件，此时Button无法包含子组件。</p>
+<h3> Image</h3>
+<p>图片组件，支持本地图片和网络图片的渲染展示。</p>
+<blockquote>
+<p>Image(src: string | PixelMap | Resource)
+图片的数据源，支持本地图片和网络图片。当使用相对路径引用图片资源时，例如Image("common/test.jpg")，不支持该Image组件被跨包/跨模块调用，建议使用$r方式来管理需全局使用的图片资源。</p>
+<ul>
+<li>支持的图片格式包括png、jpg、bmp、svg和gif。</li>
+<li>支持Base64字符串。格式data:image/[png|jpeg|bmp|webp];base64,[base64 data], 其中[base64 data]为Base64字符串数据。</li>
+<li>支持dataability://路径前缀的字符串，用于访问通过data ability提供的图片路径。</li>
+</ul>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202404181838112.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h4> 从网络加载图片</h4>
+<p>使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/accesstoken-guidelines-0000001333800609-V3#ZH-CN_TOPIC_0000001333800609__%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7%E5%A3%B0%E6%98%8E" target="_blank" rel="noopener noreferrer">权限申请声明</a>。</p>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>通过以下代码，可以加载网络图片：</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 从本地加载</h4>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> Slider</h3>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 容器组件</h2>
+<p>https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V3/arkui-ts-container-components-0000001334734185-V3</p>
+<h3> Column</h3>
+<p>沿垂直方向布局的容器。</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404182315467.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> Row</h3>
+<p>沿水平方向布局容器。</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404182315827.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 案例</h2>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404182317729.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202404181859349.png" type="image/png"/>
+    </item>
     <item>
       <title>安装 DevEcoStudio</title>
       <link>https://brain.sunguoqi.com/web/harmony/studio.html</link>
@@ -76,6 +163,46 @@
 <figure><img src="https://qiniu.waite.wang/202404171232136.png" alt="image-20240417123227197" tabindex="0" loading="lazy"><figcaption>image-20240417123227197</figcaption></figure>
 <p>效果如下</p>
 <figure><img src="https://qiniu.waite.wang/202404171232051.png" alt="image-20240417123240912" tabindex="0" loading="lazy"><figcaption>image-20240417123240912</figcaption></figure>
+<h2> Stage 与 FA 模型的区别</h2>
+<h3> FA模型：早期的探索</h3>
+<p>FA模型是HarmonyOS早期版本开始支持的应用模型。它通过PageAbility、ServiceAbility和DataAbility三种组件，为开发者提供了构建应用的基础。FA模型的特点是每个组件运行在自己的进程中，拥有独立的JS VM引擎实例，这使得组件之间相互隔离，但也带来了一定的内存占用。</p>
+<p>随着HarmonyOS的演进，特别是1+8+N的战略被提出，多设备和多窗口形态成为主流，此时FA模型在处理复杂应用时存在一定的局限性， FA模型逐渐不再被主推。</p>
+<h3> Stage模型：未来的主流</h3>
+<p>为了更好地适应复杂应用的开发需求，HarmonyOS 3.1 Developer Preview版本引入了Stage模型。Stage模型通过AbilityStage、WindowStage等类，将应用组件和Window窗口作为“舞台”进行管理，从而提供了更加灵活和高效的开发方式。</p>
+<p>Stage模型的设计出发点是为了复杂应用而设计，它通过以下几个方面实现了对复杂应用的优化：</p>
+<ol>
+<li>
+<p>共享ArkTS引擎实例：在Stage模型中，多个应用组件共享同一个ArkTS引擎实例，这使得组件之间可以方便地共享对象和状态，同时减少了内存占用。</p>
+</li>
+<li>
+<p>面向对象的开发方式：Stage模型采用面向对象的开发方式，提高了代码的可读性、易维护性和可扩展性。</p>
+</li>
+<li>
+<p>支持多设备和多窗口形态：应用组件管理和窗口管理在架构层面解耦，使得应用组件可以在不同设备上使用同一套生命周期，便于系统扩展窗口形态。</p>
+</li>
+<li>
+<p>平衡应用能力和系统管控成本：Stage模型重新定义了应用能力的边界，提供了特定场景的应用组件，规范化了后台进程管理，防止了恶意应用行为。</p>
+</li>
+</ol>
+<h2> （Stage模型）目录结构</h2>
+<figure><img src="https://qiniu.waite.wang/202404181340550.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<ul>
+<li>AppScope &gt; app.json5：应用的全局配置信息。</li>
+<li>entry：HarmonyOS工程模块，编译构建生成一个HAP包。
+<ul>
+<li>src &gt; main &gt; ets：用于存放ArkTS源码。
+src &gt; main &gt; ets &gt; entryability：应用/服务的入口。</li>
+<li>src &gt; main &gt; ets &gt; pages：应用/服务包含的页面</li>
+<li>src &gt; main &gt; resources：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，详见资源分类与访问。</li>
+<li>src &gt; main &gt; module.json5：Stage模型模块配置文件。主要包含HAP包的配置信息、应用/服务在具体设备上的配置信息以及应用/服务的全局配置信息。具体的配置文件说明，详见<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/module-configuration-file-0000001427744540-V2" target="_blank" rel="noopener noreferrer">module.json5配置文件</a>。</li>
+<li>build-profile.json5：当前的模块信息、编译信息配置项，包括buildOption、targets配置等。其中targets中可配置当前运行环境，默认为HarmonyOS。</li>
+<li>hvigorfile.ts：模块级编译构建任务脚本，开发者可以自定义相关任务和代码实现。</li>
+</ul>
+</li>
+<li>oh_modules：用于存放三方库依赖信息。关于原npm工程适配ohpm操作，请参考历史工程迁移。</li>
+<li>build-profile.json5：应用级配置信息，包括签名、产品配置等。</li>
+<li>hvigorfile.ts：应用级编译构建任务脚本。</li>
+</ul>
 ]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/202404171217774.png" type="image/png"/>
     </item>
