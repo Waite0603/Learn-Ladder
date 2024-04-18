@@ -104,3 +104,45 @@ Create Project -> Empty Ability -> 按要求填写目录即可
 效果如下
 
 ![image-20240417123240912](https://qiniu.waite.wang/202404171232051.png)
+
+
+## Stage 与 FA 模型的区别
+
+### FA模型：早期的探索
+
+FA模型是HarmonyOS早期版本开始支持的应用模型。它通过PageAbility、ServiceAbility和DataAbility三种组件，为开发者提供了构建应用的基础。FA模型的特点是每个组件运行在自己的进程中，拥有独立的JS VM引擎实例，这使得组件之间相互隔离，但也带来了一定的内存占用。
+
+随着HarmonyOS的演进，特别是1+8+N的战略被提出，多设备和多窗口形态成为主流，此时FA模型在处理复杂应用时存在一定的局限性， FA模型逐渐不再被主推。
+
+
+### Stage模型：未来的主流
+
+为了更好地适应复杂应用的开发需求，HarmonyOS 3.1 Developer Preview版本引入了Stage模型。Stage模型通过AbilityStage、WindowStage等类，将应用组件和Window窗口作为“舞台”进行管理，从而提供了更加灵活和高效的开发方式。
+
+Stage模型的设计出发点是为了复杂应用而设计，它通过以下几个方面实现了对复杂应用的优化：
+
+1. 共享ArkTS引擎实例：在Stage模型中，多个应用组件共享同一个ArkTS引擎实例，这使得组件之间可以方便地共享对象和状态，同时减少了内存占用。
+
+2. 面向对象的开发方式：Stage模型采用面向对象的开发方式，提高了代码的可读性、易维护性和可扩展性。
+
+3. 支持多设备和多窗口形态：应用组件管理和窗口管理在架构层面解耦，使得应用组件可以在不同设备上使用同一套生命周期，便于系统扩展窗口形态。
+
+4. 平衡应用能力和系统管控成本：Stage模型重新定义了应用能力的边界，提供了特定场景的应用组件，规范化了后台进程管理，防止了恶意应用行为。
+
+
+## （Stage模型）目录结构
+
+![](https://qiniu.waite.wang/202404181340550.png)
+
++ AppScope > app.json5：应用的全局配置信息。
++ entry：HarmonyOS工程模块，编译构建生成一个HAP包。
+  + src > main > ets：用于存放ArkTS源码。
+src > main > ets > entryability：应用/服务的入口。
+  + src > main > ets > pages：应用/服务包含的页面
+  + src > main > resources：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，详见资源分类与访问。
+  + src > main > module.json5：Stage模型模块配置文件。主要包含HAP包的配置信息、应用/服务在具体设备上的配置信息以及应用/服务的全局配置信息。具体的配置文件说明，详见[module.json5配置文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/module-configuration-file-0000001427744540-V2)。
+  + build-profile.json5：当前的模块信息、编译信息配置项，包括buildOption、targets配置等。其中targets中可配置当前运行环境，默认为HarmonyOS。
+  + hvigorfile.ts：模块级编译构建任务脚本，开发者可以自定义相关任务和代码实现。
++ oh_modules：用于存放三方库依赖信息。关于原npm工程适配ohpm操作，请参考历史工程迁移。
++ build-profile.json5：应用级配置信息，包括签名、产品配置等。
++ hvigorfile.ts：应用级编译构建任务脚本。
