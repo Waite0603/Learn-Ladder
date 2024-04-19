@@ -271,3 +271,151 @@ struct Index {
 ```
 
 ![](https://qiniu.waite.wang/202404182317729.png)
+
+
+## 循环控制
+
+https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/arkts-rendering-control-foreach-0000001524537153-V2
+
+
+```ts
+ForEach(
+  arr: Array,
+  itemGenerator: (item: any, index: number) => void,
+  keyGenerator?: (item: any, index: number) => string
+)
+```
+
+在ForEach循环渲染过程中，系统会为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。当这个键值变化时，ArkUI框架将视为该数组元素已被替换或修改，并会基于新的键值创建一个新的组件。
+
+ForEach提供了一个名为keyGenerator的参数，这是一个函数，开发者可以通过它自定义键值的生成规则。如果开发者没有定义keyGenerator函数，则ArkUI框架会使用默认的键值生成函数，即(item: any, index: number) => { return index + '__' + JSON.stringify(item); }。
+
+ArkUI框架对于ForEach的键值生成有一套特定的判断规则，这主要与itemGenerator函数的第二个参数index以及keyGenerator函数的第二个参数index有关，具体的键值生成规则判断逻辑如下图所示。
+
+![](https://qiniu.waite.wang/202404191757732.png)
+
+> 以下是一个简单例子, 具体可以到官方文档查看
+
+```ts
+class Item {
+  name: string
+  image: string
+  price: number
+  discount: number
+
+  constructor(name: string, image: string, price: number, discount: number = 0) {
+    this.name = name
+    this.image = image
+    this.price = price
+    this.discount = discount
+  }
+}
+
+@Entry
+@Component
+struct Second {
+  private items: Array<Item> = [
+    new Item("华为Mate1", "https://qiniu.waite.wang/202404182317729.png", 1666, 1000),
+    new Item("华为Mate2", "https://qiniu.waite.wang/202404182317729.png", 1999),
+    new Item("华为Mate3", "https://qiniu.waite.wang/202404182317729.png", 2666),
+    new Item("华为Mate4", "https://qiniu.waite.wang/202404182317729.png", 2999),
+    new Item("华为Mate5", "https://qiniu.waite.wang/202404182317729.png", 3666),
+    new Item("华为Mate6", "https://qiniu.waite.wang/202404182317729.png", 3999),
+
+  ]
+  @State message: string = 'Hi there'
+
+  build() {
+    Column({ space: 10 }) {
+      Row() {
+        Text("商品列表")
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width("100%")
+
+      ForEach(
+        this.items,
+        (item: Item) => {
+          Row({ space: 10 }) {
+            Image(item.image)
+              .width(100)
+
+            Column() {
+              Text(item.name)
+                .fontSize(20)
+                .fontWeight(FontWeight.Bold)
+
+              if (item.discount) {
+                Text(`原价$ ${item.price}`)
+                  .fontColor("#ccc")
+                  .fontSize(18)
+                  .decoration({
+                    type: TextDecorationType.LineThrough
+                  })
+
+                Text(`折扣价$ ${item.discount}`)
+                  .fontColor("red")
+                  .fontSize(18)
+              }
+              else {
+                Text(`$ ${item.price}`)
+                  .fontColor("red")
+                  .fontSize(18)
+              }
+            }
+            .height("100%")
+            .alignItems(HorizontalAlign.Start)
+          }
+          .width("100%")
+          .backgroundColor("#f8f8f8")
+          .borderRadius(20)
+          .height(120)
+          .padding(10)
+        }
+      )
+
+
+    }
+    .padding(20)
+  }
+}
+```
+
+![](https://qiniu.waite.wang/202404191800166.png)
+
+> 注意 当不同数组项按照键值生成规则生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项two时，只创建了一个ChildItem组件，而没有创建多个具有相同键值的组件。
+
+```ts
+@Entry
+@Component
+struct Parent {
+  @State simpleList: Array<string> = ['one', 'two', 'two', 'three'];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, (item: string) => {
+          ChildItem({ 'item': item } as Record<string, string>)
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@Component
+struct ChildItem {
+  @Prop item: string;
+
+  build() {
+    Text(this.item)
+      .fontSize(50)
+  }
+}
+```
+
+![](https://qiniu.waite.wang/202404191801029.png)
