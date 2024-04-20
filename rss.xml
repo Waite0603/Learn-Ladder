@@ -6,50 +6,15 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 19 Apr 2024 13:29:08 GMT</pubDate>
-    <lastBuildDate>Fri, 19 Apr 2024 13:29:08 GMT</lastBuildDate>
+    <pubDate>Sat, 20 Apr 2024 14:21:03 GMT</pubDate>
+    <lastBuildDate>Sat, 20 Apr 2024 14:21:03 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
-      <title>初识ArkTS语言</title>
-      <link>https://brain.sunguoqi.com/web/harmony/ArkTs.html</link>
-      <guid>https://brain.sunguoqi.com/web/harmony/ArkTs.html</guid>
-      <source url="https://brain.sunguoqi.com/rss.xml">初识ArkTS语言</source>
-      <description>ArkTS语言 ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。 当前，ArkTS在TS的基础上主要扩展了如下能力： 基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。 状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。 渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</description>
-      <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2> ArkTS语言</h2>
-<p>ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。</p>
-<p>当前，ArkTS在TS的基础上主要扩展了如下能力：</p>
-<ul>
-<li>基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。</li>
-<li>状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。</li>
-<li>渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</li>
-</ul>
-<p>未来，ArkTS会结合应用开发/运行的需求持续演进，逐步提供并行和并发能力增强、系统类型增强、分布式开发范式等更多特性。</p>
-<h2> 基本语法</h2>
-<h3> ArkTS 基本组成</h3>
-<figure><img src="https://qiniu.waite.wang/202404181345776.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
-<figure><img src="https://qiniu.waite.wang/202404181347607.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
-<blockquote>
-<p>自定义变量不能与基础通用属性/事件名重复。</p>
-</blockquote>
-<ul>
-<li>装饰器： 用于装饰类、结构、方法以及变量，并赋予其特殊的含义。如上述示例中@Entry、@Component和@State都是装饰器，@Component表示自定义组件，@Entry表示该自定义组件为入口组件，@State表示组件中的状态变量，状态变量变化会触发UI刷新。</li>
-<li>UI描述：以声明式的方式来描述UI的结构，例如build()方法中的代码块。</li>
-<li>自定义组件：可复用的UI单元，可组合其他组件，如上述被@Component装饰的struct Hello。</li>
-<li>系统组件：ArkUI框架中默认内置的基础和容器组件，可直接被开发者调用，比如示例中的Column、Text、Divider、Button。</li>
-<li>属性方法：组件可以通过链式调用配置多项属性，如fontSize()、width()、height()、backgroundColor()等。</li>
-<li>事件方法：组件可以通过链式调用设置多个事件的响应逻辑，如跟随在Button后面的onClick()。</li>
-<li>系统组件、属性方法、事件方法具体使用可参考基于ArkTS的声明式开发范式。</li>
-</ul>
-]]></content:encoded>
-      <enclosure url="https://qiniu.waite.wang/202404181345776.png" type="image/png"/>
-    </item>
-    <item>
-      <title>ArkUI 组件</title>
-      <link>https://brain.sunguoqi.com/web/harmony/ArkUI%E7%BB%84%E4%BB%B6.html</link>
-      <guid>https://brain.sunguoqi.com/web/harmony/ArkUI%E7%BB%84%E4%BB%B6.html</guid>
-      <source url="https://brain.sunguoqi.com/rss.xml">ArkUI 组件</source>
+      <title>ArkUI 基础组件</title>
+      <link>https://brain.sunguoqi.com/web/harmony/ArkUI%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/ArkUI%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">ArkUI 基础组件</source>
       <description>基础组件 Text Text($r(&amp;quot;app.string.module_desc&amp;quot;))</description>
       <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 基础组件</h2>
@@ -108,8 +73,75 @@
 <p>注意 当不同数组项按照键值生成规则生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项two时，只创建了一个ChildItem组件，而没有创建多个具有相同键值的组件。</p>
 </blockquote>
 <div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404191801029.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 补充: List/ ListItem</h3>
+<blockquote>
+<p>在以上案例中, 超出屏幕的内容无法滚动查看(会隐藏), 可以使用 List/ ListItem 组件来实现</p>
+</blockquote>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404201343460.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 ]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/202404181859349.png" type="image/png"/>
+    </item>
+    <item>
+      <title>ArkUI 自定义组件</title>
+      <link>https://brain.sunguoqi.com/web/harmony/ArkUI%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/ArkUI%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">ArkUI 自定义组件</source>
+      <description>自定义组件的基本结构 struct：自定义组件基于struct实现，struct + 自定义组件名 + {...}的组合构成自定义组件，不能有继承关系。对于struct的实例化，可以省略new。 自定义组件名、类名、函数名不能和系统组件名相同。 @Component：@Component装饰器仅能装饰struct关键字声明的数据结构。struct被@Component装饰后具备组件化的能力，需要实现build方法描述UI，一个struct只能被一个@Component装饰。 从API version 9开始，该装饰器支持在ArkTS卡片中使用。</description>
+      <pubDate>Sat, 20 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 自定义组件的基本结构</h2>
+<p>struct：自定义组件基于struct实现，struct + 自定义组件名 + {...}的组合构成自定义组件，不能有继承关系。对于struct的实例化，可以省略new。</p>
+<blockquote>
+<p>自定义组件名、类名、函数名不能和系统组件名相同。</p>
+</blockquote>
+<p>@Component：@Component装饰器仅能装饰struct关键字声明的数据结构。struct被@Component装饰后具备组件化的能力，需要实现build方法描述UI，一个struct只能被一个@Component装饰。</p>
+<blockquote>
+<p>从API version 9开始，该装饰器支持在ArkTS卡片中使用。</p>
+</blockquote>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>build()函数：build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。</p>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>@Entry：@Entry装饰的自定义组件将作为UI页面的入口。在单个UI页面中，最多可以使用@Entry装饰一个自定义组件。@Entry可以接受一个可选的LocalStorage的参数。</p>
+<blockquote>
+<p>从API version 9开始，该装饰器支持在ArkTS卡片中使用。</p>
+</blockquote>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 自定义组件的基本用法</h2>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>如果在另外的文件中引用该自定义组件，需要使用export关键字导出，并在使用的页面import该自定义组件。</p>
+</blockquote>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>初识ArkTS语言</title>
+      <link>https://brain.sunguoqi.com/web/harmony/ArkTs.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/ArkTs.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">初识ArkTS语言</source>
+      <description>ArkTS语言 ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。 当前，ArkTS在TS的基础上主要扩展了如下能力： 基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。 状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。 渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</description>
+      <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> ArkTS语言</h2>
+<p>ArkTS是HarmonyOS优选的主力应用开发语言。ArkTS围绕应用开发在TypeScript（简称TS）生态基础上做了进一步扩展，继承了TS的所有特性，是TS的超集。因此，在学习ArkTS语言之前，建议开发者具备TS语言开发能力。</p>
+<p>当前，ArkTS在TS的基础上主要扩展了如下能力：</p>
+<ul>
+<li>基本语法：ArkTS定义了声明式UI描述、自定义组件和动态扩展UI元素的能力，再配合ArkUI开发框架中的系统组件及其相关的事件方法、属性方法等共同构成了UI开发的主体。</li>
+<li>状态管理：ArkTS提供了多维度的状态管理机制。在UI开发框架中，与UI相关联的数据可以在组件内使用，也可以在不同组件层级间传递，比如父子组件之间、爷孙组件之间，还可以在应用全局范围内传递或跨设备传递。另外，从数据的传递形式来看，可分为只读的单向传递和可变更的双向传递。开发者可以灵活地利用这些能力来实现数据和UI的联动。</li>
+<li>渲染控制：ArkTS提供了渲染控制的能力。条件渲染可根据应用的不同状态，渲染对应状态下的UI内容。循环渲染可从数据源中迭代获取数据，并在每次迭代过程中创建相应的组件。数据懒加载从数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。</li>
+</ul>
+<p>未来，ArkTS会结合应用开发/运行的需求持续演进，逐步提供并行和并发能力增强、系统类型增强、分布式开发范式等更多特性。</p>
+<h2> 基本语法</h2>
+<h3> ArkTS 基本组成</h3>
+<figure><img src="https://qiniu.waite.wang/202404181345776.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<figure><img src="https://qiniu.waite.wang/202404181347607.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<blockquote>
+<p>自定义变量不能与基础通用属性/事件名重复。</p>
+</blockquote>
+<ul>
+<li>装饰器： 用于装饰类、结构、方法以及变量，并赋予其特殊的含义。如上述示例中@Entry、@Component和@State都是装饰器，@Component表示自定义组件，@Entry表示该自定义组件为入口组件，@State表示组件中的状态变量，状态变量变化会触发UI刷新。</li>
+<li>UI描述：以声明式的方式来描述UI的结构，例如build()方法中的代码块。</li>
+<li>自定义组件：可复用的UI单元，可组合其他组件，如上述被@Component装饰的struct Hello。</li>
+<li>系统组件：ArkUI框架中默认内置的基础和容器组件，可直接被开发者调用，比如示例中的Column、Text、Divider、Button。</li>
+<li>属性方法：组件可以通过链式调用配置多项属性，如fontSize()、width()、height()、backgroundColor()等。</li>
+<li>事件方法：组件可以通过链式调用设置多个事件的响应逻辑，如跟随在Button后面的onClick()。</li>
+<li>系统组件、属性方法、事件方法具体使用可参考基于ArkTS的声明式开发范式。</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202404181345776.png" type="image/png"/>
     </item>
     <item>
       <title>安装 DevEcoStudio</title>
