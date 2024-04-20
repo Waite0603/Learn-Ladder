@@ -1,5 +1,5 @@
 ---
-title: ArkUI 组件
+title: ArkUI 基础组件
 icon: post
 order: 2
 date: 2024-04-18
@@ -419,3 +419,33 @@ struct ChildItem {
 ```
 
 ![](https://qiniu.waite.wang/202404191801029.png)
+
+### 补充: List/ ListItem
+
+> 在以上案例中, 超出屏幕的内容无法滚动查看(会隐藏), 可以使用 List/ ListItem 组件来实现
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ListItemExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  @State editFlag: boolean = false
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 }) {
+        ForEach(this.arr, (item) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, item => item)
+      }
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+  }
+}
+```
+
+![](https://qiniu.waite.wang/202404201343460.png)
