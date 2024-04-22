@@ -6,10 +6,73 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 21 Apr 2024 09:28:04 GMT</pubDate>
-    <lastBuildDate>Sun, 21 Apr 2024 09:28:04 GMT</lastBuildDate>
+    <pubDate>Mon, 22 Apr 2024 14:18:36 GMT</pubDate>
+    <lastBuildDate>Mon, 22 Apr 2024 14:18:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>状态管理</title>
+      <link>https://brain.sunguoqi.com/web/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">状态管理</source>
+      <description>在声明式UI编程框架中，UI是程序状态的运行结果，用户构建了一个UI模型，其中应用的运行时的状态是参数。当参数改变时，UI作为返回结果，也将进行对应的改变。这些运行时的状态变化所带来的UI的重新渲染，在ArkUI中统称为状态管理机制。 自定义组件拥有变量，变量必须被装饰器装饰才可以成为状态变量，状态变量的改变会引起UI的渲染刷新。如果不使用状态变量，UI只能在初始化时渲染，后续将不会再刷新。 下图展示了State和View（UI）之间的关系。 https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/arkts-state-management-overview-0000001524537145-V2</description>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在声明式UI编程框架中，UI是程序状态的运行结果，用户构建了一个UI模型，其中应用的运行时的状态是参数。当参数改变时，UI作为返回结果，也将进行对应的改变。这些运行时的状态变化所带来的UI的重新渲染，在ArkUI中统称为状态管理机制。</p>
+<p>自定义组件拥有变量，变量必须被装饰器装饰才可以成为状态变量，状态变量的改变会引起UI的渲染刷新。如果不使用状态变量，UI只能在初始化时渲染，后续将不会再刷新。 下图展示了State和View（UI）之间的关系。</p>
+<p>https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/arkts-state-management-overview-0000001524537145-V2</p>
+<figure><img src="https://qiniu.waite.wang/202404211849420.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<ul>
+<li>
+<p>View(UI)：UI渲染，指将build方法内的UI描述和@Builder装饰的方法内的UI描述映射到界面。</p>
+</li>
+<li>
+<p>State：状态，指驱动UI更新的数据。用户通过触发组件的事件方法，改变状态数据。状态数据的改变，引起UI的重新渲染。</p>
+</li>
+</ul>
+<h2> 基本概念</h2>
+<ul>
+<li>状态变量：被状态装饰器装饰的变量，状态变量值的改变会引起UI的渲染更新。示例：@State num: number = 1,其中，@State是状态装饰器，num是状态变量。</li>
+<li>常规变量：没有被状态装饰器装饰的变量，通常应用于辅助计算。它的<strong>改变永远不会引起UI的刷新</strong>。以下示例中increaseBy变量为常规变量。</li>
+<li>数据源/同步源：状态变量的原始来源，可以同步给不同的状态数据。通常意义为父组件传给子组件的数据。以下示例中数据源为count: 1。</li>
+<li>命名参数机制：父组件通过指定参数传递给子组件的状态变量，为父子传递同步参数的主要手段。示例：CompA: ({ aProp: this.aProp })。</li>
+<li>从父组件初始化：父组件使用命名参数机制，将指定参数传递给子组件。子组件初始化的默认值在有父组件传值的情况下，会被覆盖。示例：</li>
+</ul>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404211855789.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<ul>
+<li>
+<p>初始化子节点：父组件中状态变量可以传递给子组件，初始化子组件对应的状态变量。示例同上。</p>
+</li>
+<li>
+<p>本地初始化：在变量声明的时候赋值，作为变量的默认值。示例：@State count: number = 0。</p>
+</li>
+</ul>
+<h2> 管理组件拥有的状态</h2>
+<h3> @State装饰器：组件内状态</h3>
+<blockquote>
+<p>@state 装饰器标记的变量必须初始化, 不能为空值</p>
+</blockquote>
+<blockquote>
+<p>@state 支持Object、class、string、number、boolean、enum类型，以及这些类型的数组。不支持any，不支持简单类型和复杂类型的联合类型，不允许使用undefined和null。</p>
+</blockquote>
+<blockquote>
+<p>嵌套类型以及数组中的对象属性无法触发视图更新</p>
+</blockquote>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404212244227.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>当点击下面时，不会触发视图更新, 只有点击上面非嵌套属性时才会触发视图整体更新</p>
+<figure><img src="https://qiniu.waite.wang/202404212001481.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>@State装饰的变量，或称为状态变量，一旦变量拥有了状态属性，就和自定义组件的渲染绑定起来。当状态改变时，UI会发生对应的渲染改变。</p>
+<p>在状态变量相关装饰器中，@State是最基础的，使变量拥有状态属性的装饰器，它也是大部分状态变量的数据源。</p>
+<p>@State装饰的变量，与声明式范式中的其他被装饰变量一样，是私有的，只能从组件内部访问，在声明时必须指定其类型和本地初始化。初始化也可选择使用命名参数机制从父组件完成初始化。</p>
+<p>@State装饰的变量拥有以下特点：</p>
+<ul>
+<li>@State装饰的变量与子组件中的@Prop装饰变量之间建立单向数据同步，与@Link、@ObjectLink装饰变量之间建立双向数据同步。</li>
+<li>@State装饰的变量生命周期与其所属自定义组件的生命周期相同。</li>
+</ul>
+<h4> 案例</h4>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404220020396.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202404211849420.png" type="image/png"/>
+    </item>
     <item>
       <title>ArkUI 基础组件</title>
       <link>https://brain.sunguoqi.com/web/harmony/ArkUI%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6.html</link>
