@@ -6,10 +6,79 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 27 Apr 2024 14:44:58 GMT</pubDate>
-    <lastBuildDate>Sat, 27 Apr 2024 14:44:58 GMT</lastBuildDate>
+    <pubDate>Sun, 28 Apr 2024 15:29:07 GMT</pubDate>
+    <lastBuildDate>Sun, 28 Apr 2024 15:29:07 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>网络连接</title>
+      <link>https://brain.sunguoqi.com/web/harmony/%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5.html</link>
+      <guid>https://brain.sunguoqi.com/web/harmony/%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">网络连接</source>
+      <description>https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/net-mgmt-overview-0000001478341009-V2 HTTP数据请求 https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/http-request-0000001478061585-V2 应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。</description>
+      <pubDate>Sat, 27 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/net-mgmt-overview-0000001478341009-V2</p>
+<h2> HTTP数据请求</h2>
+<p>https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/http-request-0000001478061585-V2</p>
+<p>应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。</p>
+<p>HTTP数据请求功能主要由http模块提供。</p>
+<p>使用该功能需要申请ohos.permission.INTERNET权限。</p>
+<p>权限申请请参考<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V2/accesstoken-guidelines-0000001493744016-V2" target="_blank" rel="noopener noreferrer">访问控制（权限）开发指导</a>。</p>
+<p>涉及的接口如下表，具体的接口说明请参考<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V2/js-apis-http-0000001478061929-V2" target="_blank" rel="noopener noreferrer">API文档</a>。</p>
+<table>
+<thead>
+<tr>
+<th>接口名</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>createHttp()</td>
+<td>创建一个http请求。</td>
+</tr>
+<tr>
+<td>request()</td>
+<td>根据URL地址，发起HTTP网络请求。</td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>中断请求任务。</td>
+</tr>
+<tr>
+<td>on(type: 'headersReceive')</td>
+<td>订阅HTTP Response Header 事件。</td>
+</tr>
+<tr>
+<td>off(type: 'headersReceive')</td>
+<td>取消订阅HTTP Response Header 事件。</td>
+</tr>
+<tr>
+<td>once('headersReceive')8+</td>
+<td>订阅HTTP Response Header 事件，但是只触发一次。</td>
+</tr>
+</tbody>
+</table>
+<h3> request接口开发步骤</h3>
+<ol>
+<li>从@ohos.net.http.d.ts中导入http命名空间。</li>
+<li>调用createHttp()方法，创建一个HttpRequest对象。</li>
+<li>调用该对象的on()方法，订阅http响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。</li>
+<li>调用该对象的request()方法，传入http请求的url地址和可选参数，发起网络请求。</li>
+<li>按照实际业务需要，解析返回结果。</li>
+<li>调用该对象的off()方法，取消订阅http响应头事件。</li>
+<li>当该请求使用完毕时，调用destroy()方法主动销毁。</li>
+</ol>
+<div class="language-tsx line-numbers-mode" data-ext="tsx"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404281718615.png" alt="image-20240428171812486" tabindex="0" loading="lazy"><figcaption>image-20240428171812486</figcaption></figure>
+<h3> 案例</h3>
+<blockquote>
+<p>现在有这么一个接口: http://127.0.0.1:3000/shops?pageNo=1&amp;&amp;pageSize=4 返回值如下</p>
+</blockquote>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202404282321584.png" alt="image-20240428232115572" tabindex="0" loading="lazy"><figcaption>image-20240428232115572</figcaption></figure>
+<div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-tsx line-numbers-mode" data-ext="tsx"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-tsx line-numbers-mode" data-ext="tsx"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 第三方库 axios</h2>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202404281718615.png" type="image/png"/>
+    </item>
     <item>
       <title>Stage 模型</title>
       <link>https://brain.sunguoqi.com/web/harmony/Stage%E6%A8%A1%E5%9E%8B.html</link>
