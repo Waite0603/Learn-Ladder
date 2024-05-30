@@ -5,7 +5,7 @@ export const backend = arraySidebar([
   {
     text: "Django",
     icon: "tuxing",
-    prefix: "django/",
+    prefix: "Django/",
     children: "structure",
     collapsible: true,
   }
