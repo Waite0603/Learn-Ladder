@@ -6,10 +6,66 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 28 May 2024 14:33:34 GMT</pubDate>
-    <lastBuildDate>Tue, 28 May 2024 14:33:34 GMT</lastBuildDate>
+    <pubDate>Thu, 30 May 2024 12:31:20 GMT</pubDate>
+    <lastBuildDate>Thu, 30 May 2024 12:31:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Django 安装</title>
+      <link>https://brain.sunguoqi.com/backend/Django/%E5%AE%89%E8%A3%85.html</link>
+      <guid>https://brain.sunguoqi.com/backend/Django/%E5%AE%89%E8%A3%85.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Django 安装</source>
+      <description>简介 Django(发音:[`dʒæŋɡəʊ]) 也有的小伙伴读成 “酱狗”，&amp;quot;贱狗&amp;quot;，&amp;quot;进狗&amp;quot;，&amp;quot;撞狗&amp;quot;，甚至还有读成&amp;quot;打 狗&amp;quot;。 官方：https://www.djangoproject.com/ Django是一个高级的Python Web框架，可以快速开发安全和可维护的网站。由经验丰富的开发者构 建，Django负责处理网站开发中麻烦的部分，可以专注于编写应用程序，而无需重新开发。它是免费和 开源的，有活跃繁荣的社区，丰富的文档，以及很多免费和付费的解决方案。目前最新版本：5.0.1 安装 pip安装： pip install Django==5.0.1 -i https://pypi.tuna.tsinghua.edu.cn/simple</description>
+      <pubDate>Thu, 30 May 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 简介</h2>
+<p>Django(发音:[`dʒæŋɡəʊ]) 也有的小伙伴读成 “酱狗”，"贱狗"，"进狗"，"撞狗"，甚至还有读成"打
+狗"。
+官方：https://www.djangoproject.com/
+Django是一个高级的Python Web框架，可以快速开发安全和可维护的网站。由经验丰富的开发者构
+建，Django负责处理网站开发中麻烦的部分，可以专注于编写应用程序，而无需重新开发。它是免费和
+开源的，有活跃繁荣的社区，丰富的文档，以及很多免费和付费的解决方案。目前最新版本：5.0.1</p>
+<h2> 安装</h2>
+<p>pip安装：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>执行安装完成后，在python目录的Scripts下，会多出一个<code>diango-admin.exe</code> 这个是<code>django</code>项目创建工具</p>
+<figure><img src="https://qiniu.waite.wang/202405302020692.png" alt="image-20240530202013347" tabindex="0" loading="lazy"><figcaption>image-20240530202013347</figcaption></figure>
+<p>当然同时Lib下的<code>site-packages</code>下，也会有一个<code>django</code>目录，这个是后面我们开发项目会用到的<code>django</code>开发包。</p>
+<figure><img src="https://qiniu.waite.wang/202405302020300.png" alt="image-20240530202047189" tabindex="0" loading="lazy"><figcaption>image-20240530202047189</figcaption></figure>
+<h2> 项目创建与项目配置</h2>
+<h3> Django5创建项目用命令方式</h3>
+<p>通过以下命令可以查看版本号：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202405302021361.png" alt="image-20240530202153533" tabindex="0" loading="lazy"><figcaption>image-20240530202153533</figcaption></figure>
+<h3> Django5创建项目用PyCharm工具</h3>
+<figure><img src="https://qiniu.waite.wang/202405302022094.png" alt="image-20240530202246884" tabindex="0" loading="lazy"><figcaption>image-20240530202246884</figcaption></figure>
+<h2> 目录结构</h2>
+<p>使用 django-admin 来创建 HelloWorld 项目：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>创建完成后我们可以查看下项目的目录结构：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>目录说明：</p>
+<ul>
+<li><strong>HelloWorld:</strong> 项目的容器。</li>
+<li><strong>manage.py:</strong> 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
+<li><strong>HelloWorld/<strong>init</strong>.py:</strong> 一个空文件，告诉 Python 该目录是一个 Python 包。</li>
+<li><strong>HelloWorld/asgi.py:</strong> 一个 ASGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
+<li><strong>HelloWorld/settings.py:</strong> 该 Django 项目的设置/配置。</li>
+<li><strong>HelloWorld/urls.py:</strong> 该 Django 项目的 URL 声明; 一份由 Django 驱动的网站"目录"。</li>
+<li><strong>HelloWorld/wsgi.py:</strong> 一个 WSGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
+</ul>
+<p>接下来我们进入 HelloWorld 目录输入以下命令，启动服务器：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>0.0.0.0 让其它电脑可连接到开发服务器，8000 为端口号。如果不说明，那么端口号默认为 8000。</p>
+<p>在浏览器输入你服务器的 ip（这里我们输入本机 IP 地址： <strong>127.0.0.1:8000</strong>） 及端口号，如果正常启动，输出结果如下：</p>
+<figure><img src="https://qiniu.waite.wang/202405302024176.jpeg" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h2> 视图和 URL 配置</h2>
+<p>在先前创建的 HelloWorld 目录下的 HelloWorld 目录新建一个 views.py 文件，并输入代码：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>接着，绑定 URL 与视图函数。打开 urls.py 文件，删除原来代码，将以下代码复制粘贴到 urls.py 文件中：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>整个目录结构如下：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>完成后，启动 Django 开发服务器，并在浏览器访问打开浏览器并访问：</p>
+<figure><img src="https://qiniu.waite.wang/202405302027460.jpeg" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<p>我们也可以修改以下规则：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>通过浏览器打开 <strong>http://127.0.0.1:8000/hello</strong>，输出结果如下：</p>
+<figure><img src="https://qiniu.waite.wang/202405302028324.jpeg" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<p>**注意：**项目中如果代码有改动，服务器会自动监测代码的改动并自动重新载入，所以如果你已经启动了服务器则不需手动重启。</p>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202405302020692.png" type="image/png"/>
+    </item>
     <item>
       <title></title>
       <link>https://brain.sunguoqi.com/web/harmony/%E9%80%9A%E7%9F%A5.html</link>
