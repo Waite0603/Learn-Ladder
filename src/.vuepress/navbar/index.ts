@@ -12,11 +12,11 @@ export const navBar = navbar([
     icon: "frontend",
     link: "/web",
   },
-  // {
-  //   text: "后端开发",
-  //   icon: "backend",
-  //   link: "/web/backend/todo",
-  // },
+  {
+    text: "后端开发",
+    icon: "backend",
+    link: "/backend",
+  },
   {
     text: "更新历史",
     icon: "time",
