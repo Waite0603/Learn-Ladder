@@ -6,10 +6,465 @@
     <link>https://brain.sunguoqi.com/</link>
     <description>热爱可抵漫长岁月！</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 02 Jun 2024 06:38:42 GMT</pubDate>
-    <lastBuildDate>Sun, 02 Jun 2024 06:38:42 GMT</lastBuildDate>
+    <pubDate>Wed, 05 Jun 2024 15:01:36 GMT</pubDate>
+    <lastBuildDate>Wed, 05 Jun 2024 15:01:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>Django 数据库以及 ORM 模型</title>
+      <link>https://brain.sunguoqi.com/backend/Django/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C.html</link>
+      <guid>https://brain.sunguoqi.com/backend/Django/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Django 数据库以及 ORM 模型</source>
+      <description>数据库配置 安装环境 pip install mysqlclient 更改 settings.py 中的配置 DATABASES = { &amp;apos;default&amp;apos;: { &amp;apos;ENGINE&amp;apos;: &amp;apos;django.db.backends.mysql&amp;apos;, # 数据库引擎 &amp;apos;NAME&amp;apos;: &amp;apos;runoob&amp;apos;, # 数据库名称 &amp;apos;HOST&amp;apos;: &amp;apos;127.0.0.1&amp;apos;, # 数据库地址，本机 ip 地址 127.0.0.1 &amp;apos;PORT&amp;apos;: 3306, # 端口 &amp;apos;USER&amp;apos;: &amp;apos;root&amp;apos;, # 数据库用户名 &amp;apos;PASSWORD&amp;apos;: &amp;apos;123456&amp;apos;, # 数据库密码 } }</description>
+      <pubDate>Wed, 05 Jun 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 数据库配置</h2>
+<p>安装环境</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>更改 settings.py 中的配置</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>数据库配置是选择项目所使用的数据库的类型，不同的数据库需要设置不同的数据库引擎，数据库引擎</p>
+<p>用于实现项目与数据库的连接，Django提供4种数据库引擎:</p>
+<ul>
+<li>'django.db.backends.postgresql'</li>
+<li>'django.db.backends.mysql'</li>
+<li>'django.db.backends.sqlite3'</li>
+<li>'django.db.backends.oracle'</li>
+</ul>
+<p>我们有两种方式进行数据库的操作, 如下</p>
+<h2> 普通 SQL 增删查改</h2>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>效果如下</p>
+</blockquote>
+<figure><img src="https://qiniu.waite.wang/202406022058040.png" alt="image-20240602205856202" tabindex="0" loading="lazy"><figcaption>image-20240602205856202</figcaption></figure>
+<h2> Django ORM</h2>
+<p>Django 模型使用自带的 ORM。</p>
+<p>对象关系映射（Object Relational Mapping，简称 ORM ）用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
+<p>ORM 在业务逻辑层和数据库层之间充当了桥梁的作用。</p>
+<p>ORM 是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到数据库中。</p>
+<figure><img src="https://qiniu.waite.wang/202406021619602.png" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<p>使用 ORM 的好处：</p>
+<ul>
+<li>提高开发效率。</li>
+<li>不同数据库可以平滑切换。</li>
+</ul>
+<p>使用 ORM 的缺点：</p>
+<ul>
+<li>ORM 代码转换为 SQL 语句时，需要花费一定的时间，执行效率会有所降低。</li>
+<li>长期写 ORM 代码，会降低编写 SQL 语句的能力。</li>
+</ul>
+<p>ORM 解析过程:</p>
+<ul>
+<li>1、ORM 会将 Python 代码转成为 SQL 语句。</li>
+<li>2、SQL 语句通过 pymysql 传送到数据库服务端。</li>
+<li>3、在数据库中执行 SQL 语句并将结果返回。</li>
+</ul>
+<p>ORM 对应关系表：</p>
+<figure><img src="https://qiniu.waite.wang/202406021619663.png" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
+<h3> 定义模型</h3>
+<p>Django 规定，如果要使用模型，必须要创建一个 app。我们使用以下命令创建一个 app 的 app:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>创建一个新的 模块, 更改其中的 app.models</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>以上的类名代表了数据库表名，且继承了models.Model，类里面的字段代表数据表中的字段(name)，数据类型则由CharField（相当于varchar）、DateField（相当于datetime）， max_length 参数限定长度。</p>
+<p>接下来在 settings.py 中找到INSTALLED_APPS这一项，如下：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在命令行中运行：</p>
+<div class="language-cmd line-numbers-mode" data-ext="cmd"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202406031441224.png" alt="image-20240603144151895" tabindex="0" loading="lazy"><figcaption>image-20240603144151895</figcaption></figure>
+<p>执行此命令, 也会把 django 自带的数据库导入进数据库中</p>
+<figure><img src="https://qiniu.waite.wang/202406031448969.png" alt="image-20240603144845731" tabindex="0" loading="lazy"><figcaption>image-20240603144845731</figcaption></figure>
+<p>编辑 <code>mysite/settings.py</code> 文件前，先设置 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-TIME_ZONE" target="_blank" rel="noopener noreferrer"><code>TIME_ZONE</code></a> 为你自己时区。</p>
+<p>此外，关注一下文件头部的 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-INSTALLED_APPS" target="_blank" rel="noopener noreferrer"><code>INSTALLED_APPS</code></a> 设置项。这里包括了会在你项目中启用的所有 Django 应用。应用能在多个项目中使用，你也可以打包并且发布应用，让别人使用它们。</p>
+<p>通常， <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-INSTALLED_APPS" target="_blank" rel="noopener noreferrer"><code>INSTALLED_APPS</code></a> 默认包括了以下 Django 的自带应用：</p>
+<ul>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/ref/contrib/admin/#module-django.contrib.admin" target="_blank" rel="noopener noreferrer"><code>django.contrib.admin</code></a> -- 管理员站点， 你很快就会使用它。</li>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/topics/auth/#module-django.contrib.auth" target="_blank" rel="noopener noreferrer"><code>django.contrib.auth</code></a> -- 认证授权系统。</li>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/ref/contrib/contenttypes/#module-django.contrib.contenttypes" target="_blank" rel="noopener noreferrer"><code>django.contrib.contenttypes</code></a> -- 内容类型框架。</li>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/topics/http/sessions/#module-django.contrib.sessions" target="_blank" rel="noopener noreferrer"><code>django.contrib.sessions</code></a> -- 会话框架。</li>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/ref/contrib/messages/#module-django.contrib.messages" target="_blank" rel="noopener noreferrer"><code>django.contrib.messages</code></a> -- 消息框架。</li>
+<li><a href="https://docs.djangoproject.com/zh-hans/5.0/ref/contrib/staticfiles/#module-django.contrib.staticfiles" target="_blank" rel="noopener noreferrer"><code>django.contrib.staticfiles</code></a> -- 管理静态文件的框架。</li>
+</ul>
+<p>这些应用被默认启用是为了给常规项目提供方便。</p>
+<p>默认开启的某些应用需要至少一个数据表，所以，在使用他们之前需要在数据库中创建一些表。请执行以下命令：</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>这个 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/django-admin/#django-admin-migrate" target="_blank" rel="noopener noreferrer"><code>migrate</code></a> 命令查看 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-INSTALLED_APPS" target="_blank" rel="noopener noreferrer"><code>INSTALLED_APPS</code></a> 配置，并根据 <code>mysite/settings.py</code> 文件中的数据库配置和随应用提供的数据库迁移文件（我们将在后面介绍这些），创建任何必要的数据库表。你会看到它应用的每一个迁移都有一个消息。如果你有兴趣，运行你的数据库的命令行客户端，输入 <code>\dt</code> （PostgreSQL）， <code>SHOW TABLES;</code> （MariaDB，MySQL）， <code>.tables</code> （SQLite）或 <code>SELECT TABLE_NAME FROM USER_TABLES;</code> （Oracle）来显示 Django 创建的表。</p>
+<blockquote>
+<p>就像之前说的，为了方便大多数项目，我们默认激活了一些应用，但并不是每个人都需要它们。如果你不需要某个或某些应用，你可以在运行 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/django-admin/#django-admin-migrate" target="_blank" rel="noopener noreferrer"><code>migrate</code></a> 前毫无顾虑地从 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-INSTALLED_APPS" target="_blank" rel="noopener noreferrer"><code>INSTALLED_APPS</code></a> 里注释或者删除掉它们。 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/django-admin/#django-admin-migrate" target="_blank" rel="noopener noreferrer"><code>migrate</code></a> 命令只会为在 <a href="https://docs.djangoproject.com/zh-hans/5.0/ref/settings/#std-setting-INSTALLED_APPS" target="_blank" rel="noopener noreferrer"><code>INSTALLED_APPS</code></a> 里声明了的应用进行数据库迁移。</p>
+</blockquote>
+<h3> 实现基本 CRUD 操作</h3>
+<h4> 数据库添加</h4>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 数据库查询</h3>
+<blockquote>
+<p>以下可能不全 具体可以参看官方文档</p>
+</blockquote>
+<ul>
+<li>
+<p>使用 <strong>all()</strong> 方法来查询所有内容。返回的是 QuerySet 类型数据，类似于 list，里面放的是一个个模型类的对象，可用索引下标取出模型类的对象。</p>
+</li>
+<li>
+<p><strong>filter()</strong> 方法用于查询符合条件的数据。返回的是 QuerySet 类型数据，类似于 list，里面放的是满足条件的模型类的对象，可用索引下标取出模型类的对象。pk=3 的意思是主键 primary key=3，相当于 id=3。因为 id 在 pycharm 里有特殊含义，是看内存地址的内置函数 id()，因此用 pk。</p>
+</li>
+<li>
+<p><strong>exclude()</strong> 方法用于查询不符合条件的数据。返回的是 QuerySet 类型数据，类似于 list，里面放的是不满足条件的模型类的对象，可用索引下标取出模型类的对象。</p>
+</li>
+<li>
+<p><strong>get()</strong> 方法用于查询符合条件的返回模型类的对象符合条件的对象只能为一个，如果符合筛选条件的对象超过了一个或者没有一个都会抛出错误。</p>
+</li>
+<li>
+<p><strong>order_by()</strong> 方法用于对查询结果进行排序。返回的是 QuerySet类型数据，类似于list，里面放的是排序后的模型类的对象，可用索引下标取出模型类的对象。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>a、参数的字段名要加引号。</li>
+<li>b、降序为在字段前面加个负号 <strong>-</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>reverse()</strong> 方法用于对查询结果进行反转。返回的是 QuerySe t类型数据，类似于 list，里面放的是反转后的模型类的对象，可用索引下标取出模型类的对象。</p>
+</li>
+<li>
+<p><strong>count()</strong> 方法用于查询数据的数量返回的数据是整数。</p>
+</li>
+<li>
+<p><strong>first()</strong> 方法返回第一条数据返回的数据是模型类的对象也可以用索引下标 <strong>[0]</strong>。</p>
+</li>
+<li>
+<p>last() 方法返回最后一条数据返回的数据是模型类的对象不能用索引下标 <strong>[-1]</strong>，ORM 没有逆序索引。</p>
+</li>
+<li>
+<p><strong>exists()</strong> 方法用于判断查询的结果 QuerySet 列表里是否有数据。返回的数据类型是布尔，有为 true，没有为 false。**注意：**判断的数据类型只能为 QuerySet 类型数据，不能为整型和模型类的对象。</p>
+</li>
+<li>
+<p><strong>values()</strong> 方法用于查询部分字段的数据。返回的是 QuerySet 类型数据，类似于 list，里面不是模型类的对象，而是一个可迭代的字典序列，字典里的键是字段，值是数据。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>参数的字段名要加引号</li>
+<li>想要字段名和数据用 <strong>values</strong>实例</li>
+</ul>
+</li>
+</ul>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 删除</h4>
+<p>**方式一：**使用模型类的 <strong>对象.delete()</strong>。</p>
+<p>**返回值：**元组，第一个元素为受影响的行数。</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>方式二</strong>：使用 QuerySet <strong>类型数据.delete()</strong>(推荐)</p>
+<p>**返回值：**元组，第一个元素为受影响的行数。</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>注意：</strong></p>
+<ul>
+<li>a. Django 删除数据时，会模仿 SQL约束 ON DELETE CASCADE 的行为，也就是删除一个对象时也会删除与它相关联的外键对象。</li>
+<li>b. delete() 方法是 QuerySet 数据类型的方法，但并不适用于 Manager 本身。也就是想要删除所有数据，不能不写 all。</li>
+</ul>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4> 修改</h4>
+<p><strong>方式一：</strong></p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>**返回值：**编辑的模型类的对象。</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>**方式二：**QuerySet 类型数据.update(字段名=更改的数据)（推荐）</p>
+<p>**返回值：**整数，受影响的行数</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3> 模型常用Field和参数</h3>
+<h4> 常用字段：</h4>
+<p>在Django中，定义了一些Field来与数据库表中的字段类型来进行映射。以下将介绍那些常用的字段类</p>
+<p>型。</p>
+<ol>
+<li>
+<p>AutoField：映射到数据库中是int类型，可以有自动增长的特性。一般不需要使用这个类型，如果不指定主键，那么模型会自动的生成一个叫做id的自动增长的主键。如果你想指定一个其他名字的并且具有自动增长的主键，使用AutoField也是可以的。</p>
+</li>
+<li>
+<p>BigAutoField：64 位的整形，类似于AutoField，只不过是产生的数据的范围是从1-9223372036854775807。</p>
+</li>
+<li>
+<p>BooleanField：在模型层面接收的是True/False。在数据库层面是tinyint类型。如果没有指定默认值，默认值是None。</p>
+</li>
+<li>
+<p>CharField：在数据库层面是varchar类型。在Python层面就是普通的字符串。这个类型在使用的时候必须要指定最大的长度，也即必须要传递max_length这个关键字参数进去。</p>
+</li>
+<li>
+<p>DateField：日期类型。在Python中是datetime.date类型，可以记录年月日。在映射到数据库中也是date类型。使用这个Field可以传递以下几个参数：</p>
+<ol>
+<li>
+<p>auto_now：在每次这个数据保存的时候，都使用当前的时间。比如作为一个记录修改日期的字段，可以将这个属性设置为True。</p>
+</li>
+<li>
+<p>auto_now_add：在每次数据第一次被添加进去的时候，都使用当前的时间。比如作为一个记录第一次入库的字段，可以将这个属性设置为True。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>DateTimeField：日期时间类型，类似于DateField。不仅仅可以存储日期，还可以存储时间。映射到数据库中是datetime类型。这个Field也可以使用auto_now和auto_now_add两个属性。</p>
+</li>
+<li>
+<p>TimeField：时间类型。在数据库中是time类型。在Python中是datetime.time类型。</p>
+</li>
+<li>
+<p>EmailField：类似于CharField。在数据库底层也是一个varchar类型。最大长度是 254 个字符。</p>
+</li>
+<li>
+<p>FileField：用来存储文件的。这个请参考后面的文件上传章节部分。</p>
+</li>
+<li>
+<p>ImageField：用来存储图片文件的。这个请参考后面的图片上传章节部分。</p>
+</li>
+<li>
+<p>FloatField：浮点类型。映射到数据库中是float类型。</p>
+</li>
+<li>
+<p>IntegerField：整形。值的区间是-2147483648——2147483647。</p>
+</li>
+<li>
+<p>BigIntegerField：大整形。值的区间是-9223372036854775808——9223372036854775807。</p>
+</li>
+<li>
+<p>PositiveIntegerField：正整形。值的区间是0——2147483647。</p>
+</li>
+<li>
+<p>SmallIntegerField：小整形。值的区间是-32768——32767。</p>
+</li>
+<li>
+<p>PositiveSmallIntegerField：正小整形。值的区间是0——32767。</p>
+</li>
+<li>
+<p>TextField：大量的文本类型。映射到数据库中是longtext类型。</p>
+</li>
+<li>
+<p>UUIDField：只能存储uuid格式的字符串。uuid是一个 32 位的全球唯一的字符串，一般用来作为主键。</p>
+</li>
+<li>
+<p>URLField：类似于CharField，只不过只能用来存储url格式的字符串。并且默认的max_length是 200 。</p>
+</li>
+</ol>
+<h4> Field的常用参数：</h4>
+<ol>
+<li>
+<p>null：如果设置为True，Django将会在映射表的时候指定是否为空。默认是为False。在使用字符串相关的Field（CharField/TextField）的时候，官方推荐尽量不要使用这个参数，也就是保持默认值False。因为Django在处理字符串相关的Field的时候，即使这个Field的null=False，如果你没有给这个Field传递任何值，那么Django也会使用一个空的字符串""来作为默认值存储进去。因此如果再使用null=True，Django会产生两种空值的情形（NULL或者空字符串）。如果想要在表单验证的时候允许这个字符串为空，那么建议使用blank=True。如果你的Field是BooleanField，那么对应的可空的字段则为NullBooleanField。</p>
+</li>
+<li>
+<p>blank：标识这个字段在表单验证的时候是否可以为空。默认是False。这个和null是有区别的，null是一个纯数据库级别的。而blank是表单验证级别的。</p>
+</li>
+<li>
+<p>db_column：这个字段在数据库中的名字。如果没有设置这个参数，那么将会使用模型中属性的名字。</p>
+</li>
+<li>
+<p>default：默认值。可以为一个值，或者是一个函数，但是不支持lambda表达式。并且不支持列表/字典/集合等可变的数据结构。</p>
+</li>
+<li>
+<p>primary_key：是否为主键。默认是False。</p>
+</li>
+<li>
+<p>unique：在表中这个字段的值是否唯一。一般是设置手机号码/邮箱等。</p>
+</li>
+</ol>
+<blockquote>
+<p>更多Field参数请参考官方文档：https://docs.djangoproject.com/zh-hans/5.0/ref/models/fields/</p>
+</blockquote>
+<h4> 模型中 Meta 配置：</h4>
+<ol>
+<li>db_table：这个模型映射到数据库中的表名。如果没有指定这个参数，那么在映射的时候将会使用模型名来作为默认的表名。</li>
+<li>ordering：设置在提取数据的排序方式。后面章节会讲到如何查找数据。比如我想在查找数据的时候根据添加的时间排序，那么示例代码如下：</li>
+</ol>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>更多的配置后面会慢慢介绍到。 官方文档：https://docs.djangoproject.com/zh-hans/5.0/ref/models/</p>
+<h3> 外键使用</h3>
+<p>在MySQL中，表有两种引擎，一种是<code>InnoDB</code>，另外一种是<code>myisam</code>。如果使用的是<code>InnoDB</code>引擎，是支持外键约束的。外键的存在使得ORM框架在处理表关系的时候异常的强大。因此这里我们首先来介绍下外键在Django中的使用。</p>
+<blockquote>
+<ol>
+<li><strong>InnoDB</strong>:
+<ul>
+<li><strong>事务支持</strong>：InnoDB支持事务处理，具有提交(commit)、回滚(rollback)和崩溃恢复能力，适合需要事务处理的应用。</li>
+<li><strong>行级锁定</strong>：InnoDB使用行级锁定和MVCC（多版本并发控制），在高并发环境下性能更好。</li>
+<li><strong>外键约束</strong>：InnoDB支持外键约束，有助于保持数据的完整性。</li>
+<li><strong>崩溃恢复</strong>：InnoDB具有崩溃恢复的能力，可以保证数据的安全性。</li>
+<li><strong>存储限制</strong>：InnoDB表有16TB的存储限制。</li>
+<li><strong>默认引擎</strong>：从MySQL 5.5.5版本开始，InnoDB成为了MySQL的默认存储引擎。</li>
+</ul>
+</li>
+<li><strong>MyISAM</strong>:
+<ul>
+<li><strong>表级锁定</strong>：MyISAM使用表级锁定，这意味着在高并发环境下，性能可能不如InnoDB。</li>
+<li><strong>全文索引</strong>：MyISAM提供了全文索引功能，适合需要全文搜索的应用。</li>
+<li><strong>没有事务支持</strong>：MyISAM不支持事务处理，适用于不需要事务的应用。</li>
+<li><strong>存储限制</strong>：MyISAM表有256TB的存储限制。</li>
+<li><strong>快速读取</strong>：MyISAM通常在读取密集型的应用中表现更好，因为它的索引结构设计得更简单。</li>
+</ul>
+</li>
+</ol>
+<p>选择哪种存储引擎取决于你的应用需求。如果需要事务支持、行级锁定和外键约束，InnoDB通常是更好的选择。如果应用主要是读取密集型，并且需要全文索引功能，那么MyISAM可能更合适。不过，由于InnoDB的广泛特性和性能优势，它在现代应用中被广泛使用。</p>
+</blockquote>
+<h4> 定义</h4>
+<p>类定义为 class ForeignKey(to,on_delete,**options) 。第一个参数是引用的是哪个模型，第二个参数是在使用外键引用的模型数据被删除了，这个字段该如何处理，比如有 CASCADE 、 SET_NULL 等。这里以一个实际案例来说明。比如有一个 User 和一个 Article 两个模型。一个 User 可以发表多篇文章，一个 Article 只能有一个 Author ，并且通过外键进行引用。那么相关的示例代码如下：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>如果不同的 app, 可以这样子使用外键 <code>author = models.ForeignKey('app.User', on_delete=models.CASCADE)</code></p>
+</blockquote>
+<p>以上使用 ForeignKey 来定义模型之间的关系。即在 article 的实例中可以通过 author 属性来操作对应的 User 模型。这样使用起来非常的方便。示例代码如下：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202406051719076.png" alt="image-20240605171858982" tabindex="0" loading="lazy"><figcaption>image-20240605171858982</figcaption></figure>
+<p>如果模型的外键引用的是本身自己这个模型，那么 to 参数可以为 'self' ，或者是这个模型的名字。在论坛开发中，一般评论都可以进行二级评论，即可以针对另外一个评论进行评论，那么在定义模型的时候就需要使用外键来引用自身。示例代码如下：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 外键删除操作</h4>
+<p>在数据库中使用外键（Foreign Key）时，我们需要考虑当外键所引用的记录被删除时，应如何处理与该记录相关联的其他记录。Django ORM 提供了几种 <code>on_delete</code> 选项来处理这种情况，每种选项都定义了不同的行为。以下是这些选项的解释：</p>
+<ol>
+<li><strong>CASCADE</strong>：当外键所引用的主键记录被删除时，所有引用该记录的外键记录也将被自动删除。这种操作称为级联删除，它确保了数据库的引用完整性。</li>
+<li><strong>PROTECT</strong>：当尝试删除一个被外键引用的主键记录时，如果存在引用，Django 会抛出一个 <code>ProtectedError</code> 异常，阻止删除操作。这是一种保护机制，确保数据的完整性不被破坏。</li>
+<li><strong>SET_NULL</strong>：如果外键所引用的主键记录被删除，那么所有引用该记录的外键字段将被设置为 <code>NULL</code>。使用这个选项之前，需要确保外键字段在数据库中允许为空（<code>null=True</code>）。</li>
+<li><strong>SET_DEFAULT</strong>：当外键所引用的主键记录被删除时，所有引用该记录的外键字段将被设置为字段的默认值。这要求外键字段在定义时有一个默认值。</li>
+<li><strong>SET()</strong>：允许你指定一个可调用的对象（如函数或方法），当外键所引用的主键记录被删除时，Django 会调用这个对象，并使用返回的值来更新外键字段。这提供了高度的灵活性，可以根据业务逻辑来决定如何更新外键字段。</li>
+<li><strong>DO_NOTHING</strong>：这个选项不会在 Django 层面上做任何操作，所有的约束都依赖于数据库级别的约束。如果数据库设置为不允许删除被引用的记录（如 <code>RESTRICT</code>），那么删除操作将会失败。</li>
+</ol>
+<p>需要注意的是，尽管 Django 提供了多种 <code>on_delete</code> 选项，但数据库层面的行为不会改变。例如，如果数据库设置为 <code>RESTRICT</code>，则即使 Django 设置为 <code>CASCADE</code>，数据库也不会执行级联删除，而是会阻止删除操作。因此，在使用 <code>on_delete</code> 选项时，还需要考虑数据库层面的约束。</p>
+<h3> 表的关系</h3>
+<p>表与表之间的关系可分为以下三种：</p>
+<ul>
+<li><strong>一对一</strong>: 一个人对应一个身份证号码，数据字段设置 unique。</li>
+<li><strong>一对多</strong>: 一个家庭有多个人，一般通过外键来实现。</li>
+<li><strong>多对多</strong>: 一个学生有多门课程，一个课程有很多学生，一般通过第三个表来实现关联。</li>
+</ul>
+<h4> 一对多</h4>
+<ol>
+<li>
+<p>应用场景：比如文章和作者之间的关系。一个文章只能由一个作者编写，但是一个作者可以写多篇文章。文章和作者之间的关系就是典型的多对一的关系。</p>
+</li>
+<li>
+<p>实现方式：一对多或者多对一，都是通过ForeignKey来实现的。还是以文章和作者的案例进行讲解。那么以后在给Article对象指定author，就可以使用以下代码来完成：</p>
+</li>
+</ol>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>并且以后如果想要获取某个用户下所有的文章，可以通过<code>article_set</code>来实现。示例代码如下：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 一对一</h4>
+<ol>
+<li>
+<p>应用场景：比如一个用户表和一个用户信息表。在实际网站中，可能需要保存用户的许多信息，但是有些信息是不经常用的。如果把所有信息都存放到一张表中可能会影响查询效率，因此可以把用户的一些不常用的信息存放到另外一张表中我们叫做<code>UserExtension</code>。但是用户表<code>User</code>和用户信息表<code>UserExtension</code>就是典型的一对一了。</p>
+</li>
+<li>
+<p>实现方式：Django为一对一提供了一个专门的Field叫做<code>OneToOneField</code>来实现一对一操作。示例代码如下：</p>
+</li>
+</ol>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202406051746248.png" alt="image-20240605174601778" tabindex="0" loading="lazy"><figcaption>image-20240605174601778</figcaption></figure>
+<blockquote>
+<p>只允许一对一, 超过既会报错,</p>
+<p>在<code>UserExtension</code>模型上增加了一个一对一的关系映射。其实底层是在<code>UserExtension</code>这个表上增加了一个user_id，来和user表进行关联，并且这个外键数据在表中必须是唯一的，来保证一对一。</p>
+</blockquote>
+<h4> 多对多</h4>
+<ol>
+<li>
+<p>应用场景：比如文章和标签的关系。一篇文章可以有多个标签，一个标签可以被多个文章所引用。因此标签和文章的关系是典型的多对多的关系。</p>
+</li>
+<li>
+<p>实现方式：Django为这种多对多的实现提供了专门的Field。叫做ManyToManyField。还是拿文章和标签为例进行讲解。示例代码如下：</p>
+</li>
+</ol>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在数据库层面，实际上Django是为这种多对多的关系建立了一个中间表。这个中间表分别定义了两个外键，引用到article和tag两张表的主键。</p>
+<figure><img src="https://qiniu.waite.wang/202406051755978.png" alt="image-20240605175459605" tabindex="0" loading="lazy"><figcaption>image-20240605175459605</figcaption></figure>
+<h3> related_name和related_query_name：</h3>
+<p>在 Django 中，<code>related_name</code> 和 <code>related_query_name</code> 是两个与模型的外键关系相关的参数，它们允许你自定义反向关系和查询的名称。</p>
+<ol>
+<li><code>related_name</code></li>
+</ol>
+<p><code>related_name</code> 是 <code>ForeignKey</code> 或 <code>ManyToManyField</code> 字段的一个选项，它允许你为反向关系指定一个自定义名称。默认情况下，Django 会使用 <code>&lt;模型名&gt;_set</code> 作为反向关系的名称（例如，<code>Article</code> 模型的反向关系默认为 <code>article_set</code>）。但是，如果你想要一个更有意义的名称或避免名称冲突，你可以使用 <code>related_name</code> 来指定。</p>
+<p>例如，如果你有一个 <code>User</code> 模型和一个 <code>Article</code> 模型，并且每个用户可以有多个文章，你可以这样定义模型：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样，你就可以通过 <code>user.articles.all()</code> 来获取一个用户的所有文章。</p>
+<p>如果你不想使用任何自定义的反向关系名称，可以设置 <code>related_name='+'</code>，这将禁用自动生成的 <code>&lt;模型名&gt;_set</code> 名称。</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li><code>related_query_name</code></li>
+</ol>
+<p><code>related_query_name</code> 是 <code>related_name</code> 的一个补充选项，它允许你自定义在查询集中使用 <code>filter</code> 方法时反向关系的名称。默认情况下，Django 会使用 <code>related_name</code> 的值加上下划线和字段名来生成查询名称（例如，<code>articles_title</code>）。</p>
+<p>如果你设置了 <code>related_name='articles'</code>，那么在进行反向查询时，你可以这样写：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>如果你想要一个不同的查询名称，可以使用 <code>related_query_name</code> 来指定：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样，你就可以使用 <code>article__title</code> 来进行查询：</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>请注意，<code>related_query_name</code> 只在反向查询中使用，而 <code>related_name</code> 用于定义反向关系名称。</p>
+<p>最后，你提供的代码片段中有一些格式错误和不完整的部分，我已经根据上下文进行了修正。如果你有更具体的问题或需要进一步的帮助，请随时提问。</p>
+<h3> 查询操作</h3>
+<p>查找是数据库操作中一个非常重要的技术。查询一般就是使用 filter 、 exclude 以及 get 三个方法来实现。我们可以在调用这些方法的时候传递不同的参数来实现查询需求。在 ORM 层面，这些查询条件都是使用 field + __ + condition 的方式来使用的。以下将那些常用的查询条件来一一解释。</p>
+<p>在 Django 中，查询集（QuerySet）提供了多种方法来过滤和查询数据库中的数据。以下是对您提供的查询条件的优化格式和解释：</p>
+<h4> 1. <code>exact</code>：</h4>
+<h4> 执行精确匹配，相当于 SQL 中的 <code>=</code> 操作符。如果查询值为 <code>None</code>，则在 SQL 中对应 <code>IS NULL</code>。</h4>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4> 2. <code>iexact</code>：</h4>
+<p>执行不区分大小写的模糊匹配，相当于 SQL 中的 <code>LIKE</code> 操作符。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 3. <code>contains</code>：</h4>
+<p>执行大小写敏感的模糊匹配，字段值包含给定的字符串。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 4. <code>icontains</code>：</h4>
+<p>与 <code>contains</code> 类似，但不区分大小写。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 5. <code>in</code>：</h4>
+<p>检查字段值是否包含在给定的容器中，容器可以是列表、元组或任何可迭代对象。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 6. <code>gt</code>：</h4>
+<p>检查字段值是否大于给定值。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 7. <code>gte</code>：</h4>
+<p>检查字段值是否大于或等于给定值。</p>
+<h4> 8. <code>lt</code>：</h4>
+<p>检查字段值是否小于给定值。</p>
+<h4> 9. <code>lte</code>：</h4>
+<p>检查字段值是否小于或等于给定值。</p>
+<h4> 10. <code>startswith</code>：</h4>
+<p>检查字段值是否以特定字符串开始，大小写敏感。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 11. <code>istartswith</code>：</h4>
+<p>与 <code>startswith</code> 类似，但不区分大小写。</p>
+<h4> 12. <code>endswith</code>：</h4>
+<p>检查字段值是否以特定字符串结束，大小写敏感。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 13. <code>iendswith</code>：</h4>
+<p>与 <code>endswith</code> 类似，但不区分大小写。</p>
+<h4> 14. <code>range</code>：</h4>
+<p>检查字段值是否在给定的范围内。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 15. <code>date</code>：</h4>
+<p>针对 <code>DateField</code> 或 <code>DateTimeField</code> 类型的字段，可以指定日期的范围。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4> 16. <code>year</code>、<code>month</code>、<code>day</code>、<code>week_day</code>、<code>time</code>：</h4>
+<p>这些查询条件允许你根据日期和时间的特定部分进行过滤。</p>
+<p><strong>示例</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>SQL 翻译</strong>:</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>这些查询条件使得在 Django 中进行数据库查询变得非常灵活和强大。你可以根据需要选择合适的查询条件来获取所需的数据。更多详细信息和高级用法，请参考 <a href="https://docs.djangoproject.com/en/5.0/ref/models/querysets/#field-lookups" target="_blank" rel="noopener noreferrer">Django 官方文档</a>。</p>
+<h3> 聚合函数</h3>
+<blockquote>
+<p>前期准备</p>
+</blockquote>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> 聚合查询</h4>
+<p>聚合查询函数是对一组值执行计算，并返回单个值。Django 使用聚合查询前要先从 django.db.models 引入 Avg、Max、Min、Count、Sum（首字母大写）。</p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202406052125655.png" alt="image-20240605212533357" tabindex="0" loading="lazy"><figcaption>image-20240605212533357</figcaption></figure>
+<h4> aggregate() 示例：</h4>
+<p>假设我们想要计算所有书籍的平均价格。</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> annotate() 示例：</h4>
+<p>假设我们想要为每个出版社添加一个字段，表示该出版社出版的所有书籍的平均价格。</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，<code>annotate()</code> 方法为 <code>Publisher</code> 查询集中的每个出版社对象添加了一个 <code>average_price</code> 属性，表示该出版社出版的所有书籍的平均价格。</p>
+<ul>
+<li><code>aggregate()</code> 返回一个字典，其中包含了聚合函数的结果，适用于计算总和、平均值、最大值、最小值等聚合数据。</li>
+<li><code>annotate()</code> 返回一个查询集，其中的每个对象都添加了聚合字段，适用于为查询集中的每个对象添加聚合数据相关的字段。</li>
+</ul>
+<p>这两个方法都使用 Django 的聚合函数，如 <code>Sum</code>、<code>Avg</code>、<code>Max</code>、<code>Min</code> 等，但是它们的使用场景和返回结果不同。<code>aggregate()</code> 用于获取单个或多个聚合值，而 <code>annotate()</code> 用于扩展查询集中每个对象的属性。</p>
+<h3> F 表达式 以及 Q表达式</h3>
+<h4> F 表达式</h4>
+<p>F 表达式（Field expressions）允许你引用模型字段，并在数据库层面上执行操作，而不是在 Python 层面上。这意味着你可以在查询中使用字段的当前值，而无需在 Python 中加载整个对象。</p>
+<p><strong>使用场景</strong>:</p>
+<ul>
+<li>当你想基于现有字段的值进行计算或条件判断时。</li>
+<li>当你想避免在 Python 层面上加载对象，从而提高查询效率时。</li>
+</ul>
+<p><strong>示例</strong>: 假设我们有一个 <code>Book</code> 模型，我们想要更新所有书籍的价格，使其变为当前价格的两倍。</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，我们没有首先加载所有的 <code>Book</code> 对象到 Python 中，而是直接在数据库层面上将 <code>price</code> 字段的值乘以 2。</p>
+<h4> Q 表达式</h4>
+<p>Q 表达式（Query expressions）提供了一种查询接口，允许你构建复杂的查询，可以包含多个条件，并且这些条件可以使用 <code>&amp;</code>（和）、<code>|</code>（或）和 <code>~</code>（非）运算符来组合。</p>
+<p><strong>使用场景</strong>:</p>
+<ul>
+<li>当你想构建包含多个条件的复杂查询时。</li>
+<li>当你想使用逻辑运算符组合查询条件时。</li>
+</ul>
+<p><strong>示例</strong>: 假设我们想要查询所有由特定作者编写，并且价格大于 10 的书籍。</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，我们创建了一个 Q 对象，它表示作者是 "John Doe" 并且价格大于 10 的书籍。然后我们使用 <code>filter()</code> 方法来获取匹配这些条件的书籍。</p>
+<ul>
+<li><strong>F 表达式</strong> 用于引用模型字段并在数据库层面上执行操作，如字段值的计算。</li>
+<li><strong>Q 表达式</strong> 用于构建复杂的查询，可以包含多个逻辑条件，并使用逻辑运算符进行组合。</li>
+</ul>
+<p>F 表达式和 Q 表达式都是 Django ORM 中不可或缺的工具，它们可以帮助你编写更高效、更灵活的数据库查询。</p>
+]]></content:encoded>
+      <enclosure url="https://qiniu.waite.wang/202406022058040.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Django 表单组件</title>
+      <link>https://brain.sunguoqi.com/backend/Django/%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6.html</link>
+      <guid>https://brain.sunguoqi.com/backend/Django/%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6.html</guid>
+      <source url="https://brain.sunguoqi.com/rss.xml">Django 表单组件</source>
+      <pubDate>Thu, 06 Jun 2024 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Django 模板</title>
       <link>https://brain.sunguoqi.com/backend/Django/%E6%A8%A1%E6%9D%BF.html</link>
@@ -98,6 +553,11 @@
 <li>forloop.first（一般配合if标签使用）: 第一条数据返回 True，其他数据返回 False</li>
 <li>forloop.last（一般配合if标签使用）: 最后一条数据返回 True，其他数据返回 False</li>
 </ul>
+<h2> 模块化</h2>
+<figure><img src="https://qiniu.waite.wang/202406051509154.png" alt="image-20240605150947706" tabindex="0" loading="lazy"><figcaption>image-20240605150947706</figcaption></figure>
+<p>调整 <code>djangoProject/urls.py</code></p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>app/urls.py</code></p>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://qiniu.waite.wang/202406051511917.png" alt="image-20240605151102668" tabindex="0" loading="lazy"><figcaption>image-20240605151102668</figcaption></figure>
 ]]></content:encoded>
       <enclosure url="https://qiniu.waite.wang/6BC47EC1-ABC8-4EA7-A536-756648FBBC20.jpg" type="image/jpeg"/>
     </item>
